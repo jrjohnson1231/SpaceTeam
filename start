@@ -1,0 +1,13 @@
+#!/bin/bash
+
+user=$USER
+
+## convert scary to cscarame
+
+if [ "$user" = "scary" ] ; then
+	user="cscarame"
+fi
+
+cat << _EOF_ >> "$user"
+Start: $(date +"%D %X")
+_EOF_

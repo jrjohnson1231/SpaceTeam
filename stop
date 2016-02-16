@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cat << _EOF_ >> "$USER"
+Stop: $(date +"%D %X")
+_EOF_
