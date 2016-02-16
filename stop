@@ -1,5 +1,13 @@
 #!/bin/bash
 
-cat << _EOF_ >> "$USER"
+user=$USER
+
+## convert scary to cscarame
+
+if [ "$user" = "scary" ] ; then
+	user="cscarame"
+fi
+
+cat << _EOF_ >> "$user"
 Stop: $(date +"%D %X")
 _EOF_
