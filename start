@@ -1,23 +1,26 @@
 #!/bin/bash
 
-user=$USER
-
-## convert scary to cscarame
-
+# ensure directory is current
 git pull
 
+# get user data
+user=$USER
+# convert user if on my pi
 if [ "$user" = "scary" ] ; then
 	user="cscarame"
 fi
+# convert user if on Allie's Macbook
 if [ "$user" = "allisonolshefke" ] ; then
 	user="aolshefk"
 fi
 
+# allows users to take notes on what they'ree doing
 notes=
 for i in "$@"; do
 	notes="$notes"" $i"
 done
 
+# insert into file
 cat << _EOF_ >> "$user"
 Start: $(date +"%D %X") - $notes
 _EOF_

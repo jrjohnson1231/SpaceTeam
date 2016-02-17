@@ -1,17 +1,22 @@
 #!/bin/bash
 
-user=$USER
 
-## convert scary to cscarame
+## see start for information
+
+user=$USER
 
 if [ "$user" = "scary" ] ; then
 	user="cscarame"
+fi
+if [ "$user" = 'allisonolshefke' ] ; then
+	user="aolshefk"
 fi
 
 cat << _EOF_ >> "$user"
 Stop: $(date +"%D %X")
 _EOF_
 
+# add user timestamp, commit and push files
 git add $user
 git commit
 git push
