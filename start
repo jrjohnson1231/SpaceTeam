@@ -4,10 +4,21 @@ user=$USER
 
 ## convert scary to cscarame
 
+git pull
+
 if [ "$user" = "scary" ] ; then
 	user="cscarame"
 fi
+if [ "$user" = "allisonolshefke" ] ; then
+	user="aolshefk"
+fi
+
+notes=
+for i in "$@"; do
+	notes="$notes"" $i"
+done
 
 cat << _EOF_ >> "$user"
-Start: $(date +"%D %X")
+Start: $(date +"%D %X") - $notes
 _EOF_
+

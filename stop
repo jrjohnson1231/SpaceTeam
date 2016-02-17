@@ -11,3 +11,7 @@ fi
 cat << _EOF_ >> "$user"
 Stop: $(date +"%D %X")
 _EOF_
+
+git add $user
+git commit
+git push
