@@ -3,7 +3,7 @@ ReadMe.md
 
 CHANGELOG
 ---------
--**2/16/16** start and stop.  Hey guys!  I'm done with the start and stop commands!
+-**2/16/16 Scary :** start and stop.  Hey guys!  I'm done with the start and stop commands!
 	I commented them up for you.  Let me know what you think!
 
 
