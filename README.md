@@ -3,8 +3,8 @@ ReadMe.md
 
 CHANGELOG
 ---------
--**2/16/16 Scary :** start and stop.  Hey guys!  I'm done with the start and stop commands!
-	I commented them up for you.  Let me know what you think!
+-**2/16/16 Scary :** start and stop.  Hey guys!  I'm done with the start and stop commands! I commented them up for you.  Let me know what you think!
+
 -**3/16/16 Scary :** Tensor. Hey guys.  I made a tensor class.  It's really basic, just data for x,y,z coordinates and a basic conversion to polar.
 
 
