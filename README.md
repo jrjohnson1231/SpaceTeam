@@ -7,7 +7,7 @@ CHANGELOG
 
 -**3/16/16 Scary :** Tensor. Hey guys.  I made a tensor class.  It's really basic, just data for x,y,z coordinates and a basic conversion to polar.
 
--**3/20/16 Allie :** Planets. Hey! I made a very basic class for planets. Right now all it can do is find the force between two bodies. More to come! 
+-**3/20/16 Allie :** Planets. Hey! I made a very basic class for planets. Right now all it can do is find the force between two bodies, and the acceleration of a body. More to come on that. I also added a function to Tensor that finds the distance between two bodies. maybe I should put that in the Planets class? Let me know!
 
 
 Meetings
