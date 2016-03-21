@@ -9,18 +9,16 @@ class Planet
 {
 	public:
 		Planet(double m=1000, double x=0, double y=0, double z=0);
-		Tensor calcAccel();
-		double calcPos();
-		double calcVel();
+		Tensor calcAccel();//calculate acceleration
 		double getMass();
 		double getx();
 		double gety();
 		double getz();
-		Tensor calcForce(Planet);
-		double distance(Planet);
+		Tensor calcForce(Planet);//calculate the force
+		double distance(Planet);//distance between two planets
 		Tensor getPos();
 		Tensor getVel();
-		void update(double);
+		void update(double);//move the planets a small amount according to their gravities
 
 	private:
 		double mass;
