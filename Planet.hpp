@@ -19,15 +19,14 @@ class Planet
 		double calcForce(Planet);
 		double distance(Planet);
 		Tensor getPos();
+		Tensor getVel();
 
 	private:
 		double mass;
 		double accel;
 		double totalForce;
-		double x;
-		double y;
-		double z;
 		Tensor pos;
+		Tensor vel;
 };
 
 
