@@ -9,22 +9,23 @@ class Planet
 {
 	public:
 		Planet(double m=1000, double x=0, double y=0, double z=0);
-		double calcAccel();
+		Tensor calcAccel();
 		double calcPos();
 		double calcVel();
 		double getMass();
 		double getx();
 		double gety();
 		double getz();
-		double calcForce(Planet);
+		Tensor calcForce(Planet);
 		double distance(Planet);
 		Tensor getPos();
 		Tensor getVel();
+		void update(double);
 
 	private:
 		double mass;
-		double accel;
-		double totalForce;
+		Tensor accel;
+		Tensor totalForce;
 		Tensor pos;
 		Tensor vel;
 };

@@ -6,17 +6,23 @@ Planet::Planet(double m, double x, double y, double z)
 	pos.set(x,y,z);
 }
 
-double Planet::calcForce(Planet p)
+Tensor Planet::calcForce(Planet p)
 {
 	double G=6.67e-11; 
 	//totalForce=(G*mass*p.getMass())/(pos.distance(p.getPos())*pos.distance(p.getPos()));
-	totalForce=(G*mass*p.getMass())/(distance(p)*distance(p));
+	totalForce.setx((G*mass*p.getMass())/((p.getx()-pos.getx())*(p.getx()-pos.getx())));
+	if(pos.getx()>p.getx())
+	{
+		totalForce.setx(totalForce.getx()*-1);
+	}
 	return totalForce;
 }
 
-double Planet::calcAccel()
+Tensor Planet::calcAccel()
 {
-	accel= totalForce/mass;
+	accel.setx(totalForce.getx()/mass);
+	accel.sety(totalForce.gety()/mass);
+	accel.setz(totalForce.getz()/mass);
 	return accel;
 }
 
@@ -49,3 +55,19 @@ double Planet::getz()
 {
 	return pos.getz();
 }
+
+void Planet::update(double dt)
+{
+	pos.setx(pos.getx()+vel.getx()*dt);
+	cout<<"pos "<<pos.getx()<<endl;
+	pos.sety(pos.gety()+vel.gety()*dt);
+	pos.setz(pos.getz()+vel.getz()*dt);
+	vel.setx(vel.getx()+accel.getx()*dt);
+	cout<<"vel "<<vel.getx()<<endl;
+	vel.sety(vel.gety()+accel.gety()*dt);
+	vel.setz(vel.getz()+accel.getz()*dt);
+}
+
+
+
+
