@@ -9,6 +9,8 @@ CHANGELOG
 
 -**3/20/16 Allie :** Planets. Hey! I made a very basic class for planets. Right now all it can do is find the force between two bodies, and the acceleration of a body. More to come on that. I also added a function to Tensor that finds the distance between two bodies. maybe I should put that in the Planets class? Let me know!
 
+-**3/20/16 John:** Tensor/Planets. Hey guys, the dynamic memory was giving us some issues in the Tensor class so I got rid of it because it wasn't entirely necessary. Also included the Tensor class into the Planet class with Allie.
+
 
 TODO
 ----
