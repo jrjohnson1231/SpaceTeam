@@ -14,6 +14,7 @@ TODO
 -overload output stream for tensor and planet
 -allow multiplying/dividing by scalar for tensor
 -overall cleanup of code
+-add update to tensor class
 
 Meetings
 --------
