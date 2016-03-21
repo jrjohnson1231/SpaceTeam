@@ -28,9 +28,9 @@ class Tensor
 		double gettheta();
 
 	private:
-		double* x;
-		double* y;
-		double* z;
+		double x;
+		double y;
+		double z;
 };
 
 #endif // TENSOR_H

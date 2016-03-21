@@ -1,7 +1,7 @@
 all: main
 
 main: mainplanet.o Planet.o Tensor.o
-	g++ mainplanet.o Planet.o  Tensor.o -o main
+	g++ -g -Wall mainplanet.o Planet.o  Tensor.o -o main
 
 mainplanet.o: mainplanet.cpp
 	g++ -c mainplanet.cpp
@@ -13,5 +13,4 @@ Planet.o: Planet.cpp
 	g++ -c Planet.cpp
 
 clean:
-	rm  *.o
-
+	rm  *.o main

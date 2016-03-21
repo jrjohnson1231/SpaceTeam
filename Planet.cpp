@@ -1,12 +1,9 @@
 #include "Planet.hpp"
 
-Planet::Planet(double m, double a, double b, double c)
+Planet::Planet(double m, double x, double y, double z)
 {
 	mass=m;
-	//pos.set(x,y,z);
-	x=a;
-	y=b;
-	z=c;
+	pos.set(x,y,z);
 }
 
 double Planet::calcForce(Planet p)
@@ -30,7 +27,7 @@ double Planet::getMass()
 
 double Planet::distance(Planet p)
 {
-	return sqrt((x-p.getx())*(x-p.getx())+(y-p.gety())*(y-p.gety())+(z-p.getz())*(z-p.getz()));
+	return sqrt((pos.getx()-p.getx())*(pos.getx()-p.getx())+(pos.gety()-p.gety())*(pos.gety()-p.gety())+(pos.getz()-p.getz())*(pos.getz()-p.getz()));
 }
 
 /*Tensor Planet::getPos()
@@ -40,15 +37,15 @@ double Planet::distance(Planet p)
 
 double Planet::getx()
 {
-	return x;
+	return pos.getx();
 }
 
 double Planet::gety()
 {
-	return y;
+	return pos.gety();
 }
 
 double Planet::getz()
 {
-	return z;
+	return pos.getz();
 }

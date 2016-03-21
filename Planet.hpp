@@ -1,7 +1,9 @@
 #ifndef PLANET_HPP
 #define PLANET_HPP
 #include <cmath>
-#include "Tensor.hpp"
+#include "Tensor/Tensor.h"
+#include <iostream>
+using namespace std;
 
 class Planet
 {
