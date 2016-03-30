@@ -11,11 +11,10 @@ CHANGELOG
 
 -**3/20/16 John :** Tensor/Planets. Hey guys, the dynamic memory was giving us some issues in the Tensor class so I got rid of it because it wasn't entirely necessary. Also included the Tensor class into the Planet class with Allie.
 
+-**3/30/16 John :** I overloaded some operators in the tensor class, making the operations in planet much, much simpler.
 
 TODO
 ----
-- overload output stream for tensor and planet
-- allow multiplying/dividing by scalar for tensor
 - overall cleanup of code
 - add update to tensor class
 
