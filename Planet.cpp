@@ -3,7 +3,7 @@
 //constructor
 Planet::Planet(double m, double x, double y, double z)
 {
-	mass=m;
+	mass = m;
 	pos.set(x,y,z);
 }
 
@@ -24,10 +24,9 @@ Tensor Planet::calcForce(Planet p)
 //calculate acceleration based on force
 Tensor Planet::calcAccel()
 {
-	accel.setx(totalForce.getx()/mass);
-	accel.sety(totalForce.gety()/mass);
-	accel.setz(totalForce.getz()/mass);
-	return accel;
+	this->accel = totalForce / mass;
+
+	return (this->accel);
 }
 
 double Planet::getMass()
@@ -63,14 +62,10 @@ double Planet::getz()
 //moves the planets according to the force
 void Planet::update(double dt)
 {
-	pos.setx(pos.getx()+vel.getx()*dt);
+	pos = pos + (vel*dt);
 	cout<<"pos "<<pos.getx()<<endl;
-	pos.sety(pos.gety()+vel.gety()*dt);
-	pos.setz(pos.getz()+vel.getz()*dt);
-	vel.setx(vel.getx()+accel.getx()*dt);
+	vel = vel + (accel*dt);
 	cout<<"vel "<<vel.getx()<<endl;
-	vel.sety(vel.gety()+accel.gety()*dt);
-	vel.setz(vel.getz()+accel.getz()*dt);
 }
 
 

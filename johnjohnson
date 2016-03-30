@@ -22,3 +22,7 @@ Start: 03/20/16 20:46:50
 Stop: 03/20/16 21:55:06
 Incorporated Tensor into Planet class using composition.
 Worked with Allie to complete update function.
+
+Start: 03/30/16 9:28:30
+Stop: 03/30/16 10:42:40
+Overloaded operators in Tensor class, allowing operations in Planet class to be much simpler.

@@ -30,10 +30,8 @@ class Tensor
 		// Overloaded operators
 		Tensor operator+(Tensor);
 		Tensor operator-(Tensor);
-		template<typename T>
-		Tensor operator*(T);
-		template<typename T>
-		Tensor operator/(T);
+		Tensor operator*(double);
+		Tensor operator/(double);
 
 	private:
 		double x;
