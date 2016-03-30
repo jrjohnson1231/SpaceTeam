@@ -39,3 +39,37 @@ double Tensor::gettheta()
 	else if(x == 0 && y <= 0){return 6*atan(1);}
 	return 0;
 }
+
+Tensor Tensor::operator+(Tensor t2) {
+	double x = this->x + t2.x;
+	double y = this->y + t2.y;
+	double z = this->z + t2.x;
+
+	Tensor newT(x, y, z);
+
+	return newT;
+}
+
+Tensor Tensor::operator-(Tensor t2) {
+	Tensor inverse = t2 * (-1);
+
+	return (*this) + inverse;
+}
+
+template<typename T>
+Tensor Tensor::operator*(T k) {
+	double x = k*(this->x);
+	double y = k*(this->y);
+	double z = k*(this->z);
+
+	Tensor newT(x, y, z);
+
+	return newT;
+}
+
+template<typename T>
+Tensor Tensor::operator/(T k) {
+	k = 1/k;
+
+	return (*this)*k;
+}

@@ -27,6 +27,14 @@ class Tensor
 		// Get the angle of the Tensor
 		double gettheta();
 
+		// Overloaded operators
+		Tensor operator+(Tensor);
+		Tensor operator-(Tensor);
+		template<typename T>
+		Tensor operator*(T);
+		template<typename T>
+		Tensor operator/(T);
+
 	private:
 		double x;
 		double y;
