@@ -13,6 +13,8 @@ CHANGELOG
 
 -**3/30/16 John :** I overloaded some operators in the tensor class, making the operations in planet much, much simpler.
 
+-**4/11/16 John :**Overall simplification of code in planet and tensor class. Created friendship between planet and tensor, as well as a static vector of all the planet pointers so that we can easily loop over all the planets we have made. Force function is probably the most changed aspect, and it is much simpler and loops over the vector instead of taking a planet as a parameter.
+
 TODO
 ----
 - overall cleanup of code
