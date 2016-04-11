@@ -18,7 +18,7 @@ CHANGELOG
 TODO
 ----
 - animate simulation so we can find out what parts of planet/tensor need to be adjusted
-- come up with better way to initiate updating every planet, perhaps class static variable
+- come up with better way to initiate updating every planet, perhaps class static function
 
 Meetings
 --------
