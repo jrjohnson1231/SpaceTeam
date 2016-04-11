@@ -1,8 +1,10 @@
-#ifndef PLANET_HPP
-#define PLANET_HPP
+#ifndef PLANET_H
+#define PLANET_H
+
 #include <cmath>
 #include "Tensor/Tensor.h"
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class Planet
@@ -14,8 +16,7 @@ class Planet
 		double getx();
 		double gety();
 		double getz();
-		Tensor calcForce(Planet);//calculate the force
-		double distance(Planet);//distance between two planets
+		void calcForce();//calculate the force
 		Tensor getPos();
 		Tensor getVel();
 		void update(double);//move the planets a small amount according to their gravities
@@ -26,7 +27,8 @@ class Planet
 		Tensor totalForce;
 		Tensor pos;
 		Tensor vel;
-};
 
+		static vector<Planet *> planets; // constains pointer to each object
+};
 
 #endif

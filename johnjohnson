@@ -26,3 +26,7 @@ Worked with Allie to complete update function.
 Start: 03/30/16 9:28:30
 Stop: 03/30/16 10:42:40
 Overloaded operators in Tensor class, allowing operations in Planet class to be much simpler.
+
+Start: 04/11/16 15:13:31 
+Stop: 04/11/16 16:36:41
+Did alot of work on simplifying formulas, and updating of position. Implemented staticvector containing pointers to each planet in order to keep track of all the planets. This enables the calcForce() function to be called once and then loop through the vector and add the forces for each planet. Tested driver program with third planet and qualitatively it appears to work.

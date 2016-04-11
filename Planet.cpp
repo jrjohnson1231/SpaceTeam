@@ -1,24 +1,30 @@
-#include "Planet.hpp"
+#include "Planet.h"
+
+// static vector of all planets
+vector<Planet *> Planet::planets;
 
 //constructor
 Planet::Planet(double m, double x, double y, double z)
 {
 	mass = m;
 	pos.set(x,y,z);
+	planets.push_back(this);
 }
 
 //calculate the force
-Tensor Planet::calcForce(Planet p)
+void Planet::calcForce()
 {
-	double G=6.67e-11; 
-	//totalForce=(G*mass*p.getMass())/(pos.distance(p.getPos())*pos.distance(p.getPos()));
-	totalForce.setx((G*mass*p.getMass())/((p.getx()-pos.getx())*(p.getx()-pos.getx())));
-	//this takes care of "equal but opposite"
-	if(pos.getx()>p.getx())
-	{
-		totalForce.setx(totalForce.getx()*-1);
+	double G=6.67e-11;
+	totalForce.clear();
+
+	for (int i = 0; i < planets.size(); i++) {
+		if (planets[i] != this) { // don't add force if it is with itself
+			Tensor r = planets[i]->pos - pos;
+			totalForce = totalForce + r*((G*mass*planets[i]->mass)/(r.getr()*r.getr()*r.getr()));
+		}
 	}
-	return totalForce;
+
+	accel = totalForce / mass;
 }
 
 //calculate acceleration based on force
@@ -32,11 +38,6 @@ Tensor Planet::calcAccel()
 double Planet::getMass()
 {
 	return mass;
-}
-
-double Planet::distance(Planet p)
-{
-	return sqrt((pos.getx()-p.getx())*(pos.getx()-p.getx())+(pos.gety()-p.gety())*(pos.gety()-p.gety())+(pos.getz()-p.getz())*(pos.getz()-p.getz()));
 }
 
 /*Tensor Planet::getPos()
@@ -63,9 +64,8 @@ double Planet::getz()
 void Planet::update(double dt)
 {
 	pos = pos + (vel*dt);
-	cout<<"pos "<<pos.getx()<<endl;
+	cout << pos;
 	vel = vel + (accel*dt);
-	cout<<"vel "<<vel.getx()<<endl;
 }
 
 
