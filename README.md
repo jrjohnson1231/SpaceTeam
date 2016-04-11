@@ -17,8 +17,7 @@ CHANGELOG
 
 TODO
 ----
-- overall cleanup of code
-- add update to tensor class
+- animate simulation so we can find out what parts of planet/tensor need to be adjusted.
 
 Meetings
 --------
@@ -28,6 +27,4 @@ Meetings
 - **3/14/16 3:00-4:00**: Monday Lab (Allie and John) Started LazyFoo SDL tutorials.
 - **3/16/16 2:00-3:00**: Will focus on calculating coordinates and displaying separately. Will worry about user input while the program is running later on once we have things moving correctly on the screen. *Next Week:* Plan on having individual parts completed to create two body motion. *Two Weeks:* Plan on getting at least two bodies moving on a screen. Chris will work on SDL while John and Allie will work on physics behind motion. Decided to start having weekly meetings.
 - **3/20/16 8:30-10:00**: John and Allie met and worked on Planets class. We got it working with Tensor and with 2 bodies with no initial velocity (basically just 2 bodies flying towards each other). Our To-Do list is above.
-<<<<<<< HEAD
-=======
 - **3/31/16 11:00-11:30**: Group meeting. We discussed our next steps and the changes that we've made since our last meeting. John and Allie will work on adapting the planets class to work with initial velocities. Scary will work on getting SDL to work with the tensor class.
