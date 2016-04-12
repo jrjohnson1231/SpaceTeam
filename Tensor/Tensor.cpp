@@ -32,18 +32,18 @@ double Tensor::getr(){ return std::sqrt(pow(x, 2)+pow(y, 2)+pow(z,2)); }
 double Tensor::gettheta()
 {
 		if(x > 0 && y >= 0){return atan((y/ x));}
-			else if(x < 0 && y >= 0){return atan(( y/ x))+ 4*atan(1);}
-				else if(x < 0 && y <= 0){return atan((y/ x))+ 4*atan(1);}
-					else if(x > 0 && y <= 0){return atan((y/ x))+ 8*atan(1);}
-						else if(x == 0 && y >= 0){return 2*atan(1);}
-							else if(x == 0 && y <= 0){return 6*atan(1);}
-								return 0;
+		else if(x < 0 && y >= 0){return atan(( y/ x))+ 4*atan(1);}
+		else if(x < 0 && y <= 0){return atan((y/ x))+ 4*atan(1);}
+		else if(x > 0 && y <= 0){return atan((y/ x))+ 8*atan(1);}
+		else if(x == 0 && y >= 0){return 2*atan(1);}
+		else if(x == 0 && y <= 0){return 6*atan(1);}
+		return 0;
 }
 
 Tensor Tensor::operator+(Tensor t2) {
 		double x = this->x + t2.x;
 			double y = this->y + t2.y;
-				double z = this->z + t2.x;
+				double z = this->z + t2.z;
 
 					Tensor newT(x, y, z);
 
