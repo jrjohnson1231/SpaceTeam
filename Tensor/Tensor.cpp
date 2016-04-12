@@ -1,11 +1,19 @@
 #include "Tensor.h"
 
+// Written by Scary (overloaded operator by John
+
+ostream& operator<<(ostream& stream, const Tensor& t) {
+	stream << "x: " << t.x << ", y: " << t.y << ", z: " << t.z << endl;
+
+	return stream;
+}
+
 Tensor::Tensor(double x_value, double y_value, double z_value)
 {
 
-		x = x_value;
-			y = y_value;
-				z = z_value;
+	x = x_value;
+	y = y_value;
+	z = z_value;
 }
 
 Tensor::~Tensor()
@@ -18,9 +26,13 @@ void Tensor::setz(double z_value){ z = z_value;}
 
 void Tensor::set(double x_value, double y_value, double z_value)
 {
-		x = x_value;
-			y = y_value;
-				z = z_value;
+	x = x_value;
+	y = y_value;
+	z = z_value;
+}
+
+void Tensor::clear() {
+	set(0,0,0);
 }
 
 double Tensor::getx(){ return x; }
@@ -40,34 +52,34 @@ double Tensor::gettheta()
 		return 0;
 }
 
+
 Tensor Tensor::operator+(Tensor t2) {
-		double x = this->x + t2.x;
-			double y = this->y + t2.y;
-				double z = this->z + t2.z;
+	double x = this->x + t2.x;
+	double y = this->y + t2.y;
+	double z = this->z + t2.z;
+	Tensor newT(x, y, z);
 
-					Tensor newT(x, y, z);
-
-						return newT;
+	return newT;
 }
 
 Tensor Tensor::operator-(Tensor t2) {
-		Tensor inverse = t2 * (-1);
+	Tensor inverse = t2 * (-1);
 
-			return (*this) + inverse;
+	return (*this) + inverse;
 }
 
 Tensor Tensor::operator*(double k) {
-		double x = k*(this->x);
-			double y = k*(this->y);
-				double z = k*(this->z);
+	double x = k*(this->x);
+	double y = k*(this->y);
+	double z = k*(this->z);
 
-					Tensor newT(x, y, z);
+	Tensor newT(x, y, z);
 
-						return newT;
+	return newT;
 }
 
 Tensor Tensor::operator/(double k) {
-		k = 1/k;
+	k = 1/k;
 
-			return (*this)*k;
+	return (*this)*k;
 }

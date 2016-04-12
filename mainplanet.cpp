@@ -1,4 +1,4 @@
-#include "Planet.hpp"
+#include "Planet.h"
 #include "iostream"
 
 using namespace std;
@@ -7,6 +7,7 @@ int main()
 {
 	Planet Earth(5.97e24,0,0,0);
 	Planet Moon(7.33e22,3.84e8,0,0);
+	Planet Thing(3.44e23, 5.97e4, 4.83e6, 0);
 	//shows that the force is the same going both ways, but acceleration is not
 	/*cout<<"Force of Moon on the Earth: "<<Earth.calcForce(Moon)<<" N"<<endl;
 	cout<<"Earth's acceleration due to the moon: "<<Earth.calcAccel()<<" m/s/s"<<endl;
@@ -15,15 +16,17 @@ int main()
 
 	for (int i=0; i<10; i++)
 	{
+		Earth.calcForce();
+		Moon.calcForce();
+		Thing.calcForce();
 
-		Earth.calcForce(Moon);
-		Earth.calcAccel();
-		Moon.calcForce(Earth);
-		Moon.calcAccel();
-		cout<<"earth "<<endl;
-		Earth.update(10);
-		cout<<"moon"<<endl;
-		Moon.update(10);
+		cout << "EARTH" << endl;
+		Earth.update(1);
+		cout << endl << "MOON" << endl;
+		Moon.update(1);
+		cout << endl << "THING" << endl;
+		Thing.update(1);
+		cout << endl << "---------------------------------" << endl << endl;
 	}
 
 	return 0;

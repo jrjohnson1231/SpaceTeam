@@ -11,13 +11,14 @@ CHANGELOG
 
 -**3/20/16 John :** Tensor/Planets. Hey guys, the dynamic memory was giving us some issues in the Tensor class so I got rid of it because it wasn't entirely necessary. Also included the Tensor class into the Planet class with Allie.
 
+-**3/30/16 John :** I overloaded some operators in the tensor class, making the operations in planet much, much simpler.
+
+-**4/11/16 John :**Overall simplification of code in planet and tensor class. Created friendship between planet and tensor, as well as a static vector of all the planet pointers so that we can easily loop over all the planets we have made. Force function is probably the most changed aspect, and it is much simpler and loops over the vector instead of taking a planet as a parameter.
 
 TODO
 ----
-- overload output stream for tensor and planet
-- allow multiplying/dividing by scalar for tensor
-- overall cleanup of code
-- add update to tensor class
+- animate simulation so we can find out what parts of planet/tensor need to be adjusted
+- come up with better way to initiate updating every planet, perhaps class static function
 
 Meetings
 --------
@@ -27,4 +28,4 @@ Meetings
 - **3/14/16 3:00-4:00**: Monday Lab (Allie and John) Started LazyFoo SDL tutorials.
 - **3/16/16 2:00-3:00**: Will focus on calculating coordinates and displaying separately. Will worry about user input while the program is running later on once we have things moving correctly on the screen. *Next Week:* Plan on having individual parts completed to create two body motion. *Two Weeks:* Plan on getting at least two bodies moving on a screen. Chris will work on SDL while John and Allie will work on physics behind motion. Decided to start having weekly meetings.
 - **3/20/16 8:30-10:00**: John and Allie met and worked on Planets class. We got it working with Tensor and with 2 bodies with no initial velocity (basically just 2 bodies flying towards each other). Our To-Do list is above.
-- **3/31/16 11:00-11:30**: Group meeting. We discussed our next steps and the changes that we've made since our last meeting. John and Allie will work on adapting the planets class to work with initial velocities. Scary will work on getting SDL to work with the tensor class. 
+- **3/31/16 11:00-11:30**: Group meeting. We discussed our next steps and the changes that we've made since our last meeting. John and Allie will work on adapting the planets class to work with initial velocities. Scary will work on getting SDL to work with the tensor class.
