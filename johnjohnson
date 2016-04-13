@@ -30,3 +30,7 @@ Overloaded operators in Tensor class, allowing operations in Planet class to be 
 Start: 04/11/16 15:13:31 
 Stop: 04/11/16 16:36:41
 Did alot of work on simplifying formulas, and updating of position. Implemented staticvector containing pointers to each planet in order to keep track of all the planets. This enables the calcForce() function to be called once and then loop through the vector and add the forces for each planet. Tested driver program with third planet and qualitatively it appears to work.
+
+Start: 04/13/16 10:21:45
+Stop: 04/13/16 10:49:51
+Added name member to planet class and created static update function that updates all planets from driver with one call to update().

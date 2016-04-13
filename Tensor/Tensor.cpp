@@ -3,7 +3,7 @@
 // Written by Scary (overloaded operator by John
 
 ostream& operator<<(ostream& stream, const Tensor& t) {
-	stream << "x: " << t.x << ", y: " << t.y << ", z: " << t.z << endl;
+	stream << "x=" << t.x << "  y=" << t.y << "  z=" << t.z << endl;
 
 	return stream;
 }

@@ -1,10 +1,12 @@
 #include "Planet.h"
 
+#define DEBUG 1 
+
 // static vector of all planets
 vector<Planet *> Planet::planets;
 
 //constructor
-Planet::Planet(double m, double x, double y, double z)
+Planet::Planet(string name, double m, double x, double y, double z) : name(name)
 {
 	mass = m;
 	pos.set(x,y,z);
@@ -63,11 +65,15 @@ double Planet::getz()
 //moves the planets according to the force
 void Planet::update(double dt)
 {
-	pos = pos + (vel*dt);
-	cout << pos;
-	vel = vel + (accel*dt);
+	// calculate force for each planet
+	for (int i = 0; i < planets.size(); i++) {
+		planets[i]->calcForce();
+
+		if (DEBUG) cout << planets[i]->name << ":" << endl << planets[i]->pos << endl;
+	}
+	
+	for (int i = 0; i < planets.size(); i++) {
+		planets[i]->pos = planets[i]->pos + (planets[i]->vel*dt);
+		planets[i]->vel = planets[i]->vel + (planets[i]->accel*dt);
+	}
 }
-
-
-
-

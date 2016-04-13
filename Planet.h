@@ -5,12 +5,13 @@
 #include "Tensor/Tensor.h"
 #include <iostream>
 #include <vector>
+#include <string>
 using namespace std;
 
 class Planet
 {
 	public:
-		Planet(double m=1000, double x=0, double y=0, double z=0);
+		Planet(string name, double m=1000, double x=0, double y=0, double z=0);
 		Tensor calcAccel();//calculate acceleration
 		double getMass();
 		double getx();
@@ -19,9 +20,10 @@ class Planet
 		void calcForce();//calculate the force
 		Tensor getPos();
 		Tensor getVel();
-		void update(double);//move the planets a small amount according to their gravities
+		static void update(double);//move the planets a small amount according to their gravities
 
 	private:
+		string name;
 		double mass;
 		Tensor accel;
 		Tensor totalForce;
