@@ -3,17 +3,19 @@ ReadMe.md
 
 CHANGELOG
 ---------
--**2/16/16 Scary :** start and stop.  Hey guys!  I'm done with the start and stop commands! I commented them up for you.  Let me know what you think!
+-**2/16/16 Scary:** start and stop.  Hey guys!  I'm done with the start and stop commands! I commented them up for you.  Let me know what you think!
 
--**3/16/16 Scary :** Tensor. Hey guys.  I made a tensor class.  It's really basic, just data for x,y,z coordinates and a basic conversion to polar.
+-**3/16/16 Scary:** Tensor. Hey guys.  I made a tensor class.  It's really basic, just data for x,y,z coordinates and a basic conversion to polar.
 
--**3/20/16 Allie :** Planets. Hey! I made a very basic class for planets. Right now all it can do is find the force between two bodies, and the acceleration of a body. More to come on that. I also added a function to Tensor that finds the distance between two bodies. maybe I should put that in the Planets class? Let me know!
+-**3/20/16 Allie:** Planets. Hey! I made a very basic class for planets. Right now all it can do is find the force between two bodies, and the acceleration of a body. More to come on that. I also added a function to Tensor that finds the distance between two bodies. maybe I should put that in the Planets class? Let me know!
 
--**3/20/16 John :** Tensor/Planets. Hey guys, the dynamic memory was giving us some issues in the Tensor class so I got rid of it because it wasn't entirely necessary. Also included the Tensor class into the Planet class with Allie.
+-**3/20/16 John:** Tensor/Planets. Hey guys, the dynamic memory was giving us some issues in the Tensor class so I got rid of it because it wasn't entirely necessary. Also included the Tensor class into the Planet class with Allie.
 
--**3/30/16 John :** I overloaded some operators in the tensor class, making the operations in planet much, much simpler.
+-**3/30/16 John:** I overloaded some operators in the tensor class, making the operations in planet much, much simpler.
 
--**4/11/16 John :**Overall simplification of code in planet and tensor class. Created friendship between planet and tensor, as well as a static vector of all the planet pointers so that we can easily loop over all the planets we have made. Force function is probably the most changed aspect, and it is much simpler and loops over the vector instead of taking a planet as a parameter.
+-**4/11/16 John:** Overall simplification of code in planet and tensor class. Created friendship between planet and tensor, as well as a static vector of all the planet pointers so that we can easily loop over all the planets we have made. Force function is probably the most changed aspect, and it is much simpler and loops over the vector instead of taking a planet as a parameter.
+
+-**4/13/16 John:** I added a name member to planet to aid in display. I also updated the << operator for tensor to make it look nicer. *update()* is now static so one call from the driver updates all planets, and the driver takes command line argument dt.
 
 TODO
 ----
