@@ -33,4 +33,4 @@ Did alot of work on simplifying formulas, and updating of position. Implemented 
 
 Start: 04/13/16 10:21:45
 Stop: 04/13/16 10:49:51
-Added name member to planet class and created static update function that updates all planets from driver with one call to update().
+Added name member to planet class and created static update function that updates all planets from driver with one call to update(). Driver program can also take command line argument dt.
