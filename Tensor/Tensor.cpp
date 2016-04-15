@@ -2,7 +2,8 @@
 
 // Written by Scary (overloaded operator by John
 
-ostream& operator<<(ostream& stream, const Tensor& t) {
+ostream& operator<<(ostream& stream, const Tensor& t) 
+{
 	stream << "x=" << t.x << "  y=" << t.y << "  z=" << t.z << endl;
 
 	return stream;
@@ -53,7 +54,8 @@ double Tensor::gettheta()
 }
 
 
-Tensor Tensor::operator+(Tensor t2) {
+Tensor Tensor::operator+(Tensor t2) 
+{
 	double x = this->x + t2.x;
 	double y = this->y + t2.y;
 	double z = this->z + t2.z;
@@ -62,13 +64,15 @@ Tensor Tensor::operator+(Tensor t2) {
 	return newT;
 }
 
-Tensor Tensor::operator-(Tensor t2) {
+Tensor Tensor::operator-(Tensor t2) 
+{
 	Tensor inverse = t2 * (-1);
 
 	return (*this) + inverse;
 }
 
-Tensor Tensor::operator*(double k) {
+Tensor Tensor::operator*(double k) 
+{
 	double x = k*(this->x);
 	double y = k*(this->y);
 	double z = k*(this->z);
@@ -78,7 +82,8 @@ Tensor Tensor::operator*(double k) {
 	return newT;
 }
 
-Tensor Tensor::operator/(double k) {
+Tensor Tensor::operator/(double k) 
+{
 	k = 1/k;
 
 	return (*this)*k;
