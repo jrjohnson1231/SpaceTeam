@@ -16,7 +16,8 @@ CHANGELOG
 -**4/11/16 John:** Overall simplification of code in planet and tensor class. Created friendship between planet and tensor, as well as a static vector of all the planet pointers so that we can easily loop over all the planets we have made. Force function is probably the most changed aspect, and it is much simpler and loops over the vector instead of taking a planet as a parameter.
 
 -**4/13/16 John:** I added a name member to planet to aid in display. I also updated the << operator for tensor to make it look nicer. *update()* is now static so one call from the driver updates all planets, and the driver takes command line argument dt.
--**4/14/16 Allie:** I updated the planets class into a new inheritance hierarchy with an abstract class called "Body" and classes "Planet" (which uses the gravitational force) and "Charged" (which uses the coulomb force). I also did a little bit of cleanup overall in structure and style. 
+
+-**4/14/16 Allie:** I updated the planets class into a new inheritance hierarchy with an abstract class called "Body" and classes "Planet" (which uses the gravitational force) and "Charged" (which uses the coulomb force). I also did a little bit of cleanup overall in structure and style. With the new hierarchy it makes it much easier to implement different force laws
 
 TODO
 ----
