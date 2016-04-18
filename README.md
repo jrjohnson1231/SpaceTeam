@@ -23,8 +23,6 @@ TODO
 ----
 - animate simulation so we can find out what parts of planet/tensor need to be adjusted
 - figure out the most efficient way to make the update function work for all derived classes. templating? 
-- **make sure the current output the program produces matches the previous output from without inheritance**
-- does the simulation currently support angular momentum?
 
 Meetings
 --------
