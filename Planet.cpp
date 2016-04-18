@@ -8,7 +8,6 @@ vector<Planet *> Planet::planets;
 //constructor
 Planet::Planet(string n, double m, double x, double y, double z) : Body(n, m, x, y, z)
 {
-	name=
 	mass = m;
 	pos.set(x,y,z);
 	planets.push_back(this);
@@ -42,7 +41,7 @@ void Planet::update(double dt)
 
 		if (DEBUG) cout << planets[i]->name << ":" << endl << planets[i]->pos << endl;
 	}
-	
+
 	for (int i = 0; i < planets.size(); i++) 
 	{
 		planets[i]->pos = planets[i]->pos + (planets[i]->vel*dt);
