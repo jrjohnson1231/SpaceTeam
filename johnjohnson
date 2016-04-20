@@ -1,36 +1,45 @@
 Start: 02/29/16 15:00:00
 Stop: 02/29/16 16:00:00
+Total: 1 hour
 Lab with Allie. Made rubric and discussed where to begin.
 
 Start: 03/14/16 15:00:00
 Stop: 03/14/16 16:00:00
+Total: 2 hours
 Lab with Allie. Started LazyFoo tutorials.
 
 Start: 03/16/16 14:00:00
 Stop: 03/16/16 15:00:00
+Total: 3 hours
 Group meeting. Dicussed our plan of action. Details of meeting are in README.md in repository.
 
 Start: 03/19/16 16:00:18
 Stop: 03/19/16 18:55:21
+Total: 6 hours
 Completed up to LazyFoo tutorial 6.
 
 Start: 03/20/16 18:20:26 
 Stop: 03/20/16 18:52:16
+Total: 6.5 hours
 Did research into how multiple body orbit problems can be solved.
 
 Start: 03/20/16 20:46:50 
 Stop: 03/20/16 21:55:06
+Total: 7.6 hours
 Incorporated Tensor into Planet class using composition.
 Worked with Allie to complete update function.
 
 Start: 03/30/16 9:28:30
 Stop: 03/30/16 10:42:40
+Total: 8.8 hours
 Overloaded operators in Tensor class, allowing operations in Planet class to be much simpler.
 
 Start: 04/11/16 15:13:31 
 Stop: 04/11/16 16:36:41
+Total: 10 hours
 Did alot of work on simplifying formulas, and updating of position. Implemented staticvector containing pointers to each planet in order to keep track of all the planets. This enables the calcForce() function to be called once and then loop through the vector and add the forces for each planet. Tested driver program with third planet and qualitatively it appears to work.
 
 Start: 04/13/16 10:21:45
 Stop: 04/13/16 10:49:51
+Total: 10.5 hours
 Added name member to planet class and created static update function that updates all planets from driver with one call to update(). Driver program can also take command line argument dt.
