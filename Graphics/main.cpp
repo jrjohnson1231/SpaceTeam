@@ -5,8 +5,10 @@
 #endif
 
 #include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_ttf.h>
+#undef main
+#include <SDL/SDL_main.h>
+#include <SDL_image/SDL_image.h>
+#include <SDL_ttf/SDL_ttf.h>
 #include "Window.h"
 #include "Timer.h"
 #include "Tensor.h"

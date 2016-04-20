@@ -43,3 +43,8 @@ Start: 04/13/16 10:21:45
 Stop: 04/13/16 10:49:51
 Total: 10.5 hours
 Added name member to planet class and created static update function that updates all planets from driver with one call to update(). Driver program can also take command line argument dt.
+
+Start: 04/20/16 10:31:32
+Stop: 04/20/16 11:45:41
+Total: 11.6 hours
+Made Graphics Makefile that is compatable for mac and fixed a few linker issues. There is still a segfault in the graphic code which I am unable to find. Still need to clean up the repository and remove duplicate files.
