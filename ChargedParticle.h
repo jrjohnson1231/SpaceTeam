@@ -1,9 +1,9 @@
-#ifndef CHARGEDPARTICLE_HPP
-#define CHARGEDPARTICLE_HPP
+#ifndef CHARGEDPARTICLE_H
+#define CHARGEDPARTICLE_H
 
 #include <cmath>
 #include "Tensor/Tensor.h"
-#include "Body.hpp"
+#include "Body.h"
 #include <iostream>
 #include <vector>
 #include <string>

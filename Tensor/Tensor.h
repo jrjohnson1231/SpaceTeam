@@ -9,7 +9,7 @@ using namespace std;
 
 class Tensor
 {
-	friend class Planet;
+	friend class Body;
 	friend ostream& operator<<(ostream&, const Tensor&);
 
 	public:

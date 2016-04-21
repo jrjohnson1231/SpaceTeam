@@ -5,8 +5,11 @@ Object::Object(std::string imagename, SDL_Surface* inputscreen, int x, int y){
 	screen = inputscreen;
 
 	//Load Image
-	SDL_Surface* loadedimage = NULL;
-	loadedimage = IMG_Load(imagename.c_str());
+	SDL_Surface* loadedimage = IMG_Load(imagename.c_str());
+	if (loadedimage == NULL) {
+		cout << "ERROR: image load failed: " << SDL_GetError() << endl;
+		return;
+	}
 
 	//Set Optimized image
 	image = SDL_DisplayFormat(loadedimage);
@@ -87,6 +90,18 @@ bool Object::free(){
 		TTF_CloseFont(font);
 	}
 	return 0;
+}
+
+bool Object::isVisible() {
+	return visible;
+}
+
+SDL_Surface *Object::getImage() {
+	return image;
+}
+
+SDL_Rect *Object::getOffset() {
+	return &offset;
 }
 
 void Object::invisible(){

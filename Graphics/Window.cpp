@@ -68,11 +68,14 @@ int Window::getwidth(){
 	return width;
 }
 
-bool Window::update(){
+bool Window::display(){
 
 	reset();
 	for(unsigned int i = 0;i<obj.size();i++){
 		obj[i].update();
+		if (obj[i].isVisible()) {
+			SDL_BlitSurface(obj[i].getImage(), NULL, screen, obj[i].getOffset());
+		}
 	}
 	SDL_Flip(screen);
 	return 0;

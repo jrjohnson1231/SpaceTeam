@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "Body.hpp"
+#include "Body.h"
 using namespace std;
 
 class Planet: public Body

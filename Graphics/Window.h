@@ -6,6 +6,8 @@
 #include "Planet.h"
 #include <string>
 #include <vector>
+#include <iostream>
+using namespace std;
 
 class Window
 {
@@ -21,7 +23,7 @@ class Window
 		bool move(int obj_number, Tensor t);
 		int getheight();
 		int getwidth();
-		bool update();
+		bool display();
 		bool reset();
 	private:
 		SDL_Surface* screen;

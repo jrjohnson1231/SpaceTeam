@@ -1,4 +1,4 @@
-#include "ChargedParticle.hpp"
+#include "ChargedParticle.h"
 
 #define DEBUG 1
 

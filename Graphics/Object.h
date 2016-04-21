@@ -5,6 +5,8 @@
 #include "SDL_image/SDL_image.h"
 #include "SDL_ttf/SDL_ttf.h"
 #include <string>
+#include <iostream>
+using namespace std;
 
 class Object{
 	public:
@@ -16,6 +18,9 @@ class Object{
 		bool move(int x, int y);	//Move the object
 		bool update();						//Update the object
 		bool free();							//Free the object
+		bool isVisible();
+		SDL_Surface *getImage();
+		SDL_Rect *getOffset();
 		void invisible();
 		void revisible();
 		int geth();

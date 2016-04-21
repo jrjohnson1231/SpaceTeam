@@ -48,3 +48,8 @@ Start: 04/20/16 10:31:32
 Stop: 04/20/16 11:45:41
 Total: 11.6 hours
 Made Graphics Makefile that is compatable for mac and fixed a few linker issues. There is still a segfault in the graphic code which I am unable to find. Still need to clean up the repository and remove duplicate files.
+
+Start: 04/20/16 23:01:24
+Stop: 04/21/16 00:24:26
+Total: 13 hours
+Started incorporating graphics classes with planet/body classes. Changed Window update function to display for clarity.

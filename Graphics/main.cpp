@@ -14,6 +14,7 @@
 #include "Tensor.h"
 #include <iostream>
 #include <string>
+#include "../Planet.h"
 
 int main ( int argc, char** argv ){
     Tensor t(-1e24,-1e24);
@@ -23,12 +24,12 @@ int main ( int argc, char** argv ){
     Window w("Test",t,t2,800,300);
     int red = w.createobj("images/red_square.jpg",t+t4);
     for(int i = 1; i < 200; i++){
-			w.update();
-			SDL_Delay(20);
-			w.move(red,t+(t4*i));
+		w.display();
+		SDL_Delay(20);
+		w.move(red,t+(t4*i));
     }
     w.createobj("images/black_square.jpg",t3);
-    w.update();
+    w.display();
     SDL_Delay(2000);
     return 0;
 }
