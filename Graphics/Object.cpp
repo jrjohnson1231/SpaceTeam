@@ -52,6 +52,29 @@ Object::Object(std::string in_message, int fontsize, std::string fontname, SDL_S
 	visible = 1;
 }
 
+Object::Object(string imagename, Planet *p) {
+	planet = p;
+
+	//Load Image
+	SDL_Surface* loadedimage = IMG_Load(imagename.c_str());
+	if (loadedimage == NULL) {
+		cout << "ERROR: image load failed: " << SDL_GetError() << endl;
+		return;
+	}
+
+	//Set Optimized image
+	image = SDL_DisplayFormat(loadedimage);
+
+	//Free load image
+	SDL_FreeSurface(loadedimage);
+
+	// Set offset
+	offset.x = p->getx();
+	offset.y = p->gety();
+
+	// Make visible
+	visible = 1;
+}
 
 bool Object::newmessage(std::string message){
 	if(font){
@@ -101,6 +124,8 @@ SDL_Surface *Object::getImage() {
 }
 
 SDL_Rect *Object::getOffset() {
+	offset.x = planet->getx();
+	offset.y = planet->gety();
 	return &offset;
 }
 

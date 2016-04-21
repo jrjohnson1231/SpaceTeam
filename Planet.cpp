@@ -39,7 +39,7 @@ void Planet::update(double dt)
 	{
 		planets[i]->calcForce();
 
-		if (DEBUG) cout << planets[i]->name << ":" << endl << planets[i]->pos << endl;
+		if (DEBUG) cout << planets[i]->name << ":" << endl << planets[i]->pos << endl << planets[i]->accel << endl;
 	}
 
 	for (int i = 0; i < planets.size(); i++) 

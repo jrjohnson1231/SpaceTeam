@@ -17,7 +17,7 @@ Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_w
 
 Window::~Window(){
 	for(unsigned int i=0;i<obj.size();i++){
-		obj[i].free();
+		obj[i]->free();
 	}
 	TTF_Quit();
 	SDL_Quit();
@@ -26,7 +26,7 @@ Window::~Window(){
 // TODO (Chris#1#): Fix to Tensor
 int Window::createobj(std::string imagename, Tensor t){
 	Object newobj(imagename,screen,0,0);
-	obj.push_back(newobj);
+	obj.push_back(&newobj);
 	move(obj.size()-1,t);
 	return obj.size()-1;
 }
@@ -34,29 +34,33 @@ int Window::createobj(std::string imagename, Tensor t){
 int Window::createobj(std::string message, int fontsize,
 											std::string fontname, int x, int y){
 	Object newobj(message,fontsize,fontname,screen,x,y);
-	obj.push_back(newobj);
+	obj.push_back(&newobj);
 	return obj.size()-1;
-	}
+}
+
+void Window::addObject(Object * o) {
+	obj.push_back(o);
+}
 
 bool Window::removeobj(int obj_num){
-	obj[obj_num].invisible();
+	obj[obj_num]->invisible();
 	return 0;
 }
 
 bool Window::returnobj(int obj_num){
-	obj[obj_num].revisible();
+	obj[obj_num]->revisible();
 	return 0;
 }
 
 bool Window::colorobj(int obj_num,Uint8 r,Uint8 g,Uint8 b){
-	obj[obj_num].setFontColor(r,g,b);
+	obj[obj_num]->setFontColor(r,g,b);
 	return 0;
 }
 
 bool Window::move(int obj_number, Tensor t){
 	int x = getx(t,obj_number);
 	int y = gety(t,obj_number);
-	obj[obj_number].move(x,y);
+	obj[obj_number]->move(x,y);
 	return 0;
 }
 
@@ -72,9 +76,9 @@ bool Window::display(){
 
 	reset();
 	for(unsigned int i = 0;i<obj.size();i++){
-		obj[i].update();
-		if (obj[i].isVisible()) {
-			SDL_BlitSurface(obj[i].getImage(), NULL, screen, obj[i].getOffset());
+		//obj[i]->update();
+		if (obj[i]->isVisible()) {
+			SDL_BlitSurface(obj[i]->getImage(), NULL, screen, obj[i]->getOffset());
 		}
 	}
 	SDL_Flip(screen);
@@ -91,10 +95,10 @@ bool Window::reset(){
 int Window::getx(Tensor t,int obj_number){
 	double numer = t.getx() - topleft.getx();
 	double denom = botright.getx() - topleft.getx();
-	return (numer/denom * height) - obj[obj_number].geth();
+	return (numer/denom * height) - obj[obj_number]->geth();
 }
 int Window::gety(Tensor t, int obj_number){
 	double numer = t.gety() - topleft.gety();
 	double denom = botright.gety() - topleft.gety();
-	return numer/denom * width - obj[obj_number].getw();
+	return numer/denom * width - obj[obj_number]->getw();
 }

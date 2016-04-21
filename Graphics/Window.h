@@ -19,6 +19,7 @@ class Window
 									std::string fontname, int x, int y);
 		bool removeobj(int obj_num);
 		bool returnobj(int obj_num);
+		void addObject(Object *);
 		bool colorobj(int,Uint8,Uint8,Uint8);
 		bool move(int obj_number, Tensor t);
 		int getheight();
@@ -30,7 +31,7 @@ class Window
 		int height;
 		int width;
 		int bpp;
-		std::vector<Object> obj;
+		std::vector<Object *> obj;
 		Tensor topleft;
 		Tensor botright;
 		int getx(Tensor,int);

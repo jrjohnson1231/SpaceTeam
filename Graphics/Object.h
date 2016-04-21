@@ -4,6 +4,7 @@
 #include "SDL/SDL.h"
 #include "SDL_image/SDL_image.h"
 #include "SDL_ttf/SDL_ttf.h"
+#include "../Planet.h"
 #include <string>
 #include <iostream>
 using namespace std;
@@ -11,6 +12,7 @@ using namespace std;
 class Object{
 	public:
 		Object(std::string imagename, SDL_Surface* screen, int x, int y);
+		Object(string imagename, Planet *);
 		Object(std::string message, int fontsize, std::string fontname,
 																	SDL_Surface* screen, int x, int y);
 		bool newmessage(std::string message);
@@ -33,6 +35,7 @@ class Object{
 		SDL_Rect offset;			//Rectangle that defines position of object
 		std::string message;
 		bool visible;
+		Planet *planet; // Pointer to planet
 };
 
 #endif // OBJECT_H
