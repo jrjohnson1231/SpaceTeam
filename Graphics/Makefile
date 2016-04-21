@@ -14,4 +14,4 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CC) -o $@ -c $<
 
 clean:
-	rm $(EXECUTABLE) *.o *~
+	rm $(EXECUTABLE) *.o
