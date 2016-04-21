@@ -29,7 +29,7 @@ Total: 7.6 hours
 Incorporated Tensor into Planet class using composition.
 Worked with Allie to complete update function.
 
-Start: 03/30/16 9:28:30
+Start: 03/30/16 09:28:30
 Stop: 03/30/16 10:42:40
 Total: 8.8 hours
 Overloaded operators in Tensor class, allowing operations in Planet class to be much simpler.
@@ -53,3 +53,8 @@ Start: 04/20/16 23:01:24
 Stop: 04/21/16 00:24:26
 Total: 13 hours
 Started incorporating graphics classes with planet/body classes. Changed Window update function to display for clarity.
+
+Start: 04/21/16 9:30:10
+Stop : 04/21/16 10:47:03
+Total: 14.25 hours
+Added planet to object class. Changed window vector to contain pointers instead of objects themselves. Uses Planet::update to update position.
