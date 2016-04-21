@@ -19,6 +19,8 @@ CHANGELOG
 
 -**4/14/16 Allie:** I updated the planets class into a new inheritance hierarchy with an abstract class called "Body" and classes "Planet" (which uses the gravitational force) and "Charged" (which uses the coulomb force). I also did a little bit of cleanup overall in structure and style. With the new hierarchy it makes it much easier to implement different force laws
 
+-**4/21/16 John:** I started incorporating the Planet and Body classes into the graphic classes. I did moved all the displaying to the Window class, and added a planet to the Object class. The main function also uses the Planet::update() function to update the position and Window::update() has been renamed to display().
+
 TODO
 ----
 - animate simulation so we can find out what parts of planet/tensor need to be adjusted
