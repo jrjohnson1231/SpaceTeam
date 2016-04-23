@@ -34,7 +34,7 @@ class Body
 		Tensor totalForce;
 		Tensor pos;
 		Tensor vel;
-		//static vector<Body *> bodies; // constains pointer to each object
+		static vector<Body *> bodies; // constains pointer to each object
 };
 //this is an abstract class for different types of bodies (planets or charged particles)
 

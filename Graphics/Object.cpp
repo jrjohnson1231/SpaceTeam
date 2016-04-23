@@ -69,8 +69,8 @@ Object::Object(string imagename, Planet *p) {
 	SDL_FreeSurface(loadedimage);
 
 	// Set offset
-	offset.x = p->getx();
-	offset.y = p->gety();
+	//offset.x = p->getx();
+	//offset.y = p->gety();
 
 	// Make visible
 	visible = 1;
@@ -124,8 +124,8 @@ SDL_Surface *Object::getImage() {
 }
 
 SDL_Rect *Object::getOffset() {
-	offset.x = planet->getx();
-	offset.y = planet->gety();
+	//offset.x = planet->getx();
+	//offset.y = planet->gety();
 	return &offset;
 }
 

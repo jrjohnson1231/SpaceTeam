@@ -13,6 +13,7 @@ class Charged: public Body
 {
 	public:
 		Charged(string name, double m=9.1e-31, double x=0, double y=0, double z=0, double c=1.6e-19);
+		~Charged()
 		void calcForce();//calculate the force
 		double getCharge();
 		static void collide();

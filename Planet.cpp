@@ -12,6 +12,17 @@ Planet::Planet(string n, double m, double x, double y, double z) : Body(n, m, x,
 	mass = m;
 	pos.set(x,y,z);
 	planets.push_back(*this);
+	bodies.push_back(this);
+}
+
+//destructor
+Planet::~Planet() {
+	// find itself in the body vector and removes it
+	for (i = 0; i < elements.size(); i++) {
+		if (bodies[i] == this) {
+			bodies.erase(bodies.begin() + i);
+		}
+	}
 }
 
 //calculate the force
