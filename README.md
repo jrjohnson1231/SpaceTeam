@@ -25,7 +25,8 @@ CHANGELOG
 
 TODO
 ----
-- animate simulation so we can find out what parts of planet/tensor need to be adjusted
+- Function to take in user input
+- Keep improving graphics
 
 Meetings
 --------
