@@ -18,7 +18,7 @@ Planet::Planet(string n, double m, double x, double y, double z) : Body(n, m, x,
 //destructor
 Planet::~Planet() {
 	// find itself in the body vector and removes it
-	for (i = 0; i < elements.size(); i++) {
+	for (int i = 0; i < bodies.size(); i++) {
 		if (bodies[i] == this) {
 			bodies.erase(bodies.begin() + i);
 		}
@@ -48,7 +48,6 @@ void Planet::collide()
 {
 	if (planets.size()==1){return;}
 	int eraseStatus=0;
-	cout<<planets.size()<<endl;
 	for (int i = 0; i < planets.size(); ++i)
 	{
 		for (int j = 0; i < planets.size(); ++j)
@@ -56,10 +55,7 @@ void Planet::collide()
 			if (i==j) {continue;}
 			else if((planets[i].pos.getx()-planets[j].pos.getx()<=.1)&&(planets[i].pos.gety()-planets[j].pos.gety()<=.1)&&(planets[i].pos.getz()-planets[j].pos.getz()<=.1))
 			{
-				cout<<planets[i].name<<planets[j].name<<endl;
 				planets.erase (planets.begin()+i);
-				cout<<planets.size();
-				cout<<planets[j].name<<endl;
 				planets.erase (planets.begin()+(j-1));
 				eraseStatus=1;
 				return;
@@ -76,7 +72,6 @@ void Planet::update(double dt)
 	// calculate force for each planet
 	for (int i = 0; i < planets.size(); i++) 
 	{
-		cout<<planets.size()<<endl;
 		planets[i].calcForce();
 
 		if (DEBUG) cout << planets[i].name << ":" << endl << planets[i].pos << endl << planets[i].accel << endl;

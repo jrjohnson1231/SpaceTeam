@@ -3,7 +3,7 @@
 #define DEBUG 1 
 
 // static vector of all bodies
-//vector<Body *> Body::bodies;
+vector<Body *> Body::bodies;
 
 //constructor
 Body::Body(string name, double m, double x, double y, double z) : name(name)

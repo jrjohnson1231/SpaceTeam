@@ -2,7 +2,7 @@
 
 #define DEBUG 1
 
-vector<Charged > Charged::charges;
+vector<Charged> Charged::charges;
 
 //constructor
 Charged::Charged(string n, double m, double x, double y, double z, double c) : Body(n, m, x, y, z)
@@ -17,7 +17,7 @@ Charged::Charged(string n, double m, double x, double y, double z, double c) : B
 //destructor
 Charged::~Charged() {
 	// find itself in the body vector and removes it
-	for (i = 0; i < elements.size(); i++) {
+	for (int i = 0; i < bodies.size(); i++) {
 		if (bodies[i] == this) {
 			bodies.erase(bodies.begin() + i);
 		}
@@ -49,7 +49,6 @@ void Charged::collide()
 {
 	if (charges.size()==1){return;}
 	int eraseStatus=0;
-	cout<<charges.size()<<endl;
 	for (int i = 0; i < charges.size(); ++i)
 	{
 		for (int j = 0; i < charges.size(); ++j)
@@ -57,10 +56,7 @@ void Charged::collide()
 			if (i==j) {continue;}
 			else if((charges[i].pos.getx()-charges[j].pos.getx()<=.1)&&(charges[i].pos.gety()-charges[j].pos.gety()<=.1)&&(charges[i].pos.getz()-charges[j].pos.getz()<=.1))
 			{
-				cout<<charges[i].name<<charges[j].name<<endl;
 				charges.erase (charges.begin()+i);
-				cout<<charges.size();
-				cout<<charges[j].name<<endl;
 				charges.erase (charges.begin()+(j-1));
 				eraseStatus=1;
 				return;
