@@ -1,7 +1,7 @@
 all: main
 
 main: main.o Planet.o Tensor.o ChargedParticle.o Body.o
-	g++ -g -Wall main.o ChargedParticle.o Body.o Planet.o  Tensor.o -o main
+	g++ -g -Wall main.o ChargedParticle.o Body.o Planet.o  Tensor.o -o main -framework SDL -framework SDL_image
 
 main.o: main.cpp
 	g++ -c main.cpp

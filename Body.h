@@ -6,6 +6,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <SDL/SDL.h>
+#undef main
+#include <SDL_image/SDL_image.h>
 using namespace std;
 
 
@@ -15,7 +18,7 @@ class Body
 
 	public:
 		Body(string, double, double, double, double);//constructor
-		Body(string name="", string imagename="", double mass, Tensor pos, Tensor vel); // constructor
+		Body(string name, string imagename, double mass, Tensor pos, Tensor vel); // constructor
 		double getMass(); // return mass of body
 		virtual void calcForce()=0; // calculate force for each object
 		Tensor getPos(); // return position of body
