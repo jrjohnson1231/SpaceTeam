@@ -12,26 +12,35 @@ Body::Body(string name, double m, double x, double y, double z) : name(name)
 	pos.set(x,y,z);
 }
 
+/* Constructor */
+Body::Body(string name, string imagename, double mass, Tensor p, Tensor v) : name(name), imagename(imagename), mass(mass) {
+	// Set position and velocity
+	pos = p;
+	vel = v;
+
+	// Load image
+	SDL_Surface* image = IMG_Load(imagename.c_str());
+	if (image == NULL) {
+		cout << "ERROR: image load failed. " << SDL_GetError() << endl;
+		return;
+	}
+
+	image = SDL_DisplayFormat(image);
+}
+	
+
 double Body::getMass()
 {
 	return mass;
 }
 
-double Body::getx()
-{
-	return pos.getx();
+Tensor Body::getPos() {
+	return pos;
 }
 
-double Body::gety()
-{
-	return pos.gety();
+Tensor Body::getVel() {
+	return vel;
 }
-
-double Body::getz()
-{
-	return pos.getz();
-}
-
 //moves the bodies according to the force
 /*void Body::update(double dt)
 {
