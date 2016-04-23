@@ -78,7 +78,7 @@ bool Window::display(){
 	for(unsigned int i = 0;i<obj.size();i++){
 		//obj[i]->update();
 		if (obj[i]->isVisible()) {
-			SDL_BlitSurface(obj[i]->getImage(), NULL, screen, obj[i]->getOffset());
+			SDL_BlitSurface(obj[i]->getImage(), NULL, screen, NULL); 
 		}
 	}
 	SDL_Flip(screen);

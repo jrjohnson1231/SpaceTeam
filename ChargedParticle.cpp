@@ -14,6 +14,16 @@ Charged::Charged(string n, double m, double x, double y, double z, double c) : B
 	charges.push_back(this);
 }
 
+//destructor
+Charged::~Charged() {
+	// find itself in the body vector and removes it
+	for (i = 0; i < elements.size(); i++) {
+		if (bodies[i] == this) {
+			bodies.erase(bodies.begin() + i);
+		}
+	}
+}
+
 void Charged::calcForce()//coulomb force
 {
 	double k= 8.99e9; //coulomb force constant
