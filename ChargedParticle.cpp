@@ -11,7 +11,7 @@ Charged::Charged(string n, double m, double x, double y, double z, double c) : B
 	charge=c;
 	mass= m;
 	pos.set(x,y,z);
-	charges.push_back(this);
+	charges.push_back(*this);
 }
 
 void Charged::calcForce()//coulomb force
@@ -21,7 +21,7 @@ void Charged::calcForce()//coulomb force
 
 	for (int i=0; i<charges.size(); i++)
 	{
-		if (charges[i] != this)
+		if (&charges[i] != this)
 		{
 			Tensor r = charges[i].pos-pos;
 			totalForce=totalForce+r*((k*charge*charges[i].charge)/(r.getr()*r.getr()*r.getr()));
@@ -35,7 +35,7 @@ double Charged::getCharge()
 	return charge;
 }
 
-void Planet::collide()
+void Charged::collide()
 {
 	if (charges.size()==1){return;}
 	int eraseStatus=0;
@@ -45,7 +45,7 @@ void Planet::collide()
 		for (int j = 0; i < charges.size(); ++j)
 		{
 			if (i==j) {continue;}
-			else if((charges[i].getx()-charges[j].getx()<=.1)&&(charges[i].gety()-charges[j].gety()<=.1)&&(charges[i].getz()-charges[j].getz()<=.1))
+			else if((charges[i].pos.getx()-charges[j].pos.getx()<=.1)&&(charges[i].pos.gety()-charges[j].pos.gety()<=.1)&&(charges[i].pos.getz()-charges[j].pos.getz()<=.1))
 			{
 				cout<<charges[i].name<<charges[j].name<<endl;
 				charges.erase (charges.begin()+i);

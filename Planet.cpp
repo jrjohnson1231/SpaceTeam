@@ -43,7 +43,7 @@ void Planet::collide()
 		for (int j = 0; i < planets.size(); ++j)
 		{
 			if (i==j) {continue;}
-			else if((planets[i].getx()-planets[j].getx()<=.1)&&(planets[i].gety()-planets[j].gety()<=.1)&&(planets[i].getz()-planets[j].getz()<=.1))
+			else if((planets[i].pos.getx()-planets[j].pos.getx()<=.1)&&(planets[i].pos.gety()-planets[j].pos.gety()<=.1)&&(planets[i].pos.getz()-planets[j].pos.getz()<=.1))
 			{
 				cout<<planets[i].name<<planets[j].name<<endl;
 				planets.erase (planets.begin()+i);
