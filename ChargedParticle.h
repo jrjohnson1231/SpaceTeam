@@ -15,11 +15,12 @@ class Charged: public Body
 		Charged(string name, double m=9.1e-31, double x=0, double y=0, double z=0, double c=1.6e-19);
 		void calcForce();//calculate the force
 		double getCharge();
+		static void collide();
 		static void update(double);
 
 	private:
 		double charge;
-		static vector<Charged *> charges; // constains pointer to each object
+		static vector<Charged > charges; // constains pointer to each object
 };
 
 #endif

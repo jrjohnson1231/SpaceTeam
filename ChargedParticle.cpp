@@ -2,7 +2,7 @@
 
 #define DEBUG 1
 
-vector<Charged *> Charged::charges;
+vector<Charged > Charged::charges;
 
 //constructor
 Charged::Charged(string n, double m, double x, double y, double z, double c) : Body(n, m, x, y, z)
@@ -23,8 +23,8 @@ void Charged::calcForce()//coulomb force
 	{
 		if (charges[i] != this)
 		{
-			Tensor r = charges[i]->pos-pos;
-			totalForce=totalForce+r*((k*charge*charges[i]->charge)/(r.getr()*r.getr()*r.getr()));
+			Tensor r = charges[i].pos-pos;
+			totalForce=totalForce+r*((k*charge*charges[i].charge)/(r.getr()*r.getr()*r.getr()));
 		}
 	}
 	accel=totalForce/mass;
@@ -35,17 +35,45 @@ double Charged::getCharge()
 	return charge;
 }
 
+void Planet::collide()
+{
+	if (charges.size()==1){return;}
+	int eraseStatus=0;
+	cout<<charges.size()<<endl;
+	for (int i = 0; i < charges.size(); ++i)
+	{
+		for (int j = 0; i < charges.size(); ++j)
+		{
+			if (i==j) {continue;}
+			else if((charges[i].getx()-charges[j].getx()<=.1)&&(charges[i].gety()-charges[j].gety()<=.1)&&(charges[i].getz()-charges[j].getz()<=.1))
+			{
+				cout<<charges[i].name<<charges[j].name<<endl;
+				charges.erase (charges.begin()+i);
+				cout<<charges.size();
+				cout<<charges[j].name<<endl;
+				charges.erase (charges.begin()+(j-1));
+				eraseStatus=1;
+				return;
+			}
+
+		}
+		if (eraseStatus==1){break;}
+	}
+
+}
+
 void Charged::update(double dt)
 {
 	// calculate force for each planet
 	for (int i = 0; i < charges.size(); i++) {
-		charges[i]->calcForce();
+		charges[i].calcForce();
 
-		if (DEBUG) cout << charges[i]->name << ":" << endl << charges[i]->pos << endl;
+		if (DEBUG) cout << charges[i].name << ":" << endl << charges[i].pos << endl;
 	}
 	
 	for (int i = 0; i < charges.size(); i++) {
-		charges[i]->pos = charges[i]->pos + (charges[i]->vel*dt);
-		charges[i]->vel = charges[i]->vel + (charges[i]->accel*dt);
+		charges[i].pos = charges[i].pos + (charges[i].vel*dt);
+		charges[i].vel = charges[i].vel + (charges[i].accel*dt);
 	}
+	collide();
 }
