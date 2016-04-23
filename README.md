@@ -21,10 +21,11 @@ CHANGELOG
 
 -**4/21/16 John:** I started incorporating the Planet and Body classes into the graphic classes. I did moved all the displaying to the Window class, and added a planet to the Object class. The main function also uses the Planet::update() function to update the position and Window::update() has been renamed to display().
 
+-**4/23/16 Allie:** Changed the planets and charges vectors to hold actual objects and not pointers to them. Created a collision function that deletes two planets if they collide. 
+
 TODO
 ----
 - animate simulation so we can find out what parts of planet/tensor need to be adjusted
-- figure out the most efficient way to make the update function work for all derived classes. templating? 
 
 Meetings
 --------
