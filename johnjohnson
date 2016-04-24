@@ -55,6 +55,15 @@ Total: 13 hours
 Started incorporating graphics classes with planet/body classes. Changed Window update function to display for clarity.
 
 Start: 04/21/16 9:30:10
-Stop : 04/21/16 10:47:03
+Stop: 04/21/16 10:47:03
 Total: 14.25 hours
 Added planet to object class. Changed window vector to contain pointers instead of objects themselves. Uses Planet::update to update position.
+
+Start: 04/23/16 13:30:00
+Stop: 04/23/16 16:00:00
+Total: 16.75 hours
+Team worked together. Integrated Body and Object class. Helped Allie a little bit work on collision detection.
+
+Start: 04/24/16 11:00:00
+Stop: 04/24/16 11:15:00
+Cleaned up constructors in inheritence tree to work with images.
