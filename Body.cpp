@@ -13,11 +13,7 @@ Body::Body(string name, double m, double x, double y, double z) : name(name)
 }
 
 /* Constructor */
-Body::Body(string name, string imagename, double mass, Tensor p, Tensor v) : name(name), imagename(imagename), mass(mass) {
-	// Set position and velocity
-	pos = p;
-	vel = v;
-
+Body::Body(string name, string imagename) : name(name), imagename(imagename) {
 	// Load image
 	SDL_Surface* image = IMG_Load(imagename.c_str());
 	if (image == NULL) {
@@ -27,6 +23,8 @@ Body::Body(string name, string imagename, double mass, Tensor p, Tensor v) : nam
 
 	image = SDL_DisplayFormat(image);
 }
+
+Body::Body(string name) : name(name) {}
 	
 
 double Body::getMass()

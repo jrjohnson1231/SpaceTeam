@@ -1,17 +1,28 @@
-#include "ChargedParticle.h"
+#include "Charged.h"
 
 #define DEBUG 1
 
 vector<Charged> Charged::charges;
 
-//constructor
-Charged::Charged(string n, double m, double x, double y, double z, double c) : Body(n, m, x, y, z)
+//constructors
+Charged::Charged(string name, string imagename, double m, double q, double x, double y, double z, double vx, double vy, double vz) : Body(name, imagename)
 {
-	name=n;
-	charge=c;
-	mass= m;
-	pos.set(x,y,z);
+	pos.set(x, y, z);
+	vel.set(vx, vy, vz);
+	charge = q;
+	mass = m;
 	charges.push_back(*this);
+	bodies.push_back(this);
+}
+
+Charged::Charged(string name, double m, double q, double x, double y, double z, double vx, double vy, double vz) : Body(name)
+{
+	pos.set(x, y, z);
+	vel.set(vx, vy, vz);
+	charge = q;
+	mass = m;
+	charges.push_back(*this);
+	bodies.push_back(this);
 }
 
 //destructor

@@ -1,22 +1,17 @@
-all: main
+CC = g++
+CCFLAGS = 
+LD = g++
+LDFLAGS = -g -Wall -framework SDL -framework SDL_image -framework SDL_ttf
+OBJECTS = main.o Planet.o Body.o  Charged.o Tensor/Tensor.o
+EXECUTABLE = main
 
-main: main.o Planet.o Tensor.o ChargedParticle.o Body.o
-	g++ -g -Wall main.o ChargedParticle.o Body.o Planet.o  Tensor.o -o main -framework SDL -framework SDL_image -F/Library/Frameworks
+all: $(EXECUTABLE)
 
-main.o: main.cpp
-	g++ -c main.cpp -F/Library/Frameworks
+$(EXECUTABLE): $(OBJECTS)
+	$(LD) -o $(EXECUTABLE) $(OBJECTS) $(LDFLAGS)
 
-Tensor.o: Tensor/Tensor.cpp
-	g++ -c Tensor/Tensor.cpp -F/Library/Frameworks
-  
-Planet.o: Planet.cpp
-	g++ -c Planet.cpp -F/Library/Frameworks
-
-ChargedParticle.o: ChargedParticle.cpp
-	g++ -c ChargedParticle.cpp -F/Library/Frameworks
-
-Body.o: Body.cpp
-	g++ -c Body.cpp -F/Library/Frameworks
+%.o: %.cpp
+	$(CC) -o $@ -c $<
 
 clean:
-	rm  *.o main
+	rm $(EXECUTABLE) *.o

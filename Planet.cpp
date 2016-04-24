@@ -5,12 +5,19 @@
 // static vector of all planets
 vector<Planet> Planet::planets;
 
-//constructor
-Planet::Planet(string n, double m, double x, double y, double z) : Body(n, m, x, y, z)
-{
-
+//constructors
+Planet::Planet(string name, string imagename, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name, imagename) {
+	pos.set(x, y, z);
+	vel.set(vx, vy, vz);
 	mass = m;
-	pos.set(x,y,z);
+	planets.push_back(*this);
+	bodies.push_back(this);
+}
+
+Planet::Planet(string name, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name) {
+	pos.set(x, y, z);
+	vel.set(vx, vy, vz);
+	mass = m;
 	planets.push_back(*this);
 	bodies.push_back(this);
 }
