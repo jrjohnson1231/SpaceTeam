@@ -6,7 +6,7 @@
 vector<Planet> Planet::planets;
 
 //constructors
-Planet::Planet(string name, string imagename, SDL_Surface* screen, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name, imagename, screen) {
+Planet::Planet(string name, string imagename, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name, imagename) {
 	pos.set(x, y, z);
 	vel.set(vx, vy, vz);
 	mass = m;
@@ -80,17 +80,25 @@ void Planet::collide()
 {
 	if (planets.size()==1){return;}
 	int eraseStatus=0;
-	for (int i = 0; i < planets.size(); ++i)
+	cout << planets.size() << endl;
+	for (int i = 0; i < planets.size(); i++)
 	{
-		for (int j = 0; i < planets.size(); ++j)
+		for (int j = 0; i < planets.size(); j++)
 		{
 			if (i==j) {continue;}
-			else if((planets[i].pos.getx()-planets[j].pos.getx()<=.1)&&(planets[i].pos.gety()-planets[j].pos.gety()<=.1)&&(planets[i].pos.getz()-planets[j].pos.getz()<=.1))
-			{
-				planets.erase (planets.begin()+i);
-				planets.erase (planets.begin()+(j-1));
-				eraseStatus=1;
-				return;
+			else {
+				cout << i << j << endl;
+				Tensor r = planets[i].pos - planets[j].pos;
+				if (r.getr() <= 20) {
+					cout << planets[i].name << " and " << planets[j].name << " collided " << endl;
+					cout << planets[i].pos << endl << planets[j].pos << endl;
+					cout << i << j << planets.size() << endl;
+					planets.erase (planets.begin()+i);
+					cout << i << j << planets.size() << endl;
+					planets.erase (planets.begin()+(j-1));
+					eraseStatus=1;
+					return;
+				}
 			}
 
 		}

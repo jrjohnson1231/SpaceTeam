@@ -5,7 +5,7 @@
 vector<Charged> Charged::charges;
 
 //constructors
-Charged::Charged(string name, string imagename, SDL_Surface* screen, double m, double q, double x, double y, double z, double vx, double vy, double vz) : Body(name, imagename, screen)
+Charged::Charged(string name, string imagename, double m, double q, double x, double y, double z, double vx, double vy, double vz) : Body(name, imagename)
 {
 	pos.set(x, y, z);
 	vel.set(vx, vy, vz);

@@ -6,9 +6,8 @@
 vector<Body *> Body::bodies;
 
 //constructor
-Body::Body(string name, SDL_Surface* inscreen, double m, double x, double y, double z) : name(name)
+Body::Body(string name, double m, double x, double y, double z) : name(name)
 {
-	screen = inscreen;
 	mass = m;
 	pos.set(x,y,z);
 }
@@ -42,7 +41,7 @@ Tensor Body::getVel() {
 	return vel;
 }
 
-bool Body::display(Tensor topleft, Tensor botright, int height, int width){
+bool Body::display(SDL_Surface *screen, Tensor topleft, Tensor botright, int height, int width){
 	//Blit Image
 	offset.x = getx(topleft,botright,height,width);
 	offset.y = gety(topleft,botright,height,width);

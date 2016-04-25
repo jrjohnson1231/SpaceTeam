@@ -41,8 +41,6 @@ class Window
 		int getx(Tensor,int);
 		int gety(Tensor,int);
 		bool quit;
-		Planet Earth;
-		Planet Moon;
 };
 
 #endif // WINDOW_H

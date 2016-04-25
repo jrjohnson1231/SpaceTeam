@@ -1,5 +1,5 @@
 #include "Planet.h"
-#include "iostream"
+#include <iostream>
 
 using namespace std;
 
@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
 	} 
 	else 
 	{
+		cout << argc;
 		cout << "Error: invalid number of arguments." << endl;
 		return 1;
 	}
