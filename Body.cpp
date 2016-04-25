@@ -50,11 +50,13 @@ Tensor Body::getVel() {
 bool Body::display(SDL_Surface *screen, Tensor topleft, Tensor botright, int height, int width){
 	//Blit Image
 	//offset.x = getx(topleft,botright,height,width);
-	//offset.y = gety(topleft)
-	offset.x = pos.x;
-	offset.y = pos.y;
+	//offset.y = gety(topleft,botright,height,width);
+	offset.x = pos.x/20e5 + + screen->w/2 - 5;
+	offset.y = pos.y/20e5 + + screen->h/2 - 5;
+	offset.w = 10;
+	offset.h = 10;
 	cout << "Displaying " << name << endl;
-	//cout << "(" << offset.x << "," << offset.y << ")" << endl;
+	cout << "(" << offset.x << "," << offset.y << ")" << endl;
 	//cout << "(" << pos.x << "," << pos.y << ")" << endl;
 	if (SDL_BlitSurface(image, NULL, screen, &offset) != 0) {
 		cout << "Error: " << SDL_GetError() << endl;

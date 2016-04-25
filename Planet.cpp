@@ -120,8 +120,8 @@ void Planet::update(double dt)
 	}
 	for (int i = 0; i < planets.size(); i++)
 	{
-		planets[i].get().pos = planets[i].get().pos + (planets[i].get().vel*dt);
-		planets[i].get().vel = planets[i].get().vel + (planets[i].get().accel*dt);
+		planets[i].get().pos = planets[i].get().pos + planets[i].get().vel*dt + planets[i].get().accel*dt*dt*.5;
+		planets[i].get().vel = planets[i].get().vel + planets[i].get().accel*dt;
 	}
 	collide();
 

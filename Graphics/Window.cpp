@@ -78,7 +78,6 @@ bool Window::display(){
 
 	reset();
 	for (int i = 0; i < Body::bodies.size(); i++) {
-		cout << "# of bodies" << Body::bodies.size() << endl;
 		Body::bodies[i]->display(screen, topleft, botright, 10, 10);
 	}
 	/*for(unsigned int i = 0;i<obj.size();i++){
