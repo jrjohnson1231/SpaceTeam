@@ -32,6 +32,31 @@ Planet::~Planet() {
 	}
 }
 
+void Planet::fileInput(string file)
+{
+	string name, imagename;
+	double m, x, y, z, vx, vy, vz;
+	fstream fin(file.c_str());
+	if(!fin)
+	{
+		cout<<"Could not open file. Quit and try again"<<endl;
+		return;
+	}
+	while (!fin.eof())//assumes the file is all correct
+	{
+		fin>>name;
+		fin>>imagename;
+		fin>>m;
+		fin>>x;
+		fin>>y;
+		fin>>z;
+		fin>>vx;
+		fin>>vy;
+		fin>>vz;
+		Planet newplanet(name,imagename,x,y,z,vx,vy,vz);
+	}
+}
+
 //calculate the force
 void Planet::calcForce()//gravitational force
 {

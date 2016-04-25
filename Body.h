@@ -7,6 +7,7 @@
 #include <vector>
 #include <string>
 #include <SDL/SDL.h>
+#include <fstream>
 #undef main
 #include <SDL_image/SDL_image.h>
 using namespace std;

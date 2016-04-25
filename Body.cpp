@@ -24,9 +24,6 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename) {
 	image = SDL_DisplayFormat(image);
 }
 
-Body::Body(string name) : name(name) {}
-	
-
 double Body::getMass()
 {
 	return mass;

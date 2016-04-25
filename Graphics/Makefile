@@ -1,7 +1,7 @@
 CC = g++
-CCFLAGS = 
+CCFLAGS = -F/Library/Frameworks
 LD = g++
-LDFLAGS = -g -Wall -framework SDL -framework SDL_image -framework SDL_ttf
+LDFLAGS = -g -Wall -framework SDL -framework SDL_image -framework SDL_ttf -F/Library/Frameworks
 OBJECTS = main.o Object.o ../Planet.o ../Body.o Tensor.o Timer.o Window.o
 EXECUTABLE = main
 
@@ -11,7 +11,7 @@ $(EXECUTABLE): $(OBJECTS)
 	$(LD) -o $(EXECUTABLE) $(OBJECTS) $(LDFLAGS)
 
 %.o: %.cpp
-	$(CC) -o $@ -c $<
+	$(CC) $(CCFLAGS) -o $@ -c $<
 
 clean:
 	rm $(EXECUTABLE) *.o
