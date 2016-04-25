@@ -24,16 +24,15 @@ Planet::Planet(string name, double m, double x, double y, double z, double vx, d
 }
 
 //destructor
-Planet::~Planet() {
+void Planet::removePtr() {
 	// find itself in the body vector and removes it
 	for (int i = 0; i < bodies.size(); i++) {
 		if (bodies[i] == this) {
 			bodies.erase(bodies.begin() + i);
-			cout << "Destroying pointer" << endl;
 		}
 	}
 	if (DEBUG) {
-		cout << "Destroying " << name << endl;
+		cout << "Removing " << name << " pointer"<< endl;
 	}
 }
 
@@ -94,8 +93,11 @@ void Planet::collide()
 				Tensor r = planets[i].get().pos - planets[j].get().pos;
 				if (r.getr() <= 20) {
 					if (DEBUG) cout << planets[i].get().name << " and " << planets[j].get().name << " collided " << endl;
-					planets.erase (planets.begin()+i);
-					planets.erase (planets.begin()+(j-1));
+					planets[i].get().removePtr();
+					planets[j].get().removePtr();
+					planets.erase(planets.begin() + i);
+					planets.erase(planets.begin() + j-1);
+
 					eraseStatus=1;
 					return;
 				}
