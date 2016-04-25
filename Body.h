@@ -18,7 +18,7 @@ class Body
 	friend class Window;
 
 	public:
-		Body(string, double, double, double, double);//constructor
+		Body(string, SDL_Surface* inscreen, double, double, double, double);//constructor
 		Body(string name, string imagename); // constructor
 		Body(string name);
 		double getMass(); // return mass of body
@@ -26,11 +26,15 @@ class Body
 		Tensor getPos(); // return position of body
 		Tensor getVel(); // return velocity of each body
 		//static void update(double);//move the body a small amount according to it's force
-
+		bool display(Tensor, Tensor, int, int); // given parameters of window, display image
+		int getx(Tensor topleft,Tensor botright, int height, int width);
+		int gety(Tensor topleft,Tensor botright, int height, int width);
 	protected:
 		double mass;
 		string name;
 		string imagename;
+		SDL_Surface* screen;	//Pointer to screen, which is outside of object
+		SDL_Rect offset;    //Offset of image
 		SDL_Surface *image;
 		Tensor accel;
 		Tensor totalForce;

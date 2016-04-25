@@ -5,7 +5,7 @@
 vector<Charged> Charged::charges;
 
 //constructors
-Charged::Charged(string name, string imagename, double m, double q, double x, double y, double z, double vx, double vy, double vz) : Body(name, imagename)
+Charged::Charged(string name, string imagename, SDL_Surface* screen, double m, double q, double x, double y, double z, double vx, double vy, double vz) : Body(name, imagename, screen)
 {
 	pos.set(x, y, z);
 	vel.set(vx, vy, vz);
@@ -87,7 +87,7 @@ void Charged::update(double dt)
 
 		if (DEBUG) cout << charges[i].name << ":" << endl << charges[i].pos << endl;
 	}
-	
+
 	for (int i = 0; i < charges.size(); i++) {
 		charges[i].pos = charges[i].pos + (charges[i].vel*dt);
 		charges[i].vel = charges[i].vel + (charges[i].accel*dt);

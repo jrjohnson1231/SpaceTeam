@@ -1,12 +1,12 @@
 #include "Planet.h"
 
-#define DEBUG 1 
+#define DEBUG 1
 
 // static vector of all planets
 vector<Planet> Planet::planets;
 
 //constructors
-Planet::Planet(string name, string imagename, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name, imagename) {
+Planet::Planet(string name, string imagename, SDL_Surface* screen, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name, imagename, screen) {
 	pos.set(x, y, z);
 	vel.set(vx, vy, vz);
 	mass = m;
@@ -63,10 +63,10 @@ void Planet::calcForce()//gravitational force
 	double G=6.67e-11;
 	totalForce.clear();
 
-	for (int i = 0; i < planets.size(); i++) 
+	for (int i = 0; i < planets.size(); i++)
 	{
 		// don't add force if it is with itself
-		if (&planets[i] != this) 
+		if (&planets[i] != this)
 		{
 			Tensor r = planets[i].pos - pos;
 			totalForce = totalForce + r*((G*mass*planets[i].mass)/(r.getr()*r.getr()*r.getr()));
@@ -102,13 +102,13 @@ void Planet::collide()
 void Planet::update(double dt)
 {
 	// calculate force for each planet
-	for (int i = 0; i < planets.size(); i++) 
+	for (int i = 0; i < planets.size(); i++)
 	{
 		planets[i].calcForce();
 
 		if (DEBUG) cout << planets[i].name << ":" << endl << planets[i].pos << endl << planets[i].accel << endl;
 	}
-	for (int i = 0; i < planets.size(); i++) 
+	for (int i = 0; i < planets.size(); i++)
 	{
 		planets[i].pos = planets[i].pos + (planets[i].vel*dt);
 		planets[i].vel = planets[i].vel + (planets[i].accel*dt);

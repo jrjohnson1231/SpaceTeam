@@ -13,6 +13,8 @@ Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_w
 	topleft = tl;
 	botright = br;
 	quit = 0;
+	Planet Earth("Earth","images/red_square.jpg", screen, 5);
+	Planet Moon("Moon","images/black_square.jpg", screen, 4, 4,3);
 }
 
 Window::~Window(){
@@ -78,9 +80,11 @@ bool Window::display(){
 	for(unsigned int i = 0;i<obj.size();i++){
 		//obj[i]->update();
 		if (obj[i]->isVisible()) {
-			SDL_BlitSurface(obj[i]->getImage(), NULL, screen, NULL); 
+			SDL_BlitSurface(obj[i]->getImage(), NULL, screen, NULL);
 		}
 	}
+	Earth.display(topleft,botright,height,width);
+	Moon.display(topleft,botright,height,width);
 	SDL_Flip(screen);
 	return 0;
 }
@@ -88,6 +92,27 @@ bool Window::display(){
 bool Window::reset(){
 	SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xE0, 0xE0, 0xE0 ) );
 	return 0;
+}
+
+void Window::update(int dt){
+	Earth.update(dt);
+}
+
+void Window::run(){
+	while (!quit){
+		while(SDL_PollEvent(&event)){
+			handle_event(event);
+		}
+		update();
+		display();
+
+	}
+}
+
+void Window::handle_event(SDL_Event event){
+	if(event.type == SDL_QUIT){
+		quit = true;
+	}
 }
 
 // Helper functions

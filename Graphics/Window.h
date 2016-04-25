@@ -26,8 +26,12 @@ class Window
 		int getwidth();
 		bool display();
 		bool reset();
+		void update(int dt=1);
+		void run();
+		void handle_event(SDL_Event);
 	private:
 		SDL_Surface* screen;
+		SDL_Event event;
 		int height;
 		int width;
 		int bpp;
@@ -37,6 +41,8 @@ class Window
 		int getx(Tensor,int);
 		int gety(Tensor,int);
 		bool quit;
+		Planet Earth;
+		Planet Moon;
 };
 
 #endif // WINDOW_H
