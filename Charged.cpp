@@ -65,7 +65,7 @@ void Charged::collide()
 		for (int j = 0; i < charges.size(); ++j)
 		{
 			if (i==j) {continue;}
-			else if((charges[i].pos.getx()-charges[j].pos.getx()<=.1)&&(charges[i].pos.gety()-charges[j].pos.gety()<=.1)&&(charges[i].pos.getz()-charges[j].pos.getz()<=.1))
+			else if((abs(charges[i].pos.getx()-charges[j].pos.getx())<=.1)&&(abs(charges[i].pos.gety()-charges[j].pos.gety())<=.1)&&(abs(charges[i].pos.getz()-charges[j].pos.getz())<=.1))
 			{
 				charges.erase (charges.begin()+i);
 				charges.erase (charges.begin()+(j-1));
