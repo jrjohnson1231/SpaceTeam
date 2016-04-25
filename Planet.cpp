@@ -80,21 +80,16 @@ void Planet::collide()
 {
 	if (planets.size()==1){return;}
 	int eraseStatus=0;
-	cout << planets.size() << endl;
 	for (int i = 0; i < planets.size(); i++)
 	{
-		for (int j = 0; i < planets.size(); j++)
+		for (int j = 0; j < planets.size(); j++)
 		{
 			if (i==j) {continue;}
 			else {
-				cout << i << j << endl;
 				Tensor r = planets[i].pos - planets[j].pos;
 				if (r.getr() <= 20) {
-					cout << planets[i].name << " and " << planets[j].name << " collided " << endl;
-					cout << planets[i].pos << endl << planets[j].pos << endl;
-					cout << i << j << planets.size() << endl;
+					if (DEBUG) cout << planets[i].name << " and " << planets[j].name << " collided " << endl;
 					planets.erase (planets.begin()+i);
-					cout << i << j << planets.size() << endl;
 					planets.erase (planets.begin()+(j-1));
 					eraseStatus=1;
 					return;
