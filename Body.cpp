@@ -22,6 +22,7 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename) {
 	}
 
 	image = SDL_DisplayFormat(image);
+	
 }
 
 /* Constructor */
@@ -43,10 +44,16 @@ Tensor Body::getVel() {
 
 bool Body::display(SDL_Surface *screen, Tensor topleft, Tensor botright, int height, int width){
 	//Blit Image
-	offset.x = getx(topleft,botright,height,width);
-	offset.y = gety(topleft,botright,height,width);
-	SDL_BlitSurface(image, NULL, screen, &offset);
-  return 0;
+	//offset.x = getx(topleft,botright,height,width);
+	//offset.y = gety(topleft)
+	offset.x = pos.x;
+	offset.y = pos.y;
+	//cout << "(" << offset.x << "," << offset.y << ")" << endl;
+	//cout << "(" << pos.x << "," << pos.y << ")" << endl;
+	if (SDL_BlitSurface(image, NULL, screen, NULL) != 0) {
+		cout << "Error: " << SDL_GetError() << endl;
+	}
+	return 0;
 }
 
 int Body::getx(Tensor topleft,Tensor botright, int height, int width){

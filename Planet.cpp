@@ -11,7 +11,7 @@ Planet::Planet(string name, string imagename, double m, double x, double y, doub
 	vel.set(vx, vy, vz);
 	mass = m;
 	planets.push_back(*this);
-	bodies.push_back(this);
+	bodies.push_back(&planets.back());
 }
 
 Planet::Planet(string name, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name) {

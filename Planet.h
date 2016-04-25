@@ -19,9 +19,9 @@ class Planet: public Body
 		void calcForce();//calculate the force
 		static void collide();
 		static void update(double);
+		static vector<Planet> planets; // constains pointer to each object
 
 	private:
-		static vector<Planet > planets; // constains pointer to each object
 };
 
 #endif

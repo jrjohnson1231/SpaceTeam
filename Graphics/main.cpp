@@ -22,8 +22,8 @@ int main ( int argc, char** argv ){
     Tensor t3(0,0);
     Tensor t4(1e22,1e22);
     Window w("Test",t,t2,800,300);
-	Planet Earth("Planet 1", "images/red_square.jpg", 5.97e24,0,0,0, 0, 0, 0);
-	Planet Moon("Planet 2", "images/black_square.jpg", 7.33e22,3.84e8, 0, 0, 0, 10e2, 0);
+	Planet Earth("Planet 1", "images/red_square.jpg", 100000,100,100,0, 0, 0, 0);
+	Planet Moon("Planet 2", "images/black_square.jpg", 100000,200, 0, 0, 0, 10, 0);
 	//Planet Thing("Thing", 3.44e23, 5.97e4, 4.83e6, 0);
 	//Object e("images/red_square.jpg", &Earth);
 	//Object m("images/black_square.jpg", &Moon);
@@ -33,8 +33,8 @@ int main ( int argc, char** argv ){
 	SDL_Delay(1000);
     for(int i = 1; i < 20; i++){
 		w.display();
-		SDL_Delay(100);
-		Planet::update(10);
+		SDL_Delay(1000);
+		Planet::update(1);
 		//w.move(red,t+(t4*i));
     }
     //w.createobj("images/black_square.jpg",t3);
