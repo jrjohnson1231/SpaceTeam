@@ -3,7 +3,7 @@
 #define DEBUG 1
 
 // static vector of all planets
-vector<Planet> Planet::planets;
+vector<reference_wrapper<Planet> > Planet::planets;
 
 //constructors
 Planet::Planet(string name, string imagename, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name, imagename) {
@@ -11,7 +11,9 @@ Planet::Planet(string name, string imagename, double m, double x, double y, doub
 	vel.set(vx, vy, vz);
 	mass = m;
 	planets.push_back(*this);
-	bodies.push_back(&planets.back());
+	cout << bodies.size() << endl;
+	//cout << "Making " << planets.back().name << endl;
+	bodies.push_back(&(planets.back().get()));
 }
 
 Planet::Planet(string name, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name) {
@@ -19,7 +21,6 @@ Planet::Planet(string name, double m, double x, double y, double z, double vx, d
 	vel.set(vx, vy, vz);
 	mass = m;
 	planets.push_back(*this);
-	bodies.push_back(this);
 }
 
 //destructor
@@ -28,7 +29,11 @@ Planet::~Planet() {
 	for (int i = 0; i < bodies.size(); i++) {
 		if (bodies[i] == this) {
 			bodies.erase(bodies.begin() + i);
+			cout << "Destroying pointer" << endl;
 		}
+	}
+	if (DEBUG) {
+		cout << "Destroying " << name << endl;
 	}
 }
 
@@ -66,10 +71,10 @@ void Planet::calcForce()//gravitational force
 	for (int i = 0; i < planets.size(); i++)
 	{
 		// don't add force if it is with itself
-		if (&planets[i] != this)
+		if (&planets[i].get() != this)
 		{
-			Tensor r = planets[i].pos - pos;
-			totalForce = totalForce + r*((G*mass*planets[i].mass)/(r.getr()*r.getr()*r.getr()));
+			Tensor r = planets[i].get().pos - pos;
+			totalForce = totalForce + r*((G*mass*planets[i].get().mass)/(r.getr()*r.getr()*r.getr()));
 		}
 	}
 
@@ -86,9 +91,9 @@ void Planet::collide()
 		{
 			if (i==j) {continue;}
 			else {
-				Tensor r = planets[i].pos - planets[j].pos;
+				Tensor r = planets[i].get().pos - planets[j].get().pos;
 				if (r.getr() <= 20) {
-					if (DEBUG) cout << planets[i].name << " and " << planets[j].name << " collided " << endl;
+					if (DEBUG) cout << planets[i].get().name << " and " << planets[j].get().name << " collided " << endl;
 					planets.erase (planets.begin()+i);
 					planets.erase (planets.begin()+(j-1));
 					eraseStatus=1;
@@ -107,14 +112,14 @@ void Planet::update(double dt)
 	// calculate force for each planet
 	for (int i = 0; i < planets.size(); i++)
 	{
-		planets[i].calcForce();
+		planets[i].get().calcForce();
 
-		if (DEBUG) cout << planets[i].name << ":" << endl << planets[i].pos << endl << planets[i].accel << endl;
+		if (DEBUG) cout << planets[i].get().name << ":" << endl << planets[i].get().pos << endl << planets[i].get().accel << endl;
 	}
 	for (int i = 0; i < planets.size(); i++)
 	{
-		planets[i].pos = planets[i].pos + (planets[i].vel*dt);
-		planets[i].vel = planets[i].vel + (planets[i].accel*dt);
+		planets[i].get().pos = planets[i].get().pos + (planets[i].get().vel*dt);
+		planets[i].get().vel = planets[i].get().vel + (planets[i].get().accel*dt);
 	}
 	collide();
 

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <functional>
 #include "Body.h"
 using namespace std;
 
@@ -19,7 +20,7 @@ class Planet: public Body
 		void calcForce();//calculate the force
 		static void collide();
 		static void update(double);
-		static vector<Planet> planets; // constains pointer to each object
+		static vector<reference_wrapper<Planet> > planets; // constains pointer to each object
 
 	private:
 };

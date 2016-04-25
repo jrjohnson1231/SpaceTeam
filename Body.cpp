@@ -15,13 +15,18 @@ Body::Body(string name, double m, double x, double y, double z) : name(name)
 /* Constructor */
 Body::Body(string name, string imagename) : name(name), imagename(imagename) {
 	// Load image
-	SDL_Surface* image = IMG_Load(imagename.c_str());
-	if (image == NULL) {
+	SDL_Surface* loadedimage = IMG_Load(imagename.c_str());
+	if (loadedimage == NULL) {
 		cout << "ERROR: image load failed. " << SDL_GetError() << endl;
 		return;
 	}
 
-	image = SDL_DisplayFormat(image);
+	image = SDL_DisplayFormat(loadedimage);
+	if (image == NULL) {
+		cout << "ERROR: image load failed. " << SDL_GetError() << endl;
+		return;
+	}
+	
 	
 }
 
@@ -48,9 +53,10 @@ bool Body::display(SDL_Surface *screen, Tensor topleft, Tensor botright, int hei
 	//offset.y = gety(topleft)
 	offset.x = pos.x;
 	offset.y = pos.y;
+	cout << "Displaying " << name << endl;
 	//cout << "(" << offset.x << "," << offset.y << ")" << endl;
 	//cout << "(" << pos.x << "," << pos.y << ")" << endl;
-	if (SDL_BlitSurface(image, NULL, screen, NULL) != 0) {
+	if (SDL_BlitSurface(image, NULL, screen, &offset) != 0) {
 		cout << "Error: " << SDL_GetError() << endl;
 	}
 	return 0;

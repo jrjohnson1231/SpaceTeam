@@ -1,5 +1,5 @@
 CC = g++
-CCFLAGS = -F/Library/Frameworks
+CCFLAGS = -F/Library/Frameworks -std=c++11
 LD = g++
 LDFLAGS = -g -Wall -framework SDL -framework SDL_image -framework SDL_ttf -F/Library/Frameworks
 OBJECTS = main.o Planet.o Body.o  Charged.o Tensor/Tensor.o
