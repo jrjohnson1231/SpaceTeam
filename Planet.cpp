@@ -53,7 +53,7 @@ void Planet::fileInput(string file)
 		fin>>vx;
 		fin>>vy;
 		fin>>vz;
-		Planet newplanet(name,imagename,x,y,z,vx,vy,vz);
+		Planet newplanet(name,imagename,m,x,y,z,vx,vy,vz);
 	}
 }
 
