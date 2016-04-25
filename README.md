@@ -23,6 +23,8 @@ CHANGELOG
 
 -**4/23/16 Allie:** Changed the planets and charges vectors to hold actual objects and not pointers to them. Created a collision function that deletes two planets if they collide. 
 
+-**4/24/16 Allie:** Started creating a function for getting user input through a file (only in planets class right now). Will stand in until we have a point and click capability. Currently can't compile because of the SDL header issue on my Mac. Will fix that soon. 
+
 TODO
 ----
 - Function to take in user input
