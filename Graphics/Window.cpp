@@ -1,4 +1,5 @@
 #include "Window.h"
+#include <sstream>
 
 Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_width,int i_bpp)
 			: height(i_height),width(i_width),bpp(i_bpp){
@@ -153,8 +154,9 @@ void Window::updateTime(double dt)
 	int hours = (total_seconds / 60 / 60) % 24;
 	int mins = (total_seconds / 60) % 60;
 	int secs = total_seconds % 60;
-	string str = years.str() + " Years, " + months.str() + " Months, " + days.str() 
-	+ " Days, " + hours.str() + " Hours, " + mins.str() + " Minutes, " + 
-	secs.str() + " Seconds";
-	cout << str << endl;
+
+	ostringstream timeconvert;
+	timeconvert << years << " Years, " << months << " Months, " << days << " Days, " << hours << " Hours, " << mins << " Mins, " << secs << " Secs";
+	string timestring = timeconvert.str();
+	cout << timestring << endl;
 }
