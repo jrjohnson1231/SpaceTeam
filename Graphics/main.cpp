@@ -96,7 +96,14 @@ vector<Body *> readFile(string file)
 		getline(fin,vy,',');
 		getline(fin,vz,',');
 		Body *newP = new Planet(name,imagename,atof(m.c_str()),atof(x.c_str()),atof(y.c_str()),atof(z.c_str()),atof(vx.c_str()),atof(vy.c_str()),atof(vz.c_str()));
-		objects.push_back(newP);
+		if (newP != NULL)
+		{
+			objects.push_back(newP);
+		}
+		else
+		{
+			cout << "Could not initialize " << name << endl;
+		}
 		// Flush trailing \n
 		string dummy;
 		getline(fin, dummy);
