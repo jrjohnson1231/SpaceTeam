@@ -1,14 +1,14 @@
 #ifndef PLANET_H
 #define PLANET_H
 
-#include <cmath>
-#include "Tensor/Tensor.h"
+#include "Tensor.h"
+#include "Body.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <string>
 #include <functional>
-#include "Body.h"
+#include <cmath>
 using namespace std;
 
 //class for planets that act under Newton's Law of Gravitation

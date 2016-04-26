@@ -1,15 +1,15 @@
 #ifndef BODY_HPP
 #define BODY_HPP
 
+#include "Tensor.h"
 #include <cmath>
-#include "Tensor/Tensor.h"
 #include <iostream>
 #include <vector>
 #include <string>
 #include <SDL/SDL.h>
 #undef main
-#include <fstream>
 #include <SDL_image/SDL_image.h>
+#include <fstream>
 using namespace std;
 
 //this is an abstract class for different types of bodies (planets or charged particles)

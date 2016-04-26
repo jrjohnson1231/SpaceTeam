@@ -1,12 +1,12 @@
 #ifndef CHARGEDPARTICLE_H
 #define CHARGEDPARTICLE_H
 
-#include <cmath>
-#include "Tensor/Tensor.h"
+#include "Tensor.h"
 #include "Body.h"
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cmath>
 using namespace std;
 
 //inherited class from body.

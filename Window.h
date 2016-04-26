@@ -5,7 +5,7 @@
 #include <SDL_image/SDL_image.h>
 #include <SDL_ttf/SDL_ttf.h>
 #include "Tensor.h"
-#include "../Planet.h"
+#include "Planet.h"
 #include <string>
 #include <vector>
 #include <iostream>

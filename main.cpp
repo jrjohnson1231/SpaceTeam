@@ -1,21 +1,10 @@
-#ifdef __cplusplus
-    #include <cstdlib>
-#else
-    #include <stdlib.h>
-#endif
-
-#include <SDL/SDL.h>
-#undef main
-#include <SDL/SDL_main.h>
-#include <SDL_image/SDL_image.h>
-#include <SDL_ttf/SDL_ttf.h>
 #include "Window.h"
 #include "Timer.h"
 #include "Tensor.h"
+#include "Planet.h"
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../Planet.h"
 
 #define DT 1800
 
@@ -28,7 +17,6 @@ int main ( int argc, char** argv )
 	Tensor t(0,0);
 	Tensor t2(0,0);
 	Window w("Test","planets.txt",800,600);
-	SDL_Delay(1500);
 
 	// Run application, handle events, etc.
 	w.run();
