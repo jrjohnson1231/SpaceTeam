@@ -30,7 +30,6 @@ int main ( int argc, char** argv )
     Tensor t3(0,0);
     Tensor t4(1e22,1e22);
     Window w("Test",t,t2,800,600);
-	SDL_Event event;
 	//Planet Earth("Earth", "images/Earth.png", 5.97e24,395,395,0, 0, -10, 0);
 	//Planet Moon("Moon", "images/Moon.png", 7.33e22,3.84e8 + 400, 395, 0, 0, 1022.828, 0);
 	//Planet Other("Planer 3", "images/black_square.jpg", 1e25, 350, 150);
@@ -47,25 +46,7 @@ int main ( int argc, char** argv )
 		Planet::update(2*3600);
 		//w.move(red,t+(t4*i));
     }*/
-	bool run = true;
-	while(run)
-	{
-		while(SDL_PollEvent(&event))
-		{
-			// User closes window
-			if (event.type == SDL_QUIT)
-			{
-				// Quit program
-				run = false;
-				break;
-			}
-		}
-	//	SDL_Delay(1);
-		Planet::update(DT);
-		w.reset();
-		w.display();
-		w.updateTime(DT);
-	}
+	w.run();
 	cleanup(objects);
 
     return 0;

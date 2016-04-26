@@ -46,7 +46,7 @@ Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_w
 
 	// Inititalize time
 	time = 0;
-	
+
 	// Create time object for display
 	//time_obj = createobj("Time",12,"fonts/arial.ttf",0,0);
 }
@@ -140,19 +140,22 @@ void Window::update(int dt){
 }
 
 void Window::run(){
-	while (!quit){
+	while(!quit){
 		while(SDL_PollEvent(&event)){
-			handle_event(event);
+			handle_events();
 		}
-		update();
+		Planet::update(dt);
+		reset();
 		display();
-
+		updateTime(dt))
 	}
 }
 
-void Window::handle_event(SDL_Event event){
-	if(event.type == SDL_QUIT){
+void Window::handle_events(){
+	// User closes window
+	if (event.type == SDL_QUIT){
 		quit = true;
+		break;
 	}
 }
 
