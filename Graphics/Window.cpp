@@ -101,7 +101,7 @@ bool Window::display(){
 	}
 	for (unsigned int i = 0; i < obj.size(); i++)
 	{
-		obj[i]->
+		obj[i]->update();
 	}
 	/*for(unsigned int i = 0;i<obj.size();i++){
 		//obj[i]->update();
