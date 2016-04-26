@@ -90,7 +90,8 @@ void Window::handle_events()
 	{
 		switch(event.key.keysym.sym)
 		{
-			case SDLK_p : pause = !pause;
+			case SDLK_p : pause = !pause; break;
+			default: break;
 		}
 	}
 }
