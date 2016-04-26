@@ -32,7 +32,7 @@ vector<Planet *> getObjects() {
 	/*cout<<"Enter the file name with the planet data"<<endl;
 	cin>>file;*/
 	string name, imagename;
-	string m, x, y, z, vx, vy, vz;
+	string m, r, x, y, z, vx, vy, vz;
 	ifstream fin(file.c_str());
 	if(!fin)
 	{
@@ -50,6 +50,8 @@ vector<Planet *> getObjects() {
 		cout<<imagename<<" ";
 		getline(fin,m,',');
 		cout<<m<<" ";
+		getline(fin,r,',');
+		cout<<r<<" ";
 		getline(fin,x,',');
 		cout<<x<<" ";
 		getline(fin,y,',');
@@ -63,7 +65,7 @@ vector<Planet *> getObjects() {
 		getline(fin,vz,',');
 		cout<<vz<<" ";
 		//add a new planet
-		Planet *newP = new Planet(name,imagename,atof(m.c_str()),atof(x.c_str()),atof(y.c_str()),atof(z.c_str()),atof(vx.c_str()),atof(vy.c_str()),atof(vz.c_str()));
+		Planet *newP = new Planet(name,imagename,atof(m.c_str()),atof(r.c_str()),atof(x.c_str()),atof(y.c_str()),atof(z.c_str()),atof(vx.c_str()),atof(vy.c_str()),atof(vz.c_str()));
 		objects.push_back(newP);
 		cout<<endl;
 		// Flush trailing \n

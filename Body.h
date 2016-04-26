@@ -33,6 +33,7 @@ class Body
 	
 	protected:
 		double mass;
+		double rad;//radius
 		string name;
 		string imagename;
 		SDL_Surface *image;//pointer to image

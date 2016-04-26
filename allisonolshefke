@@ -51,7 +51,11 @@ Stop: 04/24/16 23:56:21
 -made user file input capability
 Start: 04/25/16 21:03:12
 Stop: 04/26/16 00:02:14
--worked on file
+-worked on file input
 Start: 4/26/16 09:46:34
-Stop: 
+Stop: 4/26/16 10:02:32
+-cleaned up code. added comments
+Start: 4/26/16 15:30:43
+Stop:
+-added radius to planets
 

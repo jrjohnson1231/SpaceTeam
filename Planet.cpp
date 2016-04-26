@@ -6,11 +6,12 @@
 vector<reference_wrapper<Planet> > Planet::planets;
 
 //constructors
-Planet::Planet(string name, string imagename, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name, imagename) 
+Planet::Planet(string name, string imagename, double m, double r, double x, double y, double z, double vx, double vy, double vz) : Body(name, imagename) 
 {
 	pos.set(x, y, z);
 	vel.set(vx, vy, vz);
 	mass = m;
+	rad=r;
 	planets.push_back(*this);
 	//cout << "Making " << planets.back().name << endl;
 	bodies.push_back(&(planets.back().get()));
