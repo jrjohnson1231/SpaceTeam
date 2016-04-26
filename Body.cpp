@@ -27,6 +27,8 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename) {
 		return;
 	}
 	
+	SDL_FreeSurface(loadedImage);
+	
 	
 }
 
