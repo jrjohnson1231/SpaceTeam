@@ -153,8 +153,8 @@ void Window::updateTime(double dt)
 	int hours = (total_seconds / 60 / 60) % 24;
 	int mins = (total_seconds / 60) % 60;
 	int secs = total_seconds % 60;
-	string = years.str() + " Years, " + months.str() + " Months, " + days.str() 
+	string str = years.str() + " Years, " + months.str() + " Months, " + days.str() 
 	+ " Days, " + hours.str() + " Hours, " + mins.str() + " Minutes, " + 
 	secs.str() + " Seconds";
-	cout << string << endl;
+	cout << str << endl;
 }
