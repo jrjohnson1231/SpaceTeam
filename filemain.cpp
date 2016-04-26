@@ -19,9 +19,14 @@ class FileReader()
 	private:
 		vector<T> objects;i*/
 
-
+vector<Planet *> getObjects();
 int main()
 {
+	vector<Planet *> objects = getObjects();
+	return 0;
+}
+	
+vector<Planet *> getObjects() {
 	vector<Planet *> objects;
 	string file="planets.txt";
 	/*cout<<"Enter the file name with the planet data"<<endl;
@@ -32,7 +37,7 @@ int main()
 	if(!fin)
 	{
 		cout<<"Could not open file. Try again"<<endl;
-		return 1;
+		return objects;
 	}
 	//read in all information from the file
 	while (!fin.eof())//assumes the file is all correct
@@ -67,11 +72,12 @@ int main()
 	}
 	Planet::update(1);
 	Planet::update(1);
+	return objects;
 	for (int i = 0; i < objects.size(); i++)
 	{
 		objects.erase(objects.begin());
 	}
-	return 0;
+	//return 0;
 }
 
 Planet newPlanet(string name, string imagename, double m, double x, double y, double z, double vx, double vy, double vz)

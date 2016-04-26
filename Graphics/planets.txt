@@ -1,3 +1,3 @@
-Sun,images/red_square.jpg,1.989e30,400,400,0,0,0,0, 
-Earth,images/Earth.png,5.97e24,149.6e9,149.6e9,0,30000,0,0,
-Moon,images/Moon.png,7.33e22,3.84e8,3.84e8,0,0,1022,0
+Earth,images/Earth.png,5.97e24,395,395,0,0,0,0,
+Moon,images/Moon.png,7.33e22,3.84e8 + 400,395,0,0,1022,0,
+Moon 2,images/Moon.png,7.33e22,-3.84e8 + 400,395,0,0,-1022,0
