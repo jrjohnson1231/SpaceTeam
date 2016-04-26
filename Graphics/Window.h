@@ -13,7 +13,7 @@ using namespace std;
 class Window
 {
 	public:
-		Window(std::string windowname, Tensor topleft, Tensor botright,int i_height=640, int i_width=480, int i_bpp=32);
+		Window(std::string windowname, string infile, int i_height=640, int i_width=480, int i_bpp=32);
 		~Window();
 		int createobj(std::string imagename, Tensor t);
 		int createobj(std::string message, int fontsize,
@@ -33,6 +33,8 @@ class Window
 		void updateTime(double);
 		void newmessage(int, string);
 		void printText(string, string, int, SDL_Color);
+		vector<Body *> readfile(string);
+		void cleanup(vector<Body *>);
 	private:
 		SDL_Surface* screen;
 		SDL_Surface* background;
@@ -41,6 +43,7 @@ class Window
 		int width;
 		int bpp;
 		std::vector<Object *> obj;
+		vector<Body *> objects;
 		Tensor topleft;
 		Tensor botright;
 		int getx(Tensor,int);

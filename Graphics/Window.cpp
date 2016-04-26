@@ -1,7 +1,7 @@
 #include "Window.h"
 #include <sstream>
 
-Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_width,int i_bpp)
+Window::Window(std::string windowname,string inputfile, int i_height,int i_width,int i_bpp)
 			: height(i_height),width(i_width),bpp(i_bpp){
 	//Start SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
@@ -23,8 +23,6 @@ Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_w
 	//Create screen
 	screen = SDL_SetVideoMode(height,width,bpp,SDL_SWSURFACE | SDL_RESIZABLE);
 	SDL_WM_SetCaption(windowname.c_str(), NULL);
-	topleft = tl;
-	botright = br;
 	quit = 0;
 
 	//Load background image
@@ -41,12 +39,16 @@ Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_w
 		return;
 	}
 	SDL_FreeSurface(loadedimage);
-	//Planet Earth("Earth","images/red_square.jpg", 5);
-	//Planet Moon("Moon","images/black_square.jpg", 4, 4,3);
+	Tensor t(0,0);
+	topleft = t;
+	botleft = t;
 
 	// Inititalize time
 	time = 0;
 
+
+	// Read input file
+	objects = readFile(inputfile);
 	// Create time object for display
 	//time_obj = createobj("Time",12,"fonts/arial.ttf",0,0);
 }
@@ -55,6 +57,7 @@ Window::~Window(){
 	for(unsigned int i=0;i<obj.size();i++){
 		obj[i]->free();
 	}
+	cleanup(objects);
 	TTF_Quit();
 	SDL_Quit();
 }
@@ -218,4 +221,52 @@ void Window::printText(string message, string fontname, int fontsize, SDL_Color 
 	SDL_Flip(screen);
 	TTF_CloseFont(font);
 	//SDL_FreeSurface(text);
+}
+
+vector<Body *> Window::readFile(string file)
+{
+	vector<Body *> objects;
+	string name, imagename;
+	string m, x, y, z, vx, vy, vz;
+	ifstream fin(file.c_str());
+	if(!fin)
+	{
+		cout<<"Could not open file. Try again"<<endl;
+		return objects;
+	}
+	while (!fin.eof())//assumes the file is all correct
+	{
+		getline(fin,name,',');
+		//fin>>name;
+		//fin>>imagename;
+		getline(fin, imagename,',');
+		getline(fin,m,',');
+	getline(fin,x,',');
+		getline(fin,y,',');
+		getline(fin,z,',');
+		getline(fin,vx,',');
+		getline(fin,vy,',');
+		getline(fin,vz,',');
+		Body *newP = new Planet(name,imagename,atof(m.c_str()),atof(x.c_str()),atof(y.c_str()),atof(z.c_str()),atof(vx.c_str()),atof(vy.c_str()),atof(vz.c_str()));
+		if (newP != NULL)
+		{
+			objects.push_back(newP);
+		}
+		else
+		{
+			cout << "Could not initialize " << name << endl;
+		}
+		// Flush trailing \n
+		string dummy;
+		getline(fin, dummy);
+	}
+	return objects;
+}
+
+void Window::cleanup(vector<Body *> objects)
+{
+	for (int i = 0; i < objects.size(); i++)
+	{
+		objects.erase(objects.begin());
+	}
 }
