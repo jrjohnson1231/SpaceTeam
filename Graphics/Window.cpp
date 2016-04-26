@@ -41,7 +41,7 @@ Window::Window(std::string windowname,string inputfile, int i_height,int i_width
 	SDL_FreeSurface(loadedimage);
 	Tensor t(0,0);
 	topleft = t;
-	botleft = t;
+	botright= t;
 
 	// Inititalize time
 	time = 0;

@@ -33,7 +33,7 @@ class Window
 		void updateTime(double);
 		void newmessage(int, string);
 		void printText(string, string, int, SDL_Color);
-		vector<Body *> readfile(string);
+		vector<Body *> readFile(string);
 		void cleanup(vector<Body *>);
 	private:
 		SDL_Surface* screen;
