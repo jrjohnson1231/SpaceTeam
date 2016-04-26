@@ -14,7 +14,7 @@ Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_w
 	botright = br;
 	quit = 0;
 	//Load background image
-	SDL_Surface* loadedimage = IMG_Load("Space.jpg");
+	SDL_Surface* loadedimage = IMG_Load("image/Space.jpg");
 	if (loadedimage == NULL)
 	{
 		cout << "ERROR: background image load failed" << SDL_GetError() << endl;
