@@ -79,8 +79,8 @@ bool Body::display(SDL_Surface *screen, Tensor topleft, Tensor botright, int hei
 	//offset.x = getx(topleft,botright,height,width);
 	//offset.y = gety(topleft,botright,height,width);
 	SDL_Rect offset;
-	offset.x = pos.x/20e5 + + screen->w/2 - 5;
-	offset.y = pos.y/20e5 + + screen->h/2 - 5;
+	offset.x = pos.x/20e5 + screen->w/2 - 5;
+	offset.y = pos.y/20e5 + screen->h/2 - 5;
 	offset.w = 10;
 	offset.h = 10;
 	cout << "Displaying " << name << endl;
