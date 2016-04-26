@@ -44,6 +44,7 @@ class Window
 		int gety(Tensor,int);
 		bool quit;
 		double time; // time in seconds
+		int time_obj;
 };
 
 #endif // WINDOW_H
