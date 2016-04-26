@@ -1,7 +1,7 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include "Object.h"
+
 #include "Tensor.h"
 #include "../Planet.h"
 #include <string>
@@ -15,14 +15,14 @@ class Window
 	public:
 		Window(std::string windowname, string infile, int i_height=640, int i_width=480, int i_bpp=32);
 		~Window();
-		int createobj(std::string imagename, Tensor t);
+		/*int createobj(std::string imagename, Tensor t);
 		int createobj(std::string message, int fontsize,
 									std::string fontname, int x, int y);
 		bool removeobj(int obj_num);
 		bool returnobj(int obj_num);
 		void addObject(Object *);
 		bool colorobj(int,Uint8,Uint8,Uint8);
-		bool move(int obj_number, Tensor t);
+		bool move(int obj_number, Tensor t);*/
 		int getheight();
 		int getwidth();
 		bool display();
@@ -42,12 +42,12 @@ class Window
 		int height;
 		int width;
 		int bpp;
-		std::vector<Object *> obj;
+		//std::vector<Object *> obj;
 		vector<Body *> objects;
 		Tensor topleft;
 		Tensor botright;
-		int getx(Tensor,int);
-		int gety(Tensor,int);
+		/*int getx(Tensor,int);
+		int gety(Tensor,int);*/
 		bool quit;
 		double time; // time in seconds
 		int dt = 1800;
