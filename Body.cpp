@@ -5,12 +5,12 @@
 // static vector of all bodies
 vector<Body *> Body::bodies;
 
-/*//constructor
+//constructor
 Body::Body(string name, double m, double x, double y, double z) : name(name)
 {
 	mass = m;
 	pos.set(x,y,z);
-}*/
+}
 
 // Constructor 
 //takes in planet name, image name
@@ -45,10 +45,10 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename)
 	
 }
 
-/* Constructor
+Constructor
 Body::Body(string name) : name(name) 
 {
-}*/
+}
 
 //getters
 

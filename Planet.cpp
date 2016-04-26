@@ -16,13 +16,13 @@ Planet::Planet(string name, string imagename, double m, double x, double y, doub
 	bodies.push_back(&(planets.back().get()));
 }
 
-/*Planet::Planet(string name, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name) 
+Planet::Planet(string name, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name) 
 {
 	pos.set(x, y, z);
 	vel.set(vx, vy, vz);
 	mass = m;
 	planets.push_back(*this);
-}*/
+}
 
 //destructor
 void Planet::removePtr() 
