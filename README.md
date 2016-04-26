@@ -40,3 +40,4 @@ Meetings
 - **3/20/16 8:30-10:00**: John and Allie met and worked on Planets class. We got it working with Tensor and with 2 bodies with no initial velocity (basically just 2 bodies flying towards each other). Our To-Do list is above.
 - **3/31/16 11:00-11:30**: Group meeting. We discussed our next steps and the changes that we've made since our last meeting. John and Allie will work on adapting the planets class to work with initial velocities. Scary will work on getting SDL to work with the tensor class.
 - **4/23/16 1:30-4:30**: Group meeting to work on the project. Spent a few hours just working together on fixing all the problems with the code.
+- **4/25/16 9:00-11:59**: Group meeting to work on the project. We spent the time working together to fix bugs in the code and create general improvements. 
