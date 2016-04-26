@@ -74,7 +74,7 @@ Tensor Body::getVel()
 }
 
 //displays the body object
-bool Body::display(SDL_Surface *screen, Tensor topleft, Tensor botright, int height, int width)
+bool Body::display(SDL_Surface *screen)
 {
 	//Blit Image
 	SDL_Rect offset;
@@ -87,8 +87,9 @@ bool Body::display(SDL_Surface *screen, Tensor topleft, Tensor botright, int hei
 	//cout << "(" << pos.x << "," << pos.y << ")" << endl;
 	if (SDL_BlitSurface(image, NULL, screen, &offset) != 0) {
 		cout << "Error displaying object:" << endl << SDL_GetError() << endl;
+		return false
 	}
-	return 0;
+	return true;
 }
 
 //returns x position on screen

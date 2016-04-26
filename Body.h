@@ -26,7 +26,7 @@ class Body
 		virtual void calcForce()=0; // calculate force for each object
 		Tensor getPos(); // return position of body
 		Tensor getVel(); // return velocity of each body
-		bool display(SDL_Surface *, Tensor, Tensor, int, int); // given parameters of window, display image
+		bool display(SDL_Surface *); // given parameters of window, display image
 		int getx(Tensor topleft,Tensor botright, int height, int width);
 		int gety(Tensor topleft,Tensor botright, int height, int width);
 		static void calcCOM(); // calculates center of mass of all bodies
