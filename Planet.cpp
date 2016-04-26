@@ -99,7 +99,7 @@ void Planet::collide()
 //moves the planets a little bit according to B's method
 void Planet::update(double dt)
 {
-	if (DEBUG) {cout << "There are " << planets.size() << " planets" << endl;}
+	if (DEBUG) {cout << endl << "There are " << planets.size() << " planets" << endl;}
 	// Check for collisions
 	collide();
 	// calculate force for each planet at initial velocity

@@ -4,8 +4,14 @@
 Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_width,int i_bpp)
 			: height(i_height),width(i_width),bpp(i_bpp){
 	//Start SDL
-	SDL_Init(SDL_INIT_EVERYTHING);
-	TTF_Init();
+	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
+	{
+		cout << "SDL_Init() failed: " << SDL_GetError() << endl;
+	}
+	if (TTF_Init() != 0)
+	{
+		cout << "TTF_Init() failed: " << TTF_GetError() << endl;
+	}
 
 	//Create screen
 	screen = SDL_SetVideoMode(height,width,bpp,SDL_SWSURFACE | SDL_RESIZABLE);
@@ -13,6 +19,7 @@ Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_w
 	topleft = tl;
 	botright = br;
 	quit = 0;
+
 	//Load background image
 	SDL_Surface* loadedimage = IMG_Load("images/Space.jpg");
 	if (loadedimage == NULL)
@@ -34,7 +41,7 @@ Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_w
 	time = 0;
 	
 	// Create time object for display
-	time_obj = createobj("Time",12,"fonts/arial.ttf",0,0);
+	//time_obj = createobj("Time",12,"fonts/arial.ttf",0,0);
 }
 
 Window::~Window(){
@@ -100,7 +107,7 @@ int Window::getwidth(){
 
 bool Window::display(){
 
-	reset();
+	//reset();
 	for (int i = 0; i < Body::bodies.size(); i++) {
 		Body::bodies[i]->display(screen, topleft, botright, 10, 10);
 	}
@@ -168,7 +175,37 @@ void Window::updateTime(double dt)
 	int secs = total_seconds % 60;
 
 	ostringstream timeconvert;
-	timeconvert << years << " Years, " << months << " Months, " << days << " Days, " << hours << " Hours, " << mins << " Mins, " << secs << " Secs";
+	timeconvert << years << " Years, " << months << " Months, " << days << " Days, " << setw(2) << hours << " Hours, " << setw(2) << mins << " Minutes, " << setw(2) << secs << " Seconds";
 	string timestring = timeconvert.str();
-	newmessage(time_obj,timestring);
+	printText(timestring, "fonts/arial.ttf", 14, {255, 255, 255});
+	//newmessage(time_obj,timestring);
+}
+
+void Window::printText(string message, string fontname, int fontsize, SDL_Color color)
+{
+	cout << "Displaying " << message << endl;
+	// Render font and text
+	TTF_Font *font = TTF_OpenFont(fontname.c_str(), fontsize);
+	if (font == NULL)
+	{
+		cout << "TTF_OpenFont() failed: " << TTF_GetError() << endl;
+		return;
+	}
+
+	SDL_Surface *text = TTF_RenderText_Solid(font, message.c_str(), color);
+	if (text == NULL)
+	{
+		cout << "TTF_RenderText_Solid() failed: " << TTF_GetError() << endl;
+		return;
+	}
+
+	// Display to screen
+	if (SDL_BlitSurface(text, NULL, screen, NULL) != 0)
+	{
+		cerr << "SDL_BlitSurface() Failed: " << SDL_GetError() << endl;
+		return;
+	}
+	SDL_Flip(screen);
+	TTF_CloseFont(font);
+	//SDL_FreeSurface(text);
 }
