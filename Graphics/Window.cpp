@@ -8,13 +8,12 @@ Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_w
 
 	//Create screen
 	screen = SDL_SetVideoMode(height,width,bpp,SDL_SWSURFACE | SDL_RESIZABLE);
-	reset();
 	SDL_WM_SetCaption(windowname.c_str(), NULL);
 	topleft = tl;
 	botright = br;
 	quit = 0;
 	//Load background image
-	SDL_Surface* loadedimage = IMG_Load("image/Space.jpg");
+	SDL_Surface* loadedimage = IMG_Load("images/Space.jpg");
 	if (loadedimage == NULL)
 	{
 		cout << "ERROR: background image load failed" << SDL_GetError() << endl;
@@ -24,6 +23,9 @@ Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_w
 	SDL_FreeSurface(loadedimage);
 	//Planet Earth("Earth","images/red_square.jpg", 5);
 	//Planet Moon("Moon","images/black_square.jpg", 4, 4,3);
+
+	// Inititalize time
+	time = 0;
 }
 
 Window::~Window(){
@@ -127,8 +129,6 @@ void Window::handle_event(SDL_Event event){
 	}
 }
 
-// Helper functions
-
 int Window::getx(Tensor t,int obj_number){
 	double numer = t.getx() - topleft.getx();
 	double denom = botright.getx() - topleft.getx();
@@ -138,4 +138,21 @@ int Window::gety(Tensor t, int obj_number){
 	double numer = t.gety() - topleft.gety();
 	double denom = botright.gety() - topleft.gety();
 	return numer/denom * width - obj[obj_number]->getw();
+}
+
+void Window::updateTime(double dt)
+{
+	// Increment time
+	time += dt;
+	int total_seconds = int(time);
+
+	// Convert to Years, Months, Days, Hours, Minutes, Seconds
+	int years = total_seconds / 60 / 60 / 24 / 30 / 12;
+	int months = (total_seconds / 60 / 60 / 24 / 30) % 12;
+	int days = (total_seconds / 60 / 60 / 24) % 30;
+	int hours = (total_seconds / 60 / 60) % 24;
+	int mins = (total_seconds / 60) % 60;
+	int secs = total_seconds % 60;
+
+	cout << years << " Years, " << months << " Months, " << days << " Days, " << hours << " Hours, " << mins << " Minutes, " << secs << " Seconds" << endl;
 }

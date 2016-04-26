@@ -29,6 +29,7 @@ class Window
 		void update(int dt=1);
 		void run();
 		void handle_event(SDL_Event);
+		void updateTime(double);
 	private:
 		SDL_Surface* screen;
 		SDL_Surface* background;
@@ -42,6 +43,7 @@ class Window
 		int getx(Tensor,int);
 		int gety(Tensor,int);
 		bool quit;
+		double time; // time in seconds
 };
 
 #endif // WINDOW_H

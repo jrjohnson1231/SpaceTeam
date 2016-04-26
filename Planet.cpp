@@ -111,17 +111,32 @@ void Planet::collide()
 
 void Planet::update(double dt)
 {
-	// calculate force for each planet
+	// calculate force for each planet at initial velocity
 	for (int i = 0; i < planets.size(); i++)
 	{
 		planets[i].get().calcForce();
-
-		if (DEBUG) cout << planets[i].get().name << ":" << endl << planets[i].get().pos << endl << planets[i].get().accel << endl;
 	}
+
+	// calculate halfway velocity and use it to get position
 	for (int i = 0; i < planets.size(); i++)
 	{
-		planets[i].get().pos = planets[i].get().pos + planets[i].get().vel*dt + planets[i].get().accel*dt*dt*.5;
-		planets[i].get().vel = planets[i].get().vel + planets[i].get().accel*dt;
+		planets[i].get().vel = planets[i].get().vel + planets[i].get().accel*dt/2;
+		planets[i].get().pos = planets[i].get().pos + planets[i].get().vel*dt;
+	}
+
+	// calculate new force
+	for (int i = 0; i < planets.size(); i++)
+	{
+		planets[i].get().calcForce();
+		
+		// display some debugging info
+		if (DEBUG) cout << planets[i].get().name << ":" << endl << planets[i].get().pos << endl << planets[i].get().accel << endl;
+	}
+
+	// calculate new velocity based one new force
+	for (int i = 0; i < planets.size(); i++)
+	{
+		planets[i].get().vel = planets[i].get().vel + planets[i].get().accel*dt/2;
 	}
 	collide();
 

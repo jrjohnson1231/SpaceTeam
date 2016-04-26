@@ -16,6 +16,8 @@
 #include <string>
 #include "../Planet.h"
 
+#define DT 1800
+
 int main ( int argc, char** argv )
 {
     Tensor t(-1e24,-1e24);
@@ -55,8 +57,9 @@ int main ( int argc, char** argv )
 			}
 		}
 		w.display();
-		SDL_Delay(1);
-		Planet::update(2*3600);
+	//	SDL_Delay(1);
+		Planet::update(DT);
+		w.updateTime(DT);
 	}
 
     //w.createobj("images/black_square.jpg",t3);
