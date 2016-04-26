@@ -99,12 +99,7 @@ bool Window::display(){
 	for (int i = 0; i < Body::bodies.size(); i++) {
 		Body::bodies[i]->display(screen, topleft, botright, 10, 10);
 	}
-<<<<<<< HEAD
 	/*for(unsigned int i = 0;i<obj.size();i++){
-=======
-	for (unsigned int i = 0; i < obj.size(); i++)
-	for(unsigned int i = 0;i<obj.size();i++){
->>>>>>> 8b846e9ce538a71930df97f6d320042308971fe1
 		//obj[i]->update();
 		if (obj[i]->isVisible()) {
 			SDL_BlitSurface(obj[i]->getImage(), NULL, screen, NULL);
