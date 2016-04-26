@@ -6,7 +6,8 @@
 vector<reference_wrapper<Planet> > Planet::planets;
 
 //constructors
-Planet::Planet(string name, string imagename, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name, imagename) {
+Planet::Planet(string name, string imagename, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name, imagename) 
+{
 	pos.set(x, y, z);
 	vel.set(vx, vy, vz);
 	mass = m;
@@ -16,7 +17,8 @@ Planet::Planet(string name, string imagename, double m, double x, double y, doub
 	bodies.push_back(&(planets.back().get()));
 }
 
-Planet::Planet(string name, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name) {
+Planet::Planet(string name, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name) 
+{
 	pos.set(x, y, z);
 	vel.set(vx, vy, vz);
 	mass = m;
@@ -24,14 +26,18 @@ Planet::Planet(string name, double m, double x, double y, double z, double vx, d
 }
 
 //destructor
-void Planet::removePtr() {
+void Planet::removePtr() 
+{
 	// find itself in the body vector and removes it
-	for (int i = 0; i < bodies.size(); i++) {
-		if (bodies[i] == this) {
+	for (int i = 0; i < bodies.size(); i++) 
+	{
+		if (bodies[i] == this) 
+		{
 			bodies.erase(bodies.begin() + i);
 		}
 	}
-	if (DEBUG) {
+	if (DEBUG) 
+	{
 		cout << "Removing " << name << " pointer"<< endl;
 	}
 }
