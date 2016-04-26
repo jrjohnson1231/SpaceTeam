@@ -99,16 +99,12 @@ bool Window::display(){
 	for (int i = 0; i < Body::bodies.size(); i++) {
 		Body::bodies[i]->display(screen, topleft, botright, 10, 10);
 	}
-	for (unsigned int i = 0; i < obj.size(); i++)
-	{
-		obj[i]->
-	}
-	/*for(unsigned int i = 0;i<obj.size();i++){
+	for(unsigned int i = 0;i<obj.size();i++){
 		//obj[i]->update();
 		if (obj[i]->isVisible()) {
 			SDL_BlitSurface(obj[i]->getImage(), NULL, screen, NULL);
 		}
-	}*/
+	}
 	//Earth.display(screen, topleft,botright,height,width);
 	//Moon.display(screen, topleft,botright,height,width);
 	SDL_Flip(screen);
