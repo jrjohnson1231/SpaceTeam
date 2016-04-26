@@ -87,25 +87,33 @@ bool Body::display(SDL_Surface *screen)
 	//cout << "(" << pos.x << "," << pos.y << ")" << endl;
 	if (SDL_BlitSurface(image, NULL, screen, &offset) != 0) {
 		cout << "Error displaying object:" << endl << SDL_GetError() << endl;
-		return false
+		return false;
 	}
 	return true;
 }
 
 //returns x position on screen
-int Body::getx(Tensor topleft,Tensor botright, int height, int width)
+void Body::xRange(double &min, double &max)
 {
-	double numer = pos.getx() - topleft.getx();
-	double denom = botright.getx() - topleft.getx();
-	return (numer/denom * height);
+	min = COM.x;
+	max = COM.x;
+	for (int i = 0; i < bodies.size(); i++)
+	{
+		if (bodies[i]->pos.x < min) min = bodies[i]->pos.x;
+		if (bodies[i]->pos.x > max) max = bodies[i]->pos.x;
+	}
 }
 
 //returns y position on screen
-int Body::gety(Tensor topleft,Tensor botright, int height, int width)
+void Body::yRange(double &min, double &max)
 {
-	double numer = pos.gety() - topleft.gety();
-	double denom = botright.gety() - topleft.gety();
-	return numer/denom * width;
+	min = COM.y;
+	max = COM.y;
+	for (int i = 0; i < bodies.size(); i++)
+	{
+		if (bodies[i]->pos.y < min) min = bodies[i]->pos.y;
+		if (bodies[i]->pos.y > max) max = bodies[i]->pos.y;
+	}
 }
 
 /* Calculates center of mass of all bodies */

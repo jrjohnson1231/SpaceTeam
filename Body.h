@@ -27,8 +27,8 @@ class Body
 		Tensor getPos(); // return position of body
 		Tensor getVel(); // return velocity of each body
 		bool display(SDL_Surface *); // given parameters of window, display image
-		int getx(Tensor topleft,Tensor botright, int height, int width);
-		int gety(Tensor topleft,Tensor botright, int height, int width);
+		void xRange(double &, double &);
+		void yRange(double &, double &);
 		static void calcCOM(); // calculates center of mass of all bodies
 		static vector<Body *> bodies; // constains pointer to each object
 	
