@@ -7,8 +7,12 @@
 #include <vector>
 using namespace std;
 
+//this is a driver that reads in planet information from a file
+//it uses it to create new planets
+
 /*template<typename T>
-class FileReader() {
+class FileReader() 
+{
 	public:
 		FileReader();
 		~FileReader();
@@ -30,6 +34,7 @@ int main()
 		cout<<"Could not open file. Try again"<<endl;
 		return 1;
 	}
+	//read in all information from the file
 	while (!fin.eof())//assumes the file is all correct
 	{
 		getline(fin,name,',');
@@ -52,6 +57,7 @@ int main()
 		cout<<vy<<" ";
 		getline(fin,vz,',');
 		cout<<vz<<" ";
+		//add a new planet
 		Planet *newP = new Planet(name,imagename,atof(m.c_str()),atof(x.c_str()),atof(y.c_str()),atof(z.c_str()),atof(vx.c_str()),atof(vy.c_str()),atof(vz.c_str()));
 		objects.push_back(newP);
 		cout<<endl;

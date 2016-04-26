@@ -15,7 +15,7 @@ Charged::Charged(string name, string imagename, double m, double q, double x, do
 	bodies.push_back(&charges.back().get());
 }
 
-Charged::Charged(string name, double m, double q, double x, double y, double z, double vx, double vy, double vz) : Body(name)
+/*Charged::Charged(string name, double m, double q, double x, double y, double z, double vx, double vy, double vz) : Body(name)
 {
 	pos.set(x, y, z);
 	vel.set(vx, vy, vz);
@@ -23,7 +23,7 @@ Charged::Charged(string name, double m, double q, double x, double y, double z, 
 	mass = m;
 	charges.push_back(*this);
 	bodies.push_back(this);
-}
+}*/
 
 //destructor
 void Charged::removePtr() {
