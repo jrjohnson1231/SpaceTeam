@@ -24,15 +24,15 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename)
 	}*/
 	image = NULL;
 	SDL_Surface *loadedimage = NULL;
-	loadedimage = IMG_Load(imagename.c_str());
-	if (loadedimage == NULL)
+	image = IMG_Load(imagename.c_str());
+	if (image == NULL)
 	{
 		cout << "ERROR: image load failed. " << SDL_GetError() << endl;
 		return;
 	}
-	cout << image << endl << loadedimage; cout.flush();
+
 	// Set image to display format
-	image = SDL_DisplayFormat(loadedimage);
+	//SDL_Surface *temp = SDL_DisplayFormat(loadedimage);
 	//image = loadedimage;
 	//Set black of image as transparent
 	Uint32 colorkey = SDL_MapRGB(image->format, 0,0,0);
@@ -45,9 +45,9 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename)
 		return;
 	}
 	
-	SDL_FreeSurface(loadedimage);
+	//SDL_FreeSurface(loadedimage);
 	
-	
+	if (DEBUG) cout << "Made " << name << endl;
 }
 
 // Constructor

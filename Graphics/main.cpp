@@ -66,12 +66,7 @@ int main ( int argc, char** argv )
 		w.display();
 		w.updateTime(DT);
 	}
-
-    //w.createobj("images/black_square.jpg",t3);
-    w.display();
-    SDL_Delay(1000);
-
-	//cleanup(objects);
+	cleanup(objects);
 
     return 0;
 }
@@ -94,7 +89,7 @@ vector<Body *> readFile(string file)
 		//fin>>imagename;
 		getline(fin, imagename,',');
 		getline(fin,m,',');
-		getline(fin,x,',');
+	getline(fin,x,',');
 		getline(fin,y,',');
 		getline(fin,z,',');
 		getline(fin,vx,',');
