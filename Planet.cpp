@@ -13,6 +13,7 @@ Planet::Planet(string name, string imagename, double m, double x, double y, doub
 	mass = m;
 	planets.push_back(*this);
 	cout << bodies.size() << endl;
+	cout<<name<<endl;
 	//cout << "Making " << planets.back().name << endl;
 	bodies.push_back(&(planets.back().get()));
 }
@@ -95,9 +96,11 @@ void Planet::collide()
 		for (int j = 0; j < planets.size(); j++)
 		{
 			if (i==j) {continue;}
-			else {
+			else 
+			{
 				Tensor r = planets[i].get().pos - planets[j].get().pos;
-				if (r.getr() <= 20) {
+				if (r.getr() <= 20) 
+				{
 					if (DEBUG) cout << planets[i].get().name << " and " << planets[j].get().name << " collided " << endl;
 					planets[i].get().removePtr();
 					planets[j].get().removePtr();
@@ -120,6 +123,7 @@ void Planet::update(double dt)
 	// calculate force for each planet at initial velocity
 	for (int i = 0; i < planets.size(); i++)
 	{
+		cout<<planets[i].get().name<<endl;
 		planets[i].get().calcForce();
 	}
 

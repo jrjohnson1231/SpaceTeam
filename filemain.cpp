@@ -1,14 +1,15 @@
-#include "Body.h"
+//#include "Body.h"
 #include "Planet.h"
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <stdlib.h>
-
+#include <vector>
 using namespace std;
 
 int main()
 {
+	vector<Planet> planets;
 	string file="planets.txt";
 	/*cout<<"Enter the file name with the planet data"<<endl;
 	cin>>file;*/
@@ -42,10 +43,12 @@ int main()
 		cout<<vy<<" ";
 		getline(fin,vz,',');
 		cout<<vz<<" ";
-		Planet newplanet(name,imagename,atof(m.c_str()),atof(x.c_str()),atof(y.c_str()),atof(z.c_str()),atof(vx.c_str()),atof(vy.c_str()),atof(vz.c_str()));
+		Planet *newplanet=new Planet(name,imagename,atof(m.c_str()),atof(x.c_str()),atof(y.c_str()),atof(z.c_str()),atof(vx.c_str()),atof(vy.c_str()),atof(vz.c_str()));
+		planets.push_back(*newplanet);
 		cout<<endl;
 	}
 	cout<<"hello"<<endl;
 	Planet::update(1);
+	delete planets;
 	return 0;
 }
