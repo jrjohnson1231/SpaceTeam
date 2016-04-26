@@ -147,7 +147,7 @@ void Window::run(){
 		Planet::update(dt);
 		reset();
 		display();
-		updateTime(dt))
+		updateTime(dt);
 	}
 }
 
@@ -155,7 +155,7 @@ void Window::handle_events(){
 	// User closes window
 	if (event.type == SDL_QUIT){
 		quit = true;
-		break;
+		return;
 	}
 }
 

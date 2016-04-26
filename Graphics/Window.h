@@ -29,7 +29,7 @@ class Window
 		bool reset();
 		void update(int dt=1);
 		void run();
-		void handle_event(SDL_Event);
+		void handle_events();
 		void updateTime(double);
 		void newmessage(int, string);
 		void printText(string, string, int, SDL_Color);
