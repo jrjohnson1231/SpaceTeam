@@ -23,6 +23,7 @@ int main ( int argc, char** argv )
     Tensor t3(0,0);
     Tensor t4(1e22,1e22);
     Window w("Test",t,t2,800,600);
+	SDL_Event event;
 	Planet Earth("Earth", "images/Earth.png", 5.97e24,395,395,0, 0, -10, 0);
 	Planet Moon("Moon", "images/Moon.png", 7.33e22,3.84e8 + 400, 395, 0, 
 	0, 1022.828, 0);
@@ -34,12 +35,30 @@ int main ( int argc, char** argv )
 	//w.addObject(&m);
     //int red = w.createobj("images/red_square.jpg",t+t4);
 	SDL_Delay(500);
-    for(int i = 1; i < 1500; i++){
+ /*   for(int i = 1; i < 1500; i++){
 		w.display();
 		SDL_Delay(1);
 		Planet::update(2*3600);
 		//w.move(red,t+(t4*i));
-    }
+    }*/
+	bool run = true;
+	while(run)
+	{
+		while(SDL_PollEvent(&event))
+		{
+			// User closes window
+			if (event.type == SDL_QUIT)
+			{
+				// Quit program
+				run = false;
+				break;
+			}
+		}
+		w.display();
+		SDL_Delay(1);
+		Planet::update(2*3600);
+	}
+
     //w.createobj("images/black_square.jpg",t3);
     w.display();
     SDL_Delay(1000);
