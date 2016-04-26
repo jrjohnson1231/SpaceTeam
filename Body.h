@@ -29,6 +29,7 @@ class Body
 		bool display(SDL_Surface *, Tensor, Tensor, int, int); // given parameters of window, display image
 		int getx(Tensor topleft,Tensor botright, int height, int width);
 		int gety(Tensor topleft,Tensor botright, int height, int width);
+		static void calcCOM(); // calculates center of mass of all bodies
 		static vector<Body *> bodies; // constains pointer to each object
 	
 	protected:
@@ -41,6 +42,7 @@ class Body
 		Tensor totalForce;//force vector
 		Tensor pos;//position vector
 		Tensor vel;//velocity vector
+		static Tensor COM; // center of mass vector
 };
 
 #endif

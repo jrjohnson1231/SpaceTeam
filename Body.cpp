@@ -2,8 +2,9 @@
 
 #define DEBUG 1
 
-// static vector of all bodies
+// static vector of all bodies and static center of mass
 vector<Body *> Body::bodies;
+Tensor Body::COM;
 
 //constructor
 Body::Body(string name, double m, double x, double y, double z) : name(name)
@@ -76,8 +77,6 @@ Tensor Body::getVel()
 bool Body::display(SDL_Surface *screen, Tensor topleft, Tensor botright, int height, int width)
 {
 	//Blit Image
-	//offset.x = getx(topleft,botright,height,width);
-	//offset.y = gety(topleft,botright,height,width);
 	SDL_Rect offset;
 	offset.x = pos.x/20e5 + screen->w/2 - 5;
 	offset.y = pos.y/20e5 + screen->h/2 - 5;
@@ -106,4 +105,18 @@ int Body::gety(Tensor topleft,Tensor botright, int height, int width)
 	double numer = pos.gety() - topleft.gety();
 	double denom = botright.gety() - topleft.gety();
 	return numer/denom * width;
+}
+
+/* Calculates center of mass of all bodies */
+void Body::calcCOM()
+{
+	double totalMass = 0;
+	Tensor averageX(0, 0, 0);
+	for (int i = 0; i < bodies.size(); i++)
+	{
+		totalMass += bodies[i]->mass;
+		averageX = averageX + bodies[i]->pos * bodies[i]->mass;
+	}
+	COM = averageX / totalMass;
+	cout << "COM: " << COM;
 }

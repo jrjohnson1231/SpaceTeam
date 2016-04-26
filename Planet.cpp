@@ -15,6 +15,9 @@ Planet::Planet(string name, string imagename, double m, double r, double x, doub
 	planets.push_back(*this);
 	//cout << "Making " << planets.back().name << endl;
 	bodies.push_back(&(planets.back().get()));
+
+	// Recalculate COM
+	Body::calcCOM();
 }
 
 Planet::Planet(string name, double m, double x, double y, double z, double vx, double vy, double vz) : Body(name) 
@@ -127,5 +130,8 @@ void Planet::update(double dt)
 	{
 		planets[i].get().vel = planets[i].get().vel + planets[i].get().accel*dt/2;
 	}
+
+	// Recalculate center of mass
+	Body::calcCOM();
 }
 
