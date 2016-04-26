@@ -31,6 +31,7 @@ class Window
 		void handle_event(SDL_Event);
 	private:
 		SDL_Surface* screen;
+		SDL_Surface* background;
 		SDL_Event event;
 		int height;
 		int width;
