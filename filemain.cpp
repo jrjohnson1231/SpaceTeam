@@ -45,7 +45,7 @@ int main()
 		Planet newplanet(name,imagename,atof(m.c_str()),atof(x.c_str()),atof(y.c_str()),atof(z.c_str()),atof(vx.c_str()),atof(vy.c_str()),atof(vz.c_str()));
 		cout<<endl;
 	}
-	cout<<"hello"<<endl;
+	cout<<Planet::planets.size()<<endl;
 	Planet::update(1);
 	return 0;
 }
