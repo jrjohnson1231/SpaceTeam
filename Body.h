@@ -35,8 +35,6 @@ class Body
 		double mass;
 		string name;
 		string imagename;
-		SDL_Surface* screen;//Pointer to screen, which is outside of object
-		SDL_Rect offset;//Offset of image
 		SDL_Surface *image;//pointer to image
 		Tensor accel;//acceleration vector
 		Tensor totalForce;//force vector
