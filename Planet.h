@@ -22,10 +22,9 @@ class Planet: public Body
 		void calcForce();//calculate the force
 		static void collide();
 		static void update(double);
-		static vector<reference_wrapper<Planet> > planets; // constains pointer to each object
 
 	private:
-		double rad;//radius
+		static vector<reference_wrapper<Planet> > planets; // constains pointer to each object
 };
 
 #endif
