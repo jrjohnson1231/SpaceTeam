@@ -12,8 +12,6 @@ Planet::Planet(string name, string imagename, double m, double x, double y, doub
 	vel.set(vx, vy, vz);
 	mass = m;
 	planets.push_back(*this);
-	cout << bodies.size() << endl;
-	cout<<name<<endl;
 	//cout << "Making " << planets.back().name << endl;
 	bodies.push_back(&(planets.back().get()));
 }
@@ -120,13 +118,15 @@ void Planet::collide()
 
 void Planet::update(double dt)
 {
-	for (int i=0; i < planets.size(); i++){cout <<planets[i].get().name << endl;}
+	if (DEBUG) {cout << "There are " << planets.size() << " planets" << endl;}
+	// Check for collisions
+	collide();
+
 	// calculate force for each planet at initial velocity
 	for (int i = 0; i < planets.size(); i++)
 	{
 
 		planets[i].get().calcForce();
-		cout << "here" << endl;
 	}
 
 	// calculate halfway velocity and use it to get position
@@ -150,8 +150,5 @@ void Planet::update(double dt)
 	{
 		planets[i].get().vel = planets[i].get().vel + planets[i].get().accel*dt/2;
 	}
-	collide();
-
-
 }
 

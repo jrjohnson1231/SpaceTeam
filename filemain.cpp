@@ -7,9 +7,18 @@
 #include <vector>
 using namespace std;
 
+/*template<typename T>
+class FileReader() {
+	public:
+		FileReader();
+		~FileReader();
+	private:
+		vector<T> objects;i*/
+
+
 int main()
 {
-	vector<Planet> planets;
+	vector<Planet *> objects;
 	string file="planets.txt";
 	/*cout<<"Enter the file name with the planet data"<<endl;
 	cin>>file;*/
@@ -43,12 +52,24 @@ int main()
 		cout<<vy<<" ";
 		getline(fin,vz,',');
 		cout<<vz<<" ";
-		Planet *newplanet=new Planet(name,imagename,atof(m.c_str()),atof(x.c_str()),atof(y.c_str()),atof(z.c_str()),atof(vx.c_str()),atof(vy.c_str()),atof(vz.c_str()));
-		planets.push_back(*newplanet);
+		Planet *newP = new Planet(name,imagename,atof(m.c_str()),atof(x.c_str()),atof(y.c_str()),atof(z.c_str()),atof(vx.c_str()),atof(vy.c_str()),atof(vz.c_str()));
+		objects.push_back(newP);
 		cout<<endl;
+		// Flush trailing \n
+		string dummy;
+		getline(fin, dummy);
 	}
-	cout<<Planet::planets.size()<<endl;
 	Planet::update(1);
-	delete planets;
+	Planet::update(1);
+	for (int i = 0; i < objects.size(); i++)
+	{
+		objects.erase(objects.begin());
+	}
 	return 0;
+}
+
+Planet newPlanet(string name, string imagename, double m, double x, double y, double z, double vx, double vy, double vz)
+{
+	Planet newP(name, imagename, m, x, y, z, vx, vy, vz);
+	return newP;
 }

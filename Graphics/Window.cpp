@@ -21,6 +21,11 @@ Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_w
 		return;
 	}
 	background = SDL_DisplayFormat(loadedimage);
+	if (background == NULL)
+	{
+		cout << "ERROR: background image conversion failed" << SDL_GetError() << endl;
+		return;
+	}
 	SDL_FreeSurface(loadedimage);
 	//Planet Earth("Earth","images/red_square.jpg", 5);
 	//Planet Moon("Moon","images/black_square.jpg", 4, 4,3);

@@ -3,7 +3,7 @@
 
 #include "Object.h"
 #include "Tensor.h"
-#include "Planet.h"
+#include "../Planet.h"
 #include <string>
 #include <vector>
 #include <iostream>
