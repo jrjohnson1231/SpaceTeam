@@ -4,6 +4,8 @@
 
 using namespace std;
 
+//driver file to test force and update functions
+
 int main(int argc, char *argv[])
 {
 	Planet Earth("Earth", 5.97e24,0,0,0);

@@ -12,7 +12,9 @@ Body::Body(string name, double m, double x, double y, double z) : name(name)
 	pos.set(x,y,z);
 }
 
-/* Constructor */
+// Constructor 
+//takes in planet name, image name
+//opens image and if the image doesn't work, the user is notified 
 Body::Body(string name, string imagename) : name(name), imagename(imagename)
 {
 	// Load image
@@ -44,24 +46,31 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename)
 	
 }
 
-/* Constructor */
-Body::Body(string name) : name(name) {
+Constructor
+Body::Body(string name) : name(name) 
+{
 }
+
+//getters
 
 double Body::getMass()
 {
 	return mass;
 }
 
-Tensor Body::getPos() {
+Tensor Body::getPos() 
+{
 	return pos;
 }
 
-Tensor Body::getVel() {
+Tensor Body::getVel() 
+{
 	return vel;
 }
 
-bool Body::display(SDL_Surface *screen, Tensor topleft, Tensor botright, int height, int width){
+//displays the body object
+bool Body::display(SDL_Surface *screen, Tensor topleft, Tensor botright, int height, int width)
+{
 	//Blit Image
 	//offset.x = getx(topleft,botright,height,width);
 	//offset.y = gety(topleft,botright,height,width);
@@ -78,31 +87,18 @@ bool Body::display(SDL_Surface *screen, Tensor topleft, Tensor botright, int hei
 	return 0;
 }
 
-int Body::getx(Tensor topleft,Tensor botright, int height, int width){
+//returns x position on screen
+int Body::getx(Tensor topleft,Tensor botright, int height, int width)
+{
 	double numer = pos.getx() - topleft.getx();
 	double denom = botright.getx() - topleft.getx();
 	return (numer/denom * height);
 }
-int Body::gety(Tensor topleft,Tensor botright, int height, int width){
+
+//returns y position on screen
+int Body::gety(Tensor topleft,Tensor botright, int height, int width)
+{
 	double numer = pos.gety() - topleft.gety();
 	double denom = botright.gety() - topleft.gety();
 	return numer/denom * width;
 }
-
-//moves the bodies according to the force
-/*void Body::update(double dt)
-{
-	// calculate force for each planet
-	for (int i = 0; i < bodies.size(); i++)
-	{
-		bodies[i]->calcForce();
-
-		if (DEBUG) cout << bodies[i]->name << ":" << endl << bodies[i]->pos << endl;
-	}
-
-	for (int i = 0; i < bodies.size(); i++)
-	{
-		bodies[i]->pos = bodies[i]->pos + (bodies[i]->vel*dt);
-		bodies[i]->vel = bodies[i]->vel + (bodies[i]->accel*dt);
-	}
-}*/
