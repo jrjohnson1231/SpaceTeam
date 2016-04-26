@@ -13,6 +13,15 @@ Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_w
 	topleft = tl;
 	botright = br;
 	quit = 0;
+	//Load background image
+	SDL_Surface* loadedimage = IMG_Load("Space.jpg");
+	if (loadedimage == NULL)
+	{
+		cout << "ERROR: background image load failed" << SDL_GetError() << endl;
+		return;
+	}
+	background = SDL_DisplayFormat(loadedimage);
+	SDL_FreeSurface(loadedimage);
 	//Planet Earth("Earth","images/red_square.jpg", 5);
 	//Planet Moon("Moon","images/black_square.jpg", 4, 4,3);
 }
@@ -93,7 +102,7 @@ bool Window::display(){
 }
 
 bool Window::reset(){
-	SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xE0, 0xE0, 0xE0 ) );
+	SDL_BlitSurface(background,NULL,screen, NULL);
 	return 0;
 }
 
