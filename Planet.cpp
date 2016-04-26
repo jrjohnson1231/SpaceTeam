@@ -111,10 +111,14 @@ void Planet::collide()
 
 void Planet::update(double dt)
 {
+	for (int i=0; i < planets.size(); i++){cout <<planets[i].get().name << endl;}
 	// calculate force for each planet at initial velocity
 	for (int i = 0; i < planets.size(); i++)
 	{
+		cout << i << endl;
+		cout << planets[i].get().name<< endl;
 		planets[i].get().calcForce();
+		cout << "here" << endl;
 	}
 
 	// calculate halfway velocity and use it to get position
