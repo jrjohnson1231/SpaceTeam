@@ -1,3 +1,0 @@
-Sun,Graphics/images/sun.png,1.989e30,6.95e8,400,400,0,0,0,0, 
-Earth,Graphics/images/Earth.png,5.97e24,6.37e6,149.6e9,149.6e9,0,30000,0,0,
-Moon,Graphics/images/Moon.png,7.33e22,1.74e6,3.84e8,3.84e8,0,0,1022,0
