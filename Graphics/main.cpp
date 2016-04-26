@@ -56,7 +56,7 @@ vector<Body *> readFile(string file)
 {
 	vector<Body *> objects;
 	string name, imagename;
-	string m, x, y, z, vx, vy, vz;
+	string m, r, x, y, z, vx, vy, vz;
 	ifstream fin(file.c_str());
 	if(!fin)
 	{
@@ -70,13 +70,14 @@ vector<Body *> readFile(string file)
 		//fin>>imagename;
 		getline(fin, imagename,',');
 		getline(fin,m,',');
+		getline(fin,r,',');
 	getline(fin,x,',');
 		getline(fin,y,',');
 		getline(fin,z,',');
 		getline(fin,vx,',');
 		getline(fin,vy,',');
 		getline(fin,vz,',');
-		Body *newP = new Planet(name,imagename,atof(m.c_str()),atof(x.c_str()),atof(y.c_str()),atof(z.c_str()),atof(vx.c_str()),atof(vy.c_str()),atof(vz.c_str()));
+		Body *newP = new Planet(name,imagename,atof(m.c_str()),atof(r.c_str()), atof(x.c_str()),atof(y.c_str()),atof(z.c_str()),atof(vx.c_str()),atof(vy.c_str()),atof(vz.c_str()));
 		if (newP != NULL)
 		{
 			objects.push_back(newP);
