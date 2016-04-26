@@ -13,16 +13,24 @@ Body::Body(string name, double m, double x, double y, double z) : name(name)
 }
 
 /* Constructor */
-Body::Body(string name, string imagename) : name(name), imagename(imagename) {
+Body::Body(string name, string imagename) : name(name), imagename(imagename)
+{
 	// Load image
 	SDL_Surface* loadedimage = IMG_Load(imagename.c_str());
-	if (loadedimage == NULL) {
+	if (loadedimage == NULL)
+	{
 		cout << "ERROR: image load failed. " << SDL_GetError() << endl;
 		return;
 	}
-
+	// Set image to display format
 	image = SDL_DisplayFormat(loadedimage);
-	if (image == NULL) {
+	
+	//Set black of image as transparent
+	Uint32 colorkey = SDL_MapRGB(image->format, 0,0,0);
+	SDL_SetColorKey(image,SDL_SRCCOLORKEY,colorkey);
+	// if failed, print error message
+	if (image == NULL)
+	{
 		cout << "ERROR: image load failed. " << SDL_GetError() << endl;
 		return;
 	}
