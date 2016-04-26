@@ -16,10 +16,10 @@ Body::Body(string name, double m, double x, double y, double z) : name(name)
 Body::Body(string name, string imagename) : name(name), imagename(imagename)
 {
 	// Load image
-	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
+	/*if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
 		cout << "Error initializing SDL:" << endl << SDL_GetError() << endl;
-	}
+	}*/
 	SDL_Surface* loadedimage = IMG_Load(imagename.c_str());
 	if (loadedimage == NULL)
 	{
@@ -29,8 +29,9 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename)
 	// Set image to display format
 	image = SDL_DisplayFormat(loadedimage);
 	//Set black of image as transparent
-	//Uint32 colorkey = SDL_MapRGB(image->format, 0,0,0);
-	//SDL_SetColorKey(image,SDL_SRCCOLORKEY,colorkey);
+	Uint32 colorkey = SDL_MapRGB(image->format, 0,0,0);
+	SDL_SetColorKey(image,SDL_SRCCOLORKEY,colorkey);
+
 	// if failed, print error message
 	if (image == NULL)
 	{

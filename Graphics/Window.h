@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 class Window
@@ -31,6 +32,7 @@ class Window
 		void handle_event(SDL_Event);
 		void updateTime(double);
 		void newmessage(int, string);
+		void printText(string, string, int, SDL_Color);
 	private:
 		SDL_Surface* screen;
 		SDL_Surface* background;
