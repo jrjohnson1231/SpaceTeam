@@ -54,16 +54,16 @@ Window::Window(std::string windowname,string inputfile, int i_height,int i_width
 }
 
 Window::~Window(){
-	for(unsigned int i=0;i<obj.size();i++){
+	/*for(unsigned int i=0;i<obj.size();i++){
 		obj[i]->free();
-	}
+	}*/
 	cleanup(objects);
 	TTF_Quit();
 	SDL_Quit();
 }
 
-// TODO (Chris#1#): Fix to Tensor
-int Window::createobj(std::string imagename, Tensor t){
+
+/*int Window::createobj(std::string imagename, Tensor t){
 	Object newobj(imagename,screen,0,0);
 	obj.push_back(&newobj);
 	move(obj.size()-1,t);
@@ -105,7 +105,7 @@ bool Window::move(int obj_number, Tensor t){
 	int y = gety(t,obj_number);
 	obj[obj_number]->move(x,y);
 	return 0;
-}
+}*/
 
 int Window::getheight(){
 	return height;
@@ -162,7 +162,7 @@ void Window::handle_events(){
 	}
 }
 
-int Window::getx(Tensor t,int obj_number){
+/*int Window::getx(Tensor t,int obj_number){
 	double numer = t.getx() - topleft.getx();
 	double denom = botright.getx() - topleft.getx();
 	return (numer/denom * height) - obj[obj_number]->geth();
@@ -171,7 +171,7 @@ int Window::gety(Tensor t, int obj_number){
 	double numer = t.gety() - topleft.gety();
 	double denom = botright.gety() - topleft.gety();
 	return numer/denom * width - obj[obj_number]->getw();
-}
+}*/
 
 void Window::updateTime(double dt)
 {
