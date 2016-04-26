@@ -46,7 +46,7 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename)
 	
 }
 
-Constructor
+// Constructor
 Body::Body(string name) : name(name) 
 {
 }
