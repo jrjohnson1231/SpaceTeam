@@ -14,7 +14,7 @@ class Charged: public Body
 	public:
 		Charged(string name, string imagename, double m=9.1e-31, double q=1.6e-19, double x=0, double y=0, double z=0, double vx=0, double vy=0, double vz=0);
 		Charged(string name, double m=9.1e-31, double q=1.6e-19, double x=0, double y=0, double z=0, double vx=0, double vy=0, double vz=0);
-		~Charged();
+		void removePtr();
 		void calcForce();//calculate the force
 		double getCharge();
 		static void collide();
@@ -22,7 +22,7 @@ class Charged: public Body
 
 	private:
 		double charge;
-		static vector<Charged> charges; // constains pointer to each object
+		static vector<reference_wrapper<Charged> > charges; // constains pointer to each object
 };
 
 #endif
