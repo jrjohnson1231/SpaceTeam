@@ -1,9 +1,9 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include "SDL/SDL.h"
-#include "SDL_image/SDL_image.h"
-#include "SDL_ttf/SDL_ttf.h"
+#include <SDL/SDL.h>
+#include <SDL_image/SDL_image.h>
+#include <SDL_ttf/SDL_ttf.h>
 #include "Tensor.h"
 #include "../Planet.h"
 #include <string>
