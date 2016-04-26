@@ -14,7 +14,7 @@ Body::Body(string name, double m, double x, double y, double z) : name(name)
 
 /* Constructor */
 Body::Body(string name, string imagename) : name(name), imagename(imagename)
-{
+{/*
 	// Load image
 	SDL_Surface* loadedimage = IMG_Load(imagename.c_str());
 	if (loadedimage == NULL)
@@ -37,7 +37,7 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename)
 	
 	SDL_FreeSurface(loadedimage);
 	
-	
+	*/
 }
 
 /* Constructor */

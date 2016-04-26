@@ -2,18 +2,19 @@
 #include "Planet.h"
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <stdlib.h>
 
 using namespace std;
 
 int main()
 {
-
-	string file;
-	cout<<"Enter the file name with the planet data"<<endl;
-	cin>>file;
+	string file="planets.txt";
+	/*cout<<"Enter the file name with the planet data"<<endl;
+	cin>>file;*/
 	string name, imagename;
-	double m, x, y, z, vx, vy, vz;
-	fstream fin(file.c_str());
+	string m, x, y, z, vx, vy, vz;
+	ifstream fin(file.c_str());
 	if(!fin)
 	{
 		cout<<"Could not open file. Try again"<<endl;
@@ -21,27 +22,30 @@ int main()
 	}
 	while (!fin.eof())//assumes the file is all correct
 	{
-		getline (fin, name, ",");
+		getline(fin,name,',');
+		//fin>>name;
 		cout<<name<<" ";
-		getline (fin, imagename, ",");
+		//fin>>imagename;
+		getline(fin, imagename,',');
 		cout<<imagename<<" ";
-		fin>>m;
+		getline(fin,m,',');
 		cout<<m<<" ";
-		fin>>x;
+		getline(fin,x,',');
 		cout<<x<<" ";
-		fin>>y;
+		getline(fin,y,',');
 		cout<<y<<" ";
-		fin>>z;
+		getline(fin,z,',');
 		cout<<z<<" ";
-		fin>>vx;
+		getline(fin,vx,',');
 		cout<<vx<<" ";
-		fin>>vy;
+		getline(fin,vy,',');
 		cout<<vy<<" ";
-		fin>>vz;
+		getline(fin,vz,',');
 		cout<<vz<<" ";
-		Planet newplanet(name,imagename,m,x,y,z,vx,vy,vz);
-		cout<<endl<<endl<<"MADE A PLANET"<<endl<<endl;
+		Planet newplanet(name,imagename,atof(m.c_str()),atof(x.c_str()),atof(y.c_str()),atof(z.c_str()),atof(vx.c_str()),atof(vy.c_str()),atof(vz.c_str()));
 		cout<<endl;
 	}
-return 0;
+	cout<<"hello"<<endl;
+	Planet::update(1);
+	return 0;
 }
