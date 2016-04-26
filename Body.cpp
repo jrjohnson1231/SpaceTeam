@@ -22,14 +22,18 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename)
 	{
 		cout << "Error initializing SDL:" << endl << SDL_GetError() << endl;
 	}*/
-	SDL_Surface* loadedimage = IMG_Load(imagename.c_str());
+	image = NULL;
+	SDL_Surface *loadedimage = NULL;
+	loadedimage = IMG_Load(imagename.c_str());
 	if (loadedimage == NULL)
 	{
 		cout << "ERROR: image load failed. " << SDL_GetError() << endl;
 		return;
 	}
+	cout << image << endl << loadedimage; cout.flush();
 	// Set image to display format
 	image = SDL_DisplayFormat(loadedimage);
+	//image = loadedimage;
 	//Set black of image as transparent
 	Uint32 colorkey = SDL_MapRGB(image->format, 0,0,0);
 	SDL_SetColorKey(image,SDL_SRCCOLORKEY,colorkey);

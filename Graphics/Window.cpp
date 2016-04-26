@@ -13,6 +13,13 @@ Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_w
 		cout << "TTF_Init() failed: " << TTF_GetError() << endl;
 	}
 
+	// load support for the JPG and PNG image formats
+	int flags=IMG_INIT_JPG|IMG_INIT_PNG;
+	int initted=IMG_Init(flags);
+	if((initted&flags) != flags) {
+		cout<<"IMG_Init: Failed to init required jpg and png support " << IMG_GetError() << endl;
+	}
+
 	//Create screen
 	screen = SDL_SetVideoMode(height,width,bpp,SDL_SWSURFACE | SDL_RESIZABLE);
 	SDL_WM_SetCaption(windowname.c_str(), NULL);

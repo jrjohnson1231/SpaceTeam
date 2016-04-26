@@ -24,15 +24,15 @@ void cleanup(vector<Body *>);
 
 int main ( int argc, char** argv )
 {
-	//vector<Body *> objects = readFile("planets.txt");
+	vector<Body *> objects = readFile("planets.txt");
     Tensor t(-1e24,-1e24);
     Tensor t2(1e24,1e24);
     Tensor t3(0,0);
     Tensor t4(1e22,1e22);
     Window w("Test",t,t2,800,600);
 	SDL_Event event;
-	Planet Earth("Earth", "images/Earth.png", 5.97e24,395,395,0, 0, -10, 0);
-	Planet Moon("Moon", "images/Moon.png", 7.33e22,3.84e8 + 400, 395, 0, 0, 1022.828, 0);
+	//Planet Earth("Earth", "images/Earth.png", 5.97e24,395,395,0, 0, -10, 0);
+	//Planet Moon("Moon", "images/Moon.png", 7.33e22,3.84e8 + 400, 395, 0, 0, 1022.828, 0);
 	//Planet Other("Planer 3", "images/black_square.jpg", 1e25, 350, 150);
 	//Planet Thing("Thing", 3.44e23, 5.97e4, 4.83e6, 0);
 	//Object e("images/red_square.jpg", &Earth);
