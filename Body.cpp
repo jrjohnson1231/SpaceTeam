@@ -15,7 +15,7 @@ Body::Body(string name, double m, double x, double y, double z) : name(name)
 /* Constructor */
 Body::Body(string name, string imagename) : name(name), imagename(imagename) {
 	// Load image
-	SDL_Surface* loadedimage = IMG_Load(imagename.c_str());
+	/*SDL_Surface* loadedimage = IMG_Load(imagename.c_str());
 	if (loadedimage == NULL) {
 		cout << "ERROR: image load failed. " << SDL_GetError() << endl;
 		return;
@@ -25,7 +25,7 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename) {
 	if (image == NULL) {
 		cout << "ERROR: image load failed. " << SDL_GetError() << endl;
 		return;
-	}
+	}*/
 	
 	
 }
