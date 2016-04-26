@@ -27,7 +27,7 @@ int main ( int argc, char** argv )
 	//vector<Body *> objects = readFile("planets.txt");
 	Tensor t(0,0);
 	Tensor t2(0,0);
-	Window w("Test","planets.txt",t,t2,800,600);
+	Window w("Test","planets.txt",800,600);
 	SDL_Delay(1500);
 
 	// Run application, handle events, etc.
