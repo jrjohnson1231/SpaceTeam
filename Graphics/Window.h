@@ -30,6 +30,7 @@ class Window
 		void run();
 		void handle_event(SDL_Event);
 		void updateTime(double);
+		void newmessage(int, string);
 	private:
 		SDL_Surface* screen;
 		SDL_Surface* background;
@@ -44,6 +45,7 @@ class Window
 		int gety(Tensor,int);
 		bool quit;
 		double time; // time in seconds
+		int time_obj;
 };
 
 #endif // WINDOW_H

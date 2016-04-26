@@ -47,7 +47,7 @@ int main()
 		planets.push_back(*newplanet);
 		cout<<endl;
 	}
-	cout<<"hello"<<endl;
+	cout<<Planet::planets.size()<<endl;
 	Planet::update(1);
 	delete planets;
 	return 0;

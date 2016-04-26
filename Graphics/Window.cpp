@@ -27,6 +27,9 @@ Window::Window(std::string windowname, Tensor tl, Tensor br,int i_height,int i_w
 
 	// Inititalize time
 	time = 0;
+	
+	// Create time object for display
+	time_obj = createobj("Time",12,"fonts/arial.ttf",0,0);
 }
 
 Window::~Window(){
@@ -50,6 +53,10 @@ int Window::createobj(std::string message, int fontsize,
 	Object newobj(message,fontsize,fontname,screen,x,y);
 	obj.push_back(&newobj);
 	return obj.size()-1;
+}
+
+void Window::newmessage(int obj_num,std::string message){
+	obj[obj_num]->newmessage(message);
 }
 
 void Window::addObject(Object * o) {
@@ -158,5 +165,5 @@ void Window::updateTime(double dt)
 	ostringstream timeconvert;
 	timeconvert << years << " Years, " << months << " Months, " << days << " Days, " << hours << " Hours, " << mins << " Mins, " << secs << " Secs";
 	string timestring = timeconvert.str();
-	cout << timestring << endl;
+	newmessage(time_obj,timestring);
 }
