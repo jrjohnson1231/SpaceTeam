@@ -1,5 +1,4 @@
 #include "Window.h"
-#include "Timer.h"
 #include "Tensor.h"
 #include "Planet.h"
 #include <iostream>
@@ -7,7 +6,7 @@
 #include <string>
 #include <vector>
 
-#define DT 1800
+#define DEBUG 0
 
 void usage(string, int);
 
@@ -21,7 +20,8 @@ int main ( int argc, char** argv )
 		try
 		{
 			filename = argv[1];
-			dt = stoull(argv[2]);
+			long long temp = atoll(argv[2]);
+			dt = (unsigned long long)temp;
 		}
 		catch (...)
 		{

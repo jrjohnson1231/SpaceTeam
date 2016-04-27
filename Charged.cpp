@@ -1,7 +1,5 @@
 #include "Charged.h"
 
-#define DEBUG 1
-
 vector<reference_wrapper<Charged> > Charged::charges;
 
 //constructors

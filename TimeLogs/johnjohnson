@@ -54,7 +54,7 @@ Stop: 04/21/16 00:24:26
 Total: 13 hours
 Started incorporating graphics classes with planet/body classes. Changed Window update function to display for clarity.
 
-Start: 04/21/16 9:30:10
+Start: 04/21/16 09:30:10
 Stop: 04/21/16 10:47:03
 Total: 14.25 hours
 Added planet to object class. Changed window vector to contain pointers instead of objects themselves. Uses Planet::update to update position.
@@ -77,7 +77,24 @@ Fixed linker issue in inheritence tree
 Start: 04/25/16 12:55:00
 Stop: 04/25/16 13:40:00
 Total: 18 hours
+Started integrating graphic aspects of Object class into Body.
 
 Start: 04/25/16 15:15:49
 Stop: 04/25/16 18:20:52
 Total: 21 hours
+Worked on error checking and bug fixing. Finished integrating Object and Body classes and incorporated Body into Window class. Achieved basic orbit.
+
+Start: 04/25/16 21:00:00
+Stop: 04/26/16 24:00:00
+Total: 24 hours
+Worked with Chris to fix any bugs in Winow/Body implementation and added a timer and text to the Window.
+
+Start: 04/26/16 15:30:00
+Stop: 04/26/16 17:00:00
+Total: 26.5 hours
+Worked with group to make final adjustments to project. I worked on scaling based on individual simulations and made the display centered around the center of mass of the system.
+
+Start: 04/26/16 16:00:00
+Stop: 04/26/16 22:00:00
+Total: 28.5 hours
+Made adjustments to scaling and made example simulation files including sun and binary star files.

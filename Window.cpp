@@ -1,5 +1,5 @@
 #include "Window.h"
-
+#define DEBUG 0
 
 Window::Window(std::string windowname,string inputfile, int i_height,int i_width,int dt, int i_bpp)
 			: height(i_height),width(i_width),bpp(i_bpp),dt(dt)
@@ -138,7 +138,7 @@ bool Window::reset()
 // Display message
 void Window::printText(string message, string fontname, int fontsize, SDL_Color color)
 {
-	cerr << "Displaying " << message << endl;
+	if (DEBUG) cerr << "Displaying " << message << endl;
 	// Render font and text
 	TTF_Font *font = TTF_OpenFont(fontname.c_str(), fontsize);
 	if (font == NULL)

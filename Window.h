@@ -1,6 +1,10 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#ifndef DEBUG
+#define DEBUG 0
+#endif
+
 #include <SDL/SDL.h>
 #include <SDL_image/SDL_image.h>
 #include <SDL_ttf/SDL_ttf.h>

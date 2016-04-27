@@ -1,7 +1,5 @@
 #include "Planet.h"
 
-#define DEBUG 1
-
 // static vector of all planets
 vector<reference_wrapper<Planet> > Planet::planets;
 

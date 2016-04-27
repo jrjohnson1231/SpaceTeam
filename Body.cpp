@@ -1,60 +1,44 @@
 #include "Body.h"
 
-#define DEBUG 1
+/* ----- STATIC MEMBERS ----- */
 
-// static vector of all bodies and static center of mass
+// Static vector of all bodies
 vector<Body *> Body::bodies;
+
+// Static tensor with initial center of mass
 Tensor Body::COM;
+
+// Static doubles for window scaling in each direction
 double Body::xscale = 0;
 double Body::yscale = 0;
 
-//constructor
-Body::Body(string name, double m, double x, double y, double z) : name(name)
-{
-	mass = m;
-	pos.set(x,y,z);
-}
 
-// Constructor 
-//takes in planet name, image name
-//opens image and if the image doesn't work, the user is notified 
+/* ----- CONSTRUCTORS ----- */
+
+/* Used to initialize name of planet and to initialize SDL image
+/* Terminates program if image does not load to avoid segmentation fault */
 Body::Body(string name, string imagename) : name(name), imagename(imagename)
 {
-	// Load image
-	/*if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
-	{
-		cout << "Error initializing SDL:" << endl << SDL_GetError() << endl;
-	}*/
+	// Attempt to load image
 	image = NULL;
 	image = IMG_Load(imagename.c_str());
-	if (image == NULL)
+	if (image == NULL) // catch failed load
 	{
 		cerr << "ERROR: image load failed. " << SDL_GetError() << endl;
 		SDL_Quit();
-		exit(1);
+		exit(1); // quit on error
 	}
 
-	//Set black of image as transparent
+	// Set black of image as transparent
 	Uint32 colorkey = SDL_MapRGB(image->format, 0,0,0);
 	SDL_SetColorKey(image,SDL_SRCCOLORKEY,colorkey);
 
-	// if failed, print error message
-	if (image == NULL)
-	{
-		cerr << "ERROR: image load failed. " << SDL_GetError() << endl;
-		SDL_Quit();
-		exit(1);
-	}
-	
+	// Debugging message	
 	if (DEBUG) cerr << "Made " << name << endl;
 }
 
-// Constructor
-Body::Body(string name) : name(name) 
-{
-}
 
-//getters
+/* ----- GET FUNCTIONS ----- */
 
 double Body::getMass()
 {
@@ -71,65 +55,62 @@ Tensor Body::getVel()
 	return vel;
 }
 
-//displays the body object
+
+/* ----- MEMBER FUNCTIONS ----- */
+
+/* Blits picture of planet onto screen
+/* Takes SDL_Surface* to print images two as parameter
+/* Returns false if there is an error displaying it, true otherwise */
 bool Body::display(SDL_Surface *screen)
 {
-	//Blit Image
+	// Calculate image coordinates
 	SDL_Rect offset;
 	offset.x = (pos.x-COM.x)/xscale + screen->w/2 - image->w/2;
 	offset.y = (pos.y-COM.y)/yscale + screen->h/2 - image->h/2;
+
+	// Debugging messages
 	if (DEBUG)
 	{
 		cerr << "Displaying " << name << endl;
 		cerr << "(" << offset.x << "," << offset.y << ")" << endl;
 	}
-	if (SDL_BlitSurface(image, NULL, screen, &offset) != 0) {
+
+	// Blit image to screen
+	if (SDL_BlitSurface(image, NULL, screen, &offset) != 0) { // Error displaying image
 		cerr << "Error displaying object:" << endl << SDL_GetError() << endl;
 		return false;
 	}
 	return true;
 }
 
-//returns x position on screen
-void Body::xRange(double &min, double &max)
-{
-	min = COM.x;
-	max = COM.x;
-	for (int i = 0; i < bodies.size(); i++)
-	{
-		if (bodies[i]->pos.x < min) min = bodies[i]->pos.x;
-		if (bodies[i]->pos.x > max) max = bodies[i]->pos.x;
-	}
-}
 
-//returns y position on screen
-void Body::yRange(double &min, double &max)
-{
-	min = COM.y;
-	max = COM.y;
-	for (int i = 0; i < bodies.size(); i++)
-	{
-		if (bodies[i]->pos.y < min) min = bodies[i]->pos.y;
-		if (bodies[i]->pos.y > max) max = bodies[i]->pos.y;
-	}
-}
+/* ----- STATIC FUNCTIONS ----- */
 
 /* Calculates center of mass of all bodies */
 void Body::calcCOM()
 {
 	double totalMass = 0;
 	Tensor averageX(0, 0, 0);
+
+	// Sum all masses and mass weighted positions
 	for (int i = 0; i < bodies.size(); i++)
 	{
 		totalMass += bodies[i]->mass;
 		averageX = averageX + bodies[i]->pos * bodies[i]->mass;
 	}
+
+	// Divide mass weighted position sum by total mass to get center of mass
 	COM = averageX / totalMass;
+
+	// Debugging message
 	if (DEBUG) cerr << "Center of mass: " << COM;
 }
 
+/* Calculate the scale to print the bodies at
+/* Takes SDL_Surface* bodies will be printed on as a parameter */
 void Body::calcScale(SDL_Surface *screen)
 {
+	// Find furthest distance from center of mass in each direction
 	double xmax = 0;
 	double ymax = 0;
 	for (int i = 0; i < bodies.size(); i++)
@@ -138,6 +119,8 @@ void Body::calcScale(SDL_Surface *screen)
 		if (abs(bodies[i]->pos.y - COM.y) > ymax) ymax = abs(bodies[i]->pos.y - COM.y);
 	}
 
+	// Scale based on the longest distance
+	// A coordinate at the max appears 1/3 screens from the center of mass in that direction
 	if (xmax >= ymax) {
 		xscale = xmax * 3 / screen->w;
 		yscale = xmax * 3 / screen->h;
@@ -147,5 +130,6 @@ void Body::calcScale(SDL_Surface *screen)
 		yscale = ymax * 3 / screen->h;
 	}
 
+	// Debuggin message
 	if (DEBUG) cerr << "xscale: " << xscale << " yscale: " << yscale << endl;
 }
