@@ -1,0 +1,5 @@
+Sun,images/Sun.png,1.989e30,6.96e8,0,0,0,0,0,0,
+Mercury,images/Mercury_mini.png,0.33e24,2.44e6,57.9e9,0,0,0,47.4e3,0,
+Venus,images/Venus_mini.png,4.87e24,6.05e6,108.2e9,0,0,0,35e3,0,
+Earth,images/Earth_mini.png,5.97e24,6.37e6,149.6e9,0,0,0,30000,0,
+Mars,images/Mars_mini.png,0.642e24,1.97e6,227.9e9,0,0,0,24.1e3,0
