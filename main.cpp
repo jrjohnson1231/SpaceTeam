@@ -16,10 +16,29 @@ int main ( int argc, char** argv )
 	//vector<Body *> objects = readFile("planets.txt");
 	Tensor t(0,0);
 	Tensor t2(0,0);
-	Window w("Test","planets.txt",800,600);
-
-	// Run application, handle events, etc.
-	w.run();
+	cout<<argc<<endl;
+	int count =0;
+	if (argc==3)
+    {
+      for (count = 1; count < argc; count++)
+		{
+	 		printf("argv[%d] = %s\n", count, argv[count]);
+	 		Window w("Test",argv[1],800,600);
+	 		// Run application, handle events, etc.
+			w.run();
+		}
+    }
+    else if (argc==1)
+    {
+    	Window w("Test","planets.txt",800,600);
+    	// Run application, handle events, etc.
+		w.run();
+    }
+    else 
+    {
+    	cout<<"That is not a valid command line argument."<<endl<<"Enter in the form ./main filename dt"<<endl;
+    }
+	
 	//cleanup(objects);
 	return 0;
 }
