@@ -6,10 +6,11 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <fstream>
+#include <cstdlib>
 #include <SDL/SDL.h>
 #undef main
 #include <SDL_image/SDL_image.h>
-#include <fstream>
 using namespace std;
 
 //this is an abstract class for different types of bodies (planets or charged particles)

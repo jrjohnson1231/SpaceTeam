@@ -26,17 +26,14 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename)
 		cout << "Error initializing SDL:" << endl << SDL_GetError() << endl;
 	}*/
 	image = NULL;
-	SDL_Surface *loadedimage = NULL;
 	image = IMG_Load(imagename.c_str());
 	if (image == NULL)
 	{
-		cout << "ERROR: image load failed. " << SDL_GetError() << endl;
-		return;
+		cerr << "ERROR: image load failed. " << SDL_GetError() << endl;
+		SDL_Quit();
+		exit(1);
 	}
 
-	// Set image to display format
-	//SDL_Surface *temp = SDL_DisplayFormat(loadedimage);
-	//image = loadedimage;
 	//Set black of image as transparent
 	Uint32 colorkey = SDL_MapRGB(image->format, 0,0,0);
 	SDL_SetColorKey(image,SDL_SRCCOLORKEY,colorkey);
@@ -44,13 +41,12 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename)
 	// if failed, print error message
 	if (image == NULL)
 	{
-		cout << "ERROR: image load failed. " << SDL_GetError() << endl;
-		return;
+		cerr << "ERROR: image load failed. " << SDL_GetError() << endl;
+		SDL_Quit();
+		exit(1);
 	}
 	
-	//SDL_FreeSurface(loadedimage);
-	
-	if (DEBUG) cout << "Made " << name << endl;
+	if (DEBUG) cerr << "Made " << name << endl;
 }
 
 // Constructor
@@ -84,12 +80,11 @@ bool Body::display(SDL_Surface *screen)
 	offset.y = (pos.y-COM.y)/yscale + screen->h/2 - image->h/2;
 	if (DEBUG)
 	{
-		cout << "Displaying " << name << endl;
-		cout << "(" << offset.x << "," << offset.y << ")" << endl;
+		cerr << "Displaying " << name << endl;
+		cerr << "(" << offset.x << "," << offset.y << ")" << endl;
 	}
-	//cout << "(" << pos.x << "," << pos.y << ")" << endl;
 	if (SDL_BlitSurface(image, NULL, screen, &offset) != 0) {
-		cout << "Error displaying object:" << endl << SDL_GetError() << endl;
+		cerr << "Error displaying object:" << endl << SDL_GetError() << endl;
 		return false;
 	}
 	return true;
@@ -130,7 +125,6 @@ void Body::calcCOM()
 		averageX = averageX + bodies[i]->pos * bodies[i]->mass;
 	}
 	COM = averageX / totalMass;
-	cout << "COM: " << COM;
 }
 
 void Body::calcScale(SDL_Surface *screen)
