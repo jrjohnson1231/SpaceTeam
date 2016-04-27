@@ -37,11 +37,11 @@ class Charged: public Body
 
 	private:
 		// Helper functions
-		void removePtr();//deletes pointer to body from charges vector
-		static void collide();//decides if two charged particles have collided
+		void removePtr(); // Deletes pointer to body from charges vector
+		static void collide(); // Decides if two charged particles have collided
 
 		// Object variables
-		double charge;
+		double charge; // Charge of object
 
 		// Static variables
 		static vector<reference_wrapper<Charged> > charges; // constains pointer to each object

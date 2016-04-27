@@ -40,19 +40,26 @@ class Window
 		void updateTime(unsigned long long int); // Updates the time the simulation has been running
 		vector<Body *> readFile(string); // Read bodies from file
 		void cleanup(vector<Body *>); // Cleanup bodies
-		
+
 	private:
-		SDL_Surface* screen;
-		SDL_Surface* background;
+		// SDL variables
+		SDL_Surface* screen; // Main screen
+		SDL_Surface* background; // Background image
 		SDL_Event event;
-		int height;
-		int width;
+
+		// Window variables
+		int height; // Height of screen
+		int width; // Width of screen
 		int bpp;
-		vector<Body *> objects;
+
+		// Body vector
+		vector<Body *> objects; // Vector of all objects on screen
+
+		// Simulation variables
 		bool quit;
 		bool pause;
-		unsigned long long int time; // time in seconds
-		unsigned long long int dt;
+		unsigned long long int time; // Time in seconds
+		unsigned long long int dt; // Timestep in seconds
 };
 
 #endif // WINDOW_H

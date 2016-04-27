@@ -34,8 +34,8 @@ class Planet: public Body
 
 	private:
 		// Helper functions
-		void removePtr();//deletes pointer to body from charges vector
-		static void collide();//decides if two charged particles have collided
+		void removePtr(); // Deletes pointer to body from charges vector
+		static void collide(); // Decides if two charged particles have collided
 
 		// Static variables
 		static vector<reference_wrapper<Planet> > planets; // constains pointer to each object
