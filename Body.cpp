@@ -133,8 +133,9 @@ void Body::calcScale(SDL_Surface *screen)
 	double ymax = 0;
 	for (int i = 0; i < bodies.size(); i++)
 	{
-		if (abs(bodies[i]->pos.x - COM.x) > xmax) xmax = bodies[i]->pos.x;
-		if (abs(bodies[i]->pos.y - COM.y) > ymax) ymax = bodies[i]->pos.y;
+		if (abs(bodies[i]->pos.x - COM.x) > xmax) xmax = abs(bodies[i]->pos.x);
+		if (abs(bodies[i]->pos.y - COM.y) > ymax) ymax = abs(bodies[i]->pos.y);
+		cout << xmax << endl;
 	}
 
 	if (xmax >= ymax) {
@@ -146,6 +147,5 @@ void Body::calcScale(SDL_Surface *screen)
 		yscale = ymax / 3 / screen->h;
 	}
 
-	if (xscale == 0) xscale = 1;
-	if (yscale == 0) yscale = 1;
+	if (DEBUG) cout << "xscale: " << xscale << " yscale: " << yscale << endl;
 }
