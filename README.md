@@ -37,8 +37,7 @@ CHANGELOG
 
 TODO
 ----
-- Function to take in user input
-- Keep improving graphics
+- Comments
 
 Meetings
 --------
