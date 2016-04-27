@@ -41,7 +41,7 @@ void Planet::removePtr()
 	}
 	if (DEBUG) 
 	{
-		cout << "Removing " << name << " pointer"<< endl;
+		cerr << "Removing " << name << " pointer"<< endl;
 	}
 }
 
@@ -82,7 +82,7 @@ void Planet::collide()
 				//the margin for collision can be easily changed
 				if (r.getr() <= planets[i].get().rad + planets[j].get().rad) 
 				{
-					if (DEBUG) cout << planets[i].get().name << " and " << planets[j].get().name << " collided " << endl;
+					if (DEBUG) cerr << planets[i].get().name << " and " << planets[j].get().name << " collided " << endl;
 					//delete pointer to the object (free them)
 					planets[i].get().removePtr();
 					planets[j].get().removePtr();
@@ -103,7 +103,7 @@ void Planet::collide()
 //moves the planets a little bit according to B's method
 void Planet::update(double dt)
 {
-	if (DEBUG) {cout << endl << "There are " << planets.size() << " planets" << endl;}
+	if (DEBUG) {cerr << endl << "There are " << planets.size() << " planets" << endl;}
 	// Check for collisions
 	collide();
 	// calculate force for each planet at initial velocity
@@ -123,7 +123,7 @@ void Planet::update(double dt)
 		planets[i].get().calcForce();
 		
 		// display some debugging info
-		if (DEBUG) cout << planets[i].get().name << ":" << endl << planets[i].get().pos << endl << planets[i].get().accel << endl;
+		if (DEBUG) cerr << planets[i].get().name << ":" << endl << planets[i].get().pos << endl << planets[i].get().accel << endl;
 	}
 	// calculate new velocity based one new force
 	for (int i = 0; i < planets.size(); i++)
