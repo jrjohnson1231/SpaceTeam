@@ -8,10 +8,12 @@ Window::Window(std::string windowname,string inputfile, int i_height,int i_width
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 	{
 		cout << "SDL_Init() failed: " << SDL_GetError() << endl;
+		exit(1);
 	}
 	if (TTF_Init() != 0)
 	{
 		cout << "TTF_Init() failed: " << TTF_GetError() << endl;
+		exit(1);
 	}
 
 	// load support for the JPG and PNG image formats
@@ -20,6 +22,7 @@ Window::Window(std::string windowname,string inputfile, int i_height,int i_width
 	if((initted&flags) != flags)
 	{
 		cout<<"IMG_Init: Failed to init required jpg and png support " << IMG_GetError() << endl;
+		exit(1);
 	}
 
 	//Create screen
@@ -32,12 +35,14 @@ Window::Window(std::string windowname,string inputfile, int i_height,int i_width
 	if (loadedimage == NULL)
 	{
 		cout << "ERROR: background image load failed" << SDL_GetError() << endl;
+		exit(1);
 		return;
 	}
 	background = SDL_DisplayFormat(loadedimage);
 	if (background == NULL)
 	{
 		cout << "ERROR: background image conversion failed" << SDL_GetError() << endl;
+		exit(1);
 		return;
 	}
 	SDL_FreeSurface(loadedimage);
@@ -93,7 +98,13 @@ void Window::handle_events()
 	{
 		switch(event.key.keysym.sym)
 		{
-			case SDLK_p : pause = !pause; break;
+			case SDLK_p :
+				if(pause) pause = 0;
+				else pause = 1;
+				break;
+			case SDLK_q :
+				quit = true;
+				break;
 			default: break;
 		}
 	}
@@ -128,6 +139,7 @@ void Window::printText(string message, string fontname, int fontsize, SDL_Color 
 	if (font == NULL)
 	{
 		cout << "TTF_OpenFont() failed: " << TTF_GetError() << endl;
+		exit(1);
 		return;
 	}
 
@@ -135,6 +147,7 @@ void Window::printText(string message, string fontname, int fontsize, SDL_Color 
 	if (text == NULL)
 	{
 		cout << "TTF_RenderText_Solid() failed: " << TTF_GetError() << endl;
+		exit(1);
 		return;
 	}
 
@@ -142,6 +155,7 @@ void Window::printText(string message, string fontname, int fontsize, SDL_Color 
 	if (SDL_BlitSurface(text, NULL, screen, NULL) != 0)
 	{
 		cerr << "SDL_BlitSurface() Failed: " << SDL_GetError() << endl;
+		exit(1);
 		return;
 	}
 	SDL_Flip(screen);
@@ -203,6 +217,7 @@ vector<Body *> Window::readFile(string file)
 		else
 		{
 			cout << "Could not initialize " << name << endl;
+			exit(1);
 		}
 		// Flush trailing \n
 		string dummy;
