@@ -20,13 +20,9 @@ int main ( int argc, char** argv )
 	int count =0;
 	if (argc==3)
     {
-      for (count = 1; count < argc; count++)
-		{
-	 		printf("argv[%d] = %s\n", count, argv[count]);
-	 		Window w("Test",argv[1],800,600,atoi(argv[2]));
-	 		// Run application, handle events, etc.
-			w.run();
-		}
+	 	Window w("Test",argv[1],800,600,atoi(argv[2]));
+	 	// Run application, handle events, etc.
+		w.run();
     }
     else if (argc==1)
     {
