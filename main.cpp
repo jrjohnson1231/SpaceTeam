@@ -20,7 +20,7 @@ int main ( int argc, char** argv )
 	int count =0;
 	if (argc==3)
     {
-	 	Window w("Test",argv[1],800,600,atoi(argv[2]));
+	 	Window w("Test",argv[1],800,600,stoull(argv[2]));
 	 	// Run application, handle events, etc.
 		w.run();
     }
