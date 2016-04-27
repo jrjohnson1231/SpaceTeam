@@ -1,15 +1,8 @@
 #include "Tensor.h"
 
-// Written by Scary (overloaded operator by John
+/* ----- CONSTRUCTORS ----- */
 
-//overloaded << operator
-ostream& operator<<(ostream& stream, const Tensor& t) 
-{
-	stream << "x=" << t.x << "  y=" << t.y << "  z=" << t.z << endl;
-	return stream;
-}
-
-//constructor
+/* Initializes all values */
 Tensor::Tensor(double x_value, double y_value, double z_value)
 {
 	x = x_value;
@@ -17,16 +10,25 @@ Tensor::Tensor(double x_value, double y_value, double z_value)
 	z = z_value;
 }
 
-Tensor::~Tensor()
+
+/* ----- SET FUNCTIONS */
+
+void Tensor::setx(double x_value) 
 {
+	x = x_value;
 }
 
-//setters
-void Tensor::setx(double x_value) { x = x_value;}
-void Tensor::sety(double y_value) { y = y_value;}
-void Tensor::setz(double z_value) { z = z_value;}
+void Tensor::sety(double y_value)
+{
+	y = y_value;
+}
 
-//set the whole tensor at once
+void Tensor::setz(double z_value)
+{
+	z = z_value;
+}
+
+/* Set the whole tensor at once */
 void Tensor::set(double x_value, double y_value, double z_value)
 {
 	x = x_value;
@@ -34,33 +36,44 @@ void Tensor::set(double x_value, double y_value, double z_value)
 	z = z_value;
 }
 
-//reset the tensor
+
+/* ----- GET FUNCTIONS */
+
+double Tensor::getx()
+{
+	return x;
+}
+double Tensor::gety()
+{
+	return y;
+}
+double Tensor::getz()
+{
+	return z;
+}
+
+/* Magnitude of tensor */
+double Tensor::getr()
+{
+	return std::sqrt(pow(x, 2)+pow(y, 2)+pow(z,2));
+}
+
+
+/* ----- MEMBER FUNCTIONS ----- */
+
 void Tensor::clear() 
 {
 	set(0,0,0);
 }
 
-//getters
-double Tensor::getx(){ return x; }
-double Tensor::gety(){ return y; }
-double Tensor::getz(){ return z; }
 
-//get the magnitude of the tensor
-double Tensor::getr(){ return std::sqrt(pow(x, 2)+pow(y, 2)+pow(z,2)); }
+/* ----- OVERLOADED OPERATORS ----- */
 
-//get the angle of the tensot arctan(y/x)
-double Tensor::gettheta()
+ostream& operator<<(ostream& stream, const Tensor& t) 
 {
-		if(x > 0 && y >= 0){return atan((y/ x));}
-		else if(x < 0 && y >= 0){return atan(( y/ x))+ 4*atan(1);}
-		else if(x < 0 && y <= 0){return atan((y/ x))+ 4*atan(1);}
-		else if(x > 0 && y <= 0){return atan((y/ x))+ 8*atan(1);}
-		else if(x == 0 && y >= 0){return 2*atan(1);}
-		else if(x == 0 && y <= 0){return 6*atan(1);}
-		return 0;
+	stream << "x=" << t.x << "  y=" << t.y << "  z=" << t.z << endl;
+	return stream;
 }
-
-//overloaded operators
 
 Tensor Tensor::operator+(Tensor t2) 
 {

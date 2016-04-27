@@ -1,38 +1,34 @@
 #ifndef TENSOR_H
 #define TENSOR_H
 
-// Written by Scary.
-
-#include <cmath>
-#include <iostream>
+#include <cmath> // sqrt, pow
+#include <iostream> // cout
 using namespace std;
 
 class Tensor
 {
 	friend class Body;
-	friend ostream& operator<<(ostream&, const Tensor&);
+	friend ostream& operator<<(ostream&, const Tensor&); // Prints vector in nice format
 
 	public:
-		// Constructor - Create/set Tensor values
-		Tensor(double x_value = 0, double y_value = 0, double z_value = 0);
-		// Destructor
-		~Tensor();
-		//Set functions
+		// ConstructorS
+		Tensor(double x_value=0, double y_value=0, double z_value=0);
+
+		// Set functions
 		void setx(double);
 		void sety(double);
 		void setz(double);
-		// This one sets both/all of the data simputaneously
-		void set(double,double,double = 0);
-		// This resets all the data to 0
-		void clear();
-		//Get functions
+		void set(double,double,double=0); // Sets everything at once
+
+		// Get functions
 		double getx();
 		double gety();
 		double getz();
-		// Get the length of the Tensor
-		double getr();
-		// Get the angle of the Tensor
-		double gettheta();
+		double getr(); // Gets magnitude of tensor
+
+		// Member functions
+		void clear(); // Resets all values to 0
+
 		// Overloaded operators
 		Tensor operator+(Tensor);
 		Tensor operator-(Tensor);
@@ -40,9 +36,10 @@ class Tensor
 		Tensor operator/(double);
 
 	private:
+		// Object variables
 		double x;
 		double y;
 		double z;
 };
 
-#endif // TENSOR_H
+#endif
