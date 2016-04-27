@@ -1,6 +1,10 @@
 ReadMe.md
 =========
 
+Description of Project
+----------------------
+This project is a central force motion simulator. It uses the Verlet Integration method to approximate the motion and is highly accurate for reasonable timesteps. The program uses the SDL Framework to provide a graphical display of the simulation, and allows the user to set all initial conditions and other variables by providing an appropriately formatted textfile. By providing images and choosing appropriate initial conditions, a number of interesting and aesthetically pleasing simulations can be represented with this project!
+
 CHANGELOG
 ---------
 -**2/16/16 Scary:** start and stop.  Hey guys!  I'm done with the start and stop commands! I commented them up for you.  Let me know what you think!
@@ -25,6 +29,8 @@ CHANGELOG
 
 -**4/24/16 Allie:** Started creating a function for getting user input through a file (only in planets class right now). Will stand in until we have a point and click capability. Currently can't compile because of the SDL header issue on my Mac. Will fix that soon. 
 
+-**4/25/16 Team:** Finalized project with full support for any planetary input file as long as images are provided. Improved error catching and functioning graphics.
+
 TODO
 ----
 - Function to take in user input
@@ -40,4 +46,4 @@ Meetings
 - **3/20/16 8:30-10:00**: John and Allie met and worked on Planets class. We got it working with Tensor and with 2 bodies with no initial velocity (basically just 2 bodies flying towards each other). Our To-Do list is above.
 - **3/31/16 11:00-11:30**: Group meeting. We discussed our next steps and the changes that we've made since our last meeting. John and Allie will work on adapting the planets class to work with initial velocities. Scary will work on getting SDL to work with the tensor class.
 - **4/23/16 1:30-4:30**: Group meeting to work on the project. Spent a few hours just working together on fixing all the problems with the code.
-- **4/25/16 9:00-11:59**: Group meeting to work on the project. We spent the time working together to fix bugs in the code and create general improvements. 
+- **4/25/16 9:00-11:59**: Group meeting to work on the project. We spent the time working together to fix bugs in the code and create general improvements.
