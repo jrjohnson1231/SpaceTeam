@@ -3,7 +3,11 @@ ReadMe.md
 
 Description of Project
 ----------------------
-This project is a central force motion simulator. It uses the Verlet Integration method to approximate the motion and is highly accurate for reasonable timesteps. The program uses the SDL Framework to provide a graphical display of the simulation, and allows the user to set all initial conditions and other variables by providing an appropriately formatted textfile. By providing images and choosing appropriate initial conditions, a number of interesting and aesthetically pleasing simulations can be represented with this project!
+This project is a central force motion simulator. It uses the Verlet Integration method to approximate the motion and is highly accurate for reasonable timesteps. The program uses the SDL Framework to provide a graphical display of the simulation, and allows the user to set all initial conditions and other variables by providing an appropriately formatted textfile.
+
+For the project we chose to focus on the gravitational force and planetary motion, but the programs are easily extendable to create objects with different force laws. Though it was not implemented, we created functionality for charged particles and the Coulomb force.
+
+Overall, this is a very simple to use program. By providing images and choosing appropriate initial conditions, a number of interesting and aesthetically pleasing simulations can be represented with this project!
 
 CHANGELOG
 ---------
