@@ -5,6 +5,8 @@
 // static vector of all bodies and static center of mass
 vector<Body *> Body::bodies;
 Tensor Body::COM;
+double Body::xscale = 0;
+double Body::yscale = 0;
 
 //constructor
 Body::Body(string name, double m, double x, double y, double z) : name(name)
@@ -78,12 +80,13 @@ bool Body::display(SDL_Surface *screen)
 {
 	//Blit Image
 	SDL_Rect offset;
-	offset.x = pos.x/20e5 + screen->w/2 - 5;
-	offset.y = pos.y/20e5 + screen->h/2 - 5;
-	offset.w = 10;
-	offset.h = 10;
-	cout << "Displaying " << name << endl;
-	cout << "(" << offset.x << "," << offset.y << ")" << endl;
+	offset.x = (pos.x-COM.x)/xscale + screen->w/2 - image->w/2;
+	offset.y = (pos.y-COM.y)/yscale + screen->h/2 - image->h/2;
+	if (DEBUG)
+	{
+		cout << "Displaying " << name << endl;
+		cout << "(" << offset.x << "," << offset.y << ")" << endl;
+	}
 	//cout << "(" << pos.x << "," << pos.y << ")" << endl;
 	if (SDL_BlitSurface(image, NULL, screen, &offset) != 0) {
 		cout << "Error displaying object:" << endl << SDL_GetError() << endl;
@@ -128,4 +131,27 @@ void Body::calcCOM()
 	}
 	COM = averageX / totalMass;
 	cout << "COM: " << COM;
+}
+
+void Body::calcScale(SDL_Surface *screen)
+{
+	double xmax = 0;
+	double ymax = 0;
+	for (int i = 0; i < bodies.size(); i++)
+	{
+		if (abs(bodies[i]->pos.x - COM.x) > xmax) xmax = bodies[i]->pos.x;
+		if (abs(bodies[i]->pos.y - COM.y) > ymax) ymax = bodies[i]->pos.y;
+	}
+
+	if (xmax >= ymax) {
+		xscale = xmax * 3 / screen->w;
+		yscale = xmax * 3 / screen->h;
+	}
+	else {
+		xscale = ymax / 3 / screen->w;
+		yscale = ymax / 3 / screen->h;
+	}
+
+	if (xscale == 0) xscale = 1;
+	if (yscale == 0) yscale = 1;
 }

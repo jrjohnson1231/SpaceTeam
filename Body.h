@@ -27,10 +27,11 @@ class Body
 		Tensor getPos(); // return position of body
 		Tensor getVel(); // return velocity of each body
 		bool display(SDL_Surface *); // given parameters of window, display image
-		void xRange(double &, double &);
-		void yRange(double &, double &);
+		static void xRange(double &, double &);
+		static void yRange(double &, double &);
 		static void calcCOM(); // calculates center of mass of all bodies
-		static vector<Body *> bodies; // constains pointer to each object
+		static void calcScale(SDL_Surface *);
+		static vector<Body *> bodies; // contains pointer to each object
 	
 	protected:
 		double mass;
@@ -42,7 +43,9 @@ class Body
 		Tensor totalForce;//force vector
 		Tensor pos;//position vector
 		Tensor vel;//velocity vector
-		static Tensor COM; // center of mass vector
+		static Tensor COM; // initial center of mass of the system
+		static double xscale;
+		static double yscale;
 };
 
 #endif

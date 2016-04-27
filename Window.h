@@ -49,7 +49,7 @@ class Window
 		bool quit;
 		bool pause;
 		double time; // time in seconds
-		int dt = 1800;
+		int dt;
 };
 
 #endif // WINDOW_H

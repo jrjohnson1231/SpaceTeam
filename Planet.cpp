@@ -80,7 +80,7 @@ void Planet::collide()
 			{
 				Tensor r = planets[i].get().pos - planets[j].get().pos;
 				//the margin for collision can be easily changed
-				if (r.getr() <= 20) 
+				if (r.getr() <= planets[i].get().rad + planets[j].get().rad) 
 				{
 					if (DEBUG) cout << planets[i].get().name << " and " << planets[j].get().name << " collided " << endl;
 					//delete pointer to the object (free them)
@@ -130,8 +130,5 @@ void Planet::update(double dt)
 	{
 		planets[i].get().vel = planets[i].get().vel + planets[i].get().accel*dt/2;
 	}
-
-	// Recalculate center of mass
-	Body::calcCOM();
 }
 

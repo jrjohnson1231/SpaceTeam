@@ -45,9 +45,13 @@ Window::Window(std::string windowname,string inputfile, int i_height,int i_width
 
 	// Inititalize time
 	time = 0;
+	dt = 8.64e4;
 
 	// Read input file
 	objects = readFile(inputfile);
+
+	// Calculate scale for bodies
+	Body::calcScale(screen);
 }
 
 Window::~Window()
