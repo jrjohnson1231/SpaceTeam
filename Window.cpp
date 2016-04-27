@@ -7,12 +7,12 @@ Window::Window(std::string windowname,string inputfile, int i_height,int i_width
 	//Start SDL, TTF
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 	{
-		cout << "SDL_Init() failed: " << SDL_GetError() << endl;
+		cerr << "SDL_Init() failed: " << SDL_GetError() << endl;
 		exit(1);
 	}
 	if (TTF_Init() != 0)
 	{
-		cout << "TTF_Init() failed: " << TTF_GetError() << endl;
+		cerr << "TTF_Init() failed: " << TTF_GetError() << endl;
 		exit(1);
 	}
 
@@ -21,7 +21,7 @@ Window::Window(std::string windowname,string inputfile, int i_height,int i_width
 	int initted=IMG_Init(flags);
 	if((initted&flags) != flags)
 	{
-		cout<<"IMG_Init: Failed to init required jpg and png support " << IMG_GetError() << endl;
+		cerr<<"IMG_Init: Failed to init required jpg and png support " << IMG_GetError() << endl;
 		exit(1);
 	}
 
@@ -34,14 +34,14 @@ Window::Window(std::string windowname,string inputfile, int i_height,int i_width
 	SDL_Surface* loadedimage = IMG_Load("images/Space.jpg");
 	if (loadedimage == NULL)
 	{
-		cout << "ERROR: background image load failed" << SDL_GetError() << endl;
+		cerr << "ERROR: background image load failed" << SDL_GetError() << endl;
 		exit(1);
 		return;
 	}
 	background = SDL_DisplayFormat(loadedimage);
 	if (background == NULL)
 	{
-		cout << "ERROR: background image conversion failed" << SDL_GetError() << endl;
+		cerr << "ERROR: background image conversion failed" << SDL_GetError() << endl;
 		exit(1);
 		return;
 	}
@@ -133,12 +133,12 @@ bool Window::reset()
 // Display message
 void Window::printText(string message, string fontname, int fontsize, SDL_Color color)
 {
-	cout << "Displaying " << message << endl;
+	cerr << "Displaying " << message << endl;
 	// Render font and text
 	TTF_Font *font = TTF_OpenFont(fontname.c_str(), fontsize);
 	if (font == NULL)
 	{
-		cout << "TTF_OpenFont() failed: " << TTF_GetError() << endl;
+		cerr << "TTF_OpenFont() failed: " << TTF_GetError() << endl;
 		exit(1);
 		return;
 	}
@@ -146,7 +146,7 @@ void Window::printText(string message, string fontname, int fontsize, SDL_Color 
 	SDL_Surface *text = TTF_RenderText_Solid(font, message.c_str(), color);
 	if (text == NULL)
 	{
-		cout << "TTF_RenderText_Solid() failed: " << TTF_GetError() << endl;
+		cerr << "TTF_RenderText_Solid() failed: " << TTF_GetError() << endl;
 		exit(1);
 		return;
 	}
@@ -192,7 +192,7 @@ vector<Body *> Window::readFile(string file)
 	ifstream fin(file.c_str());
 	if(!fin)
 	{
-		cout<<"Could not open file. Try again"<<endl;
+		cerr <<"Could not open file. Try again"<<endl;
 		return objects;
 	}
 	while (!fin.eof())//assumes the file is all correct
@@ -216,7 +216,7 @@ vector<Body *> Window::readFile(string file)
 		}
 		else
 		{
-			cout << "Could not initialize " << name << endl;
+			cerr << "Could not initialize " << name << endl;
 			exit(1);
 		}
 		// Flush trailing \n

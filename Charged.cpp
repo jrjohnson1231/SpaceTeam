@@ -34,7 +34,7 @@ void Charged::removePtr() {
 		}
 	}
 	if (DEBUG) {
-		cout << "Removing " << name << " pointer" << endl;
+		cerr << "Removing " << name << " pointer" << endl;
 	}
 }
 
@@ -45,7 +45,7 @@ void Charged::removePtr() {
 	fstream fin(file.c_str());
 	if(!fin)
 	{
-		cout<<"Could not open file. Quit and try again"<<endl;
+		cerr<<"Could not open file. Quit and try again"<<endl;
 		return;
 	}
 	while (!fin.eof())//assumes the file is all correct
@@ -92,7 +92,7 @@ void Charged::collide()
 			else {
 				Tensor r = charges[i].get().pos - charges[j].get().pos;
 				if (r.getr() <= 20) {
-					if (DEBUG) cout << charges[i].get().name << " and " << charges[j].get().name << " collided " << endl;
+					if (DEBUG) cerr << charges[i].get().name << " and " << charges[j].get().name << " collided " << endl;
 					charges[i].get().removePtr();
 					charges[j].get().removePtr();
 					charges.erase(charges.begin() + i);
@@ -121,7 +121,7 @@ void Charged::update(double dt)
 	{
 		charges[i].get().calcForce();
 
-		if (DEBUG) cout << charges[i].get().name << ":" << endl << charges[i].get().pos << endl << charges[i].get().accel << endl;
+		if (DEBUG) cerr << charges[i].get().name << ":" << endl << charges[i].get().pos << endl << charges[i].get().accel << endl;
 	}
 	for (int i = 0; i < charges.size(); i++)
 	{

@@ -23,7 +23,7 @@ int main ( int argc, char** argv )
       for (count = 1; count < argc; count++)
 		{
 	 		printf("argv[%d] = %s\n", count, argv[count]);
-	 		Window w("Test",argv[1],800,600,atoi(argv[2]));
+	 		Window w("Test",argv[1],800,600,stoull(argv[2]));
 	 		// Run application, handle events, etc.
 			w.run();
 		}

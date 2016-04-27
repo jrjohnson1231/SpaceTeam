@@ -50,7 +50,7 @@ class Window
 		bool quit;
 		bool pause;
 		double time; // time in seconds
-		int dt;
+		unsigned long long int dt;
 };
 
 #endif // WINDOW_H

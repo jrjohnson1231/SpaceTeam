@@ -1,7 +1,7 @@
 CC = g++
 CCFLAGS = -F/Library/Frameworks -std=c++11
 LD = g++
-LDFLAGS = -g -Wall -framework SDL -framework SDL_image -framework SDL_ttf -F/Library/Frameworks
+LDFLAGS = -Wall -framework SDL -framework SDL_image -framework SDL_ttf -F/Library/Frameworks
 OBJECTS = main.o Planet.o Charged.o Body.o Tensor.o Timer.o Window.o
 EXECUTABLE = main
 
