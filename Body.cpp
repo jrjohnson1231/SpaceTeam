@@ -125,6 +125,7 @@ void Body::calcCOM()
 		averageX = averageX + bodies[i]->pos * bodies[i]->mass;
 	}
 	COM = averageX / totalMass;
+	if (DEBUG) cout << "Center of mass: " << COM;
 }
 
 void Body::calcScale(SDL_Surface *screen)
@@ -133,18 +134,18 @@ void Body::calcScale(SDL_Surface *screen)
 	double ymax = 0;
 	for (int i = 0; i < bodies.size(); i++)
 	{
-		if (abs(bodies[i]->pos.x - COM.x) > xmax) xmax = abs(bodies[i]->pos.x);
-		if (abs(bodies[i]->pos.y - COM.y) > ymax) ymax = abs(bodies[i]->pos.y);
-		cout << xmax << endl;
+		if (abs(bodies[i]->pos.x - COM.x) > xmax) xmax = abs(bodies[i]->pos.x - COM.x);
+		if (abs(bodies[i]->pos.y - COM.y) > ymax) ymax = abs(bodies[i]->pos.y - COM.y);
 	}
+	cout << xmax << endl << ymax << endl;
 
 	if (xmax >= ymax) {
 		xscale = xmax * 3 / screen->w;
 		yscale = xmax * 3 / screen->h;
 	}
 	else {
-		xscale = ymax / 3 / screen->w;
-		yscale = ymax / 3 / screen->h;
+		xscale = ymax * 3 / screen->w;
+		yscale = ymax * 3 / screen->h;
 	}
 
 	if (DEBUG) cout << "xscale: " << xscale << " yscale: " << yscale << endl;
