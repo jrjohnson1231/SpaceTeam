@@ -4,7 +4,6 @@
 #include "Tensor.h"
 #include "Body.h"
 #include <iostream>
-#include <fstream>
 #include <vector>
 #include <string>
 #include <functional>
@@ -17,7 +16,6 @@ class Planet: public Body
 {
 	public:
 		Planet(string name, string imagename, double m=1000, double r=1000, double x=0, double y=0, double z=0, double vx=0, double vy=0, double vz=0);
-		Planet(string name, double m=1000, double x=0, double y=0, double z=0, double vx=0, double vy=0, double vz=0);
 		void removePtr();
 		void calcForce();//calculate the force
 		static void collide();

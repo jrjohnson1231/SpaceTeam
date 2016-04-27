@@ -29,6 +29,7 @@ Window::Window(std::string windowname,string inputfile, int i_height,int i_width
 	screen = SDL_SetVideoMode(height,width,bpp,SDL_SWSURFACE | SDL_RESIZABLE);
 	SDL_WM_SetCaption(windowname.c_str(), NULL);
 	quit = 0;
+	pause = 0;
 
 	//Load background image
 	SDL_Surface* loadedimage = IMG_Load("images/Space.jpg");
@@ -96,16 +97,20 @@ void Window::handle_events()
 	}
 	if (event.type == SDL_KEYDOWN)
 	{
+		cout << event.key.keysym.sym;
 		switch(event.key.keysym.sym)
 		{
-			case SDLK_p :
-				if(pause) pause = 0;
-				else pause = 1;
+			case SDLK_p:
+				pause = 1;
 				break;
-			case SDLK_q :
+			case SDLK_s:
+				pause = 0;
+				break;
+			case SDLK_q:
 				quit = true;
 				break;
-			default: break;
+			default:
+				break;
 		}
 	}
 }
@@ -209,7 +214,11 @@ vector<Body *> Window::readFile(string file)
 		getline(fin,vx,',');
 		getline(fin,vy,',');
 		getline(fin,vz,',');
-		Body *newP = new Planet(name,imagename,atof(m.c_str()),atof(r.c_str()),atof(x.c_str()),atof(y.c_str()),atof(z.c_str()),atof(vx.c_str()),atof(vy.c_str()),atof(vz.c_str()));
+
+		Body *newP;
+
+		newP = new Planet(name,imagename,atof(m.c_str()),atof(r.c_str()),atof(x.c_str()),atof(y.c_str()),atof(z.c_str()),atof(vx.c_str()),atof(vy.c_str()),atof(vz.c_str()));
+
 		if (newP != NULL)
 		{
 			objects.push_back(newP);
@@ -219,9 +228,8 @@ vector<Body *> Window::readFile(string file)
 			cerr << "Could not initialize " << name << endl;
 			exit(1);
 		}
-		// Flush trailing \n
-		string dummy;
-		getline(fin, dummy);
+		// read \n that follows
+		getline(fin, m); // m is dummy variable
 	}
 	return objects;
 }

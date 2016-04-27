@@ -1,2 +1,2 @@
-Earth,images/Earth.png,5.97e24,6.37e6,149.6e9,0,0,0,30000,0,
+Earth,images/Earth.png,5.97e24,6.37e6,149.6e9,0,0,0,30000,0,1,
 Moon,images/Moon.png,7.33e22,1.74e6,149.6e9,3.84e8,0,1022,30000,0

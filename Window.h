@@ -6,6 +6,7 @@
 #include <SDL_ttf/SDL_ttf.h>
 #include "Tensor.h"
 #include "Planet.h"
+#include "Charged.h"
 #include <string>
 #include <sstream>
 #include <vector>
