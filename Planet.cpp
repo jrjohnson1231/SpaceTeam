@@ -22,13 +22,20 @@ Planet::Planet(string name, string imagename, double m, double r, double x, doub
 
 	// Recalculate center of mass
 	Body::calcCOM();
+
+	// Debugging message	
+	if (DEBUG) cerr << "Made " << name << " at " << pos << endl;
 }
+
+
+/* ----- DESTRUCTORS ----- */
+Planet::~Planet() {}
 
 
 /* ----- MEMBER FUNCTIONS ----- */
 
 /* Calculates force on an object using Coulomb Force
-/* F = G*m1*m2/r^2 */
+ * F = G*m1*m2/r^2 */
 void Planet::calcForce()
 {
 	double G=6.67e-11; // Gravitational constant
@@ -55,7 +62,7 @@ void Planet::calcForce()
 /* ----- STATIC FUNCTIONS ----- */
 
 /* Determines if two bodies have collided
-/* Destroys planets if they collide */
+ * Destroys planets if they collide */
 void Planet::collide()
 {
 	if (planets.size()==1) return; // No collisions if there is one body
@@ -94,7 +101,7 @@ void Planet::collide()
 }
 
 /* Updates all the bodies based on Verlet Integration
-/* Verlet Integration uses velocity halfway through dt interval for better approximation */
+ * Verlet Integration uses velocity halfway through dt interval for better approximation */
 void Planet::update(double dt)
 {
 	// Debugging message
@@ -136,7 +143,7 @@ void Planet::update(double dt)
 /* ----- HELPER FUNCTIONS ----- */
 
 /* Removes pointer when body vector when planets collide
-/* Ensures they are removed from both planets and bodies vectors */
+ * Ensures they are removed from both planets and bodies vectors */
 void Planet::removePtr()
 {
 	// find itself in the body vector and removes it

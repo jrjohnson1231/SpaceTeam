@@ -52,7 +52,6 @@ int main ( int argc, char** argv )
     	cerr << "That is not a valid command line argument!" << endl;
 		usage(argv[0], -1);
     }
-	cout << filename << dt;
 
 	// Make window and execute simulation
 	Window w(filename, filename, 800, 600, dt);

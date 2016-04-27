@@ -2,7 +2,7 @@
 
 /* ----- STATIC MEMBERS ----- */
 
-// vector with references to each object
+// Vector with references to each object
 vector<reference_wrapper<Charged> > Charged::charges;
 
 
@@ -24,7 +24,15 @@ Charged::Charged(string name, string imagename, double m, double q, double r, do
 
 	// Recalculate center of mass
 	Body::calcCOM();
+
+	// Debugging message	
+	if (DEBUG) cerr << "Made " << name << " at " << pos << endl;
 }
+
+
+/* ----- DESTRUCTORS ----- */
+Charged::~Charged() {}
+
 
 /* ----- GET FUNCTIONS ----- */
 
@@ -37,7 +45,7 @@ double Charged::getCharge()
 /* ----- MEMBER FUNCTIONS ----- */
 
 /* Calculates force on an object using Coulomb Force
-/* F = k*q1*q2/r^2 */
+ * F = k*q1*q2/r^2 */
 void Charged::calcForce()
 {
 	double k= 8.99e9; // Coulomb constant
@@ -64,7 +72,7 @@ void Charged::calcForce()
 /* ----- STATIC FUNCTIONS ----- */
 
 /* Determines if two bodies have collided
-/* Destroys planets if they collide */
+ * Destroys planets if they collide */
 void Charged::collide()
 {
 	if (charges.size()==1) return; // No collisions if there is one body
@@ -103,7 +111,7 @@ void Charged::collide()
 }
 
 /* Updates all the bodies based on Verlet Integration
-/* Verlet Integration uses velocity halfway through dt interval for better approximation */
+ * Verlet Integration uses velocity halfway through dt interval for better approximation */
 void Charged::update(double dt)
 {
 	// Debugging message
@@ -145,7 +153,7 @@ void Charged::update(double dt)
 /* ----- HELPER FUNCTIONS ----- */
 
 /* Removes pointer when body vector when charges collide
-/* Ensures they are removed from both charges and bodies vectors */
+ * Ensures they are removed from both charges and bodies vectors */
 void Charged::removePtr()
 {
 	// find itself in the body vector and removes it

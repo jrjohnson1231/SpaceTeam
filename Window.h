@@ -5,45 +5,42 @@
 #define DEBUG 0
 #endif
 
-#include <SDL/SDL.h>
-#include <SDL_image/SDL_image.h>
-#include <SDL_ttf/SDL_ttf.h>
-#include "Tensor.h"
-#include "Planet.h"
-#include "Charged.h"
-#include <string>
-#include <sstream>
-#include <vector>
-#include <iostream>
-#include <iomanip>
-#include <cstdlib>
+#include "Tensor.h" // math vector class
+#include "Planet.h" // planetary body class
+#include "Charged.h" // charged body class
+#include <string> // string
+#include <sstream> // string streams
+#include <vector> // vector
+#include <iostream> // cerr, cout
+#include <iomanip> // setw
+#include <cstdlib> // exit
+#include <SDL/SDL.h> // graphics libraries
+#include <SDL_image/SDL_image.h> // graphics image libraries
+#include <SDL_ttf/SDL_ttf.h> // graphics text libraries
 using namespace std;
+
+/* This class provides a base for making an SDL Window to display our simulation
+ * It includes functions to read the file, create/destroy objects, and run the actual simulation */
 
 class Window
 {
 	public:
+		// Constructors
 		Window(std::string windowname, string infile, int i_height=640, int i_width=480, int dt=1, int i_bpp=32);
+
+		// Destructors
 		~Window();
 
-		// Updates and displays planets and handles events continuously
-		void run();
-
-		// Event handling function
-		void handle_events();
-
-		// Display functions
-		bool display();
-		bool reset();
-		void printText(string, string, int, SDL_Color);
-
-		// Update time passed
-		void updateTime(double);
-
-		//Read in body information
-		vector<Body *> readFile(string);
-
-		// Cleanup body information
-		void cleanup(vector<Body *>);
+		// Member Functions
+		void run(); // Updates and displays planets and handles events continuously
+		void handle_events(); // Handles all SDL events
+		bool display(); // Displays everything on screen
+		bool reset(); // Resets screen between displays
+		void printText(string, string, int, SDL_Color); // Prints text to screen
+		void updateTime(unsigned long long int); // Updates the time the simulation has been running
+		vector<Body *> readFile(string); // Read bodies from file
+		void cleanup(vector<Body *>); // Cleanup bodies
+		
 	private:
 		SDL_Surface* screen;
 		SDL_Surface* background;
@@ -54,7 +51,7 @@ class Window
 		vector<Body *> objects;
 		bool quit;
 		bool pause;
-		double time; // time in seconds
+		unsigned long long int time; // time in seconds
 		unsigned long long int dt;
 };
 

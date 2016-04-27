@@ -16,7 +16,7 @@ double Body::yscale = 0;
 /* ----- CONSTRUCTORS ----- */
 
 /* Used to initialize name of planet and to initialize SDL image
-/* Terminates program if image does not load to avoid segmentation fault */
+ * Terminates program if image does not load to avoid segmentation fault */
 Body::Body(string name, string imagename) : name(name), imagename(imagename)
 {
 	// Attempt to load image
@@ -32,10 +32,11 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename)
 	// Set black of image as transparent
 	Uint32 colorkey = SDL_MapRGB(image->format, 0, 0, 0);
 	SDL_SetColorKey(image, SDL_SRCCOLORKEY, colorkey);
-
-	// Debugging message	
-	if (DEBUG) cerr << "Made " << name << endl;
 }
+
+
+/* ----- DESTRUCTORS ----- */
+Body::~Body() {}
 
 
 /* ----- GET FUNCTIONS ----- */
@@ -59,8 +60,8 @@ Tensor Body::getVel()
 /* ----- MEMBER FUNCTIONS ----- */
 
 /* Blits picture of planet onto screen
-/* Takes SDL_Surface* to print images two as parameter
-/* Returns false if there is an error displaying it, true otherwise */
+ * Takes SDL_Surface* to print images two as parameter
+ * Returns false if there is an error displaying it, true otherwise */
 bool Body::display(SDL_Surface *screen)
 {
 	// Calculate image coordinates
@@ -108,7 +109,7 @@ void Body::calcCOM()
 }
 
 /* Calculate the scale to print the bodies at
-/* Takes SDL_Surface* bodies will be printed on as a parameter */
+ * Takes SDL_Surface* bodies will be printed on as a parameter */
 void Body::calcScale(SDL_Surface *screen)
 {
 	// Find furthest distance from center of mass in each direction

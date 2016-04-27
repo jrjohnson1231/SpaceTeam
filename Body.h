@@ -18,8 +18,8 @@
 using namespace std;
 
 /* This is an abstract class for different types of bodies.
-/* When given an SDL_Surface its derived object will display itself
-/* Performs calculations to get center of mass and scaling based on screen and body sizes */
+ * When given an SDL_Surface its derived object will display itself
+ * Performs calculations to get center of mass and scaling based on screen and body sizes */
 
 class Body
 {
@@ -28,6 +28,9 @@ class Body
 	public:
 		// Constructors
 		Body(string name, string imagename);
+
+		// Destructors
+		virtual ~Body();
 
 		// Get Functions
 		double getMass();

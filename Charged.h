@@ -1,6 +1,10 @@
 #ifndef CHARGEDPARTICLE_H
 #define CHARGEDPARTICLE_H
 
+#ifndef DEBUG
+#define DEBUG 0
+#endif
+
 #include "Tensor.h" // math vector class
 #include "Body.h" // parent class
 #include <iostream> // cout, cerr
@@ -11,13 +15,16 @@
 using namespace std;
 
 /* This is a derived Body class for charged particles
-/* Uses the Coulomb Law between bodies */
+ * Uses the Coulomb Law between bodies */
 
 class Charged: public Body
 {
 	public:
 		// Constructors
 		Charged(string name, string imagename, double m=9.1e-31, double q=1.6e-19, double r=0, double x=0, double y=0, double z=0, double vx=0, double vy=0, double vz=0);
+
+		// Destructors
+		~Charged();
 
 		// Get functions
 		double getCharge();

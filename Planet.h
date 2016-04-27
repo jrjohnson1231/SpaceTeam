@@ -1,6 +1,10 @@
 #ifndef PLANET_H
 #define PLANET_H
 
+#ifndef DEBUG
+#define DEBUG 0
+#endif
+
 #include "Tensor.h" // math vector class
 #include "Body.h" // parent class
 #include <iostream> // cout, cerr
@@ -11,7 +15,7 @@
 using namespace std;
 
 /* This is a derived Body class for planets
-/* Uses the Newton's Law of Gravitation between bodies */
+ * Uses the Newton's Law of Gravitation between bodies */
 
 class Planet: public Body
 {
@@ -19,6 +23,9 @@ class Planet: public Body
 		// Constructors
 		Planet(string name, string imagename, double m=9.1e-31, double r=0, double x=0, double y=0, double z=0, double vx=0, double vy=0, double vz=0);
 		
+		// Destructors
+		~Planet();
+
 		// Member functions
 		void calcForce(); // Calculate the force for a body
 		
