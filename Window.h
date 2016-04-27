@@ -16,7 +16,7 @@ using namespace std;
 class Window
 {
 	public:
-		Window(std::string windowname, string infile, int i_height=640, int i_width=480, int i_bpp=32);
+		Window(std::string windowname, string infile, int i_height=640, int i_width=480, int dt=1, int i_bpp=32);
 		~Window();
 
 		// Updates and displays planets and handles events continuously

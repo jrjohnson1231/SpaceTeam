@@ -10,6 +10,9 @@ all: $(EXECUTABLE)
 $(EXECUTABLE): $(OBJECTS)
 	$(LD) -o $(EXECUTABLE) $(OBJECTS) $(LDFLAGS)
 
+$(EXECUTABLE).o: $(EXECUTABLE).cpp
+	$(CC) $(CCFLAGS) -o $@ -c $<
+
 %.o: %.cpp %.h
 	$(CC) $(CCFLAGS) -o $@ -c $<
 

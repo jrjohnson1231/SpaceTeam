@@ -1,8 +1,8 @@
 #include "Window.h"
 
 
-Window::Window(std::string windowname,string inputfile, int i_height,int i_width,int i_bpp)
-			: height(i_height),width(i_width),bpp(i_bpp)
+Window::Window(std::string windowname,string inputfile, int i_height,int i_width,int dt, int i_bpp)
+			: height(i_height),width(i_width),bpp(i_bpp),dt(dt)
 {
 	//Start SDL, TTF
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
@@ -45,7 +45,6 @@ Window::Window(std::string windowname,string inputfile, int i_height,int i_width
 
 	// Inititalize time
 	time = 0;
-	dt = 8.64e4;
 
 	// Read input file
 	objects = readFile(inputfile);
