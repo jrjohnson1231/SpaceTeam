@@ -38,7 +38,7 @@ class Body
 		bool display(SDL_Surface *); // Displays body onto SDL_Surface *
 
 		// Pure Virtual Functions
-		virtual void calcForce()=0; // Calculate total force on an object
+		virtual void calcForce() = 0; // Calculate total force on an object
 
 		// Static Functions
 		static void calcCOM(); // Calculates center of mass of all bodies
@@ -48,15 +48,22 @@ class Body
 		static vector<Body *> bodies; // Contains pointer to each object
 	
 	protected:
+		// Object variables
 		double mass; // Mass of object
 		double rad; // Radius of object
 		string name; // Name to identify object
 		string imagename; // Relative path to the image for the object
+
+		// SDL variables
 		SDL_Surface *image; // SDL_Surface of the image
+
+		// Object vectors
 		Tensor accel; // Acceleration vector
 		Tensor totalForce; // Force vector
 		Tensor pos; // Position vector
 		Tensor vel; // Velocity vector
+
+		// Static variables
 		static Tensor COM; // Initial center of mass of the system
 		static double xscale; // Scale to display planets in x-direction
 		static double yscale; // Scale to display planets in y-direction

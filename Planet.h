@@ -1,27 +1,36 @@
 #ifndef PLANET_H
 #define PLANET_H
 
-#include "Tensor.h"
-#include "Body.h"
-#include <iostream>
-#include <vector>
-#include <string>
-#include <functional>
-#include <cmath>
+#include "Tensor.h" // math vector class
+#include "Body.h" // parent class
+#include <iostream> // cout, cerr
+#include <vector> // vector
+#include <string> // string
+#include <functional> // reference_wrapper
+#include <cmath> // sqrt, exp
 using namespace std;
 
-//class for planets that act under Newton's Law of Gravitation
+/* This is a derived Body class for planets
+/* Uses the Newton's Law of Gravitation between bodies */
 
 class Planet: public Body
 {
 	public:
-		Planet(string name, string imagename, double m=1000, double r=1000, double x=0, double y=0, double z=0, double vx=0, double vy=0, double vz=0);
-		void removePtr();
-		void calcForce();//calculate the force
-		static void collide();
-		static void update(double);
+		// Constructors
+		Planet(string name, string imagename, double m=9.1e-31, double r=0, double x=0, double y=0, double z=0, double vx=0, double vy=0, double vz=0);
+		
+		// Member functions
+		void calcForce(); // Calculate the force for a body
+		
+		// Static functions
+		static void update(double); // Update new pos, vel, accell for all 
 
 	private:
+		// Helper functions
+		void removePtr();//deletes pointer to body from charges vector
+		static void collide();//decides if two charged particles have collided
+
+		// Static variables
 		static vector<reference_wrapper<Planet> > planets; // constains pointer to each object
 };
 

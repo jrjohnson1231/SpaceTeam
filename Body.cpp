@@ -30,8 +30,8 @@ Body::Body(string name, string imagename) : name(name), imagename(imagename)
 	}
 
 	// Set black of image as transparent
-	Uint32 colorkey = SDL_MapRGB(image->format, 0,0,0);
-	SDL_SetColorKey(image,SDL_SRCCOLORKEY,colorkey);
+	Uint32 colorkey = SDL_MapRGB(image->format, 0, 0, 0);
+	SDL_SetColorKey(image, SDL_SRCCOLORKEY, colorkey);
 
 	// Debugging message	
 	if (DEBUG) cerr << "Made " << name << endl;
@@ -65,8 +65,8 @@ bool Body::display(SDL_Surface *screen)
 {
 	// Calculate image coordinates
 	SDL_Rect offset;
-	offset.x = (pos.x-COM.x)/xscale + screen->w/2 - image->w/2;
-	offset.y = (pos.y-COM.y)/yscale + screen->h/2 - image->h/2;
+	offset.x = (pos.x - COM.x)/xscale + screen->w/2 - image->w/2;
+	offset.y = (pos.y - COM.y)/yscale + screen->h/2 - image->h/2;
 
 	// Debugging messages
 	if (DEBUG)
@@ -76,7 +76,8 @@ bool Body::display(SDL_Surface *screen)
 	}
 
 	// Blit image to screen
-	if (SDL_BlitSurface(image, NULL, screen, &offset) != 0) { // Error displaying image
+	if (SDL_BlitSurface(image, NULL, screen, &offset) != 0) // Error displaying image
+	{
 		cerr << "Error displaying object:" << endl << SDL_GetError() << endl;
 		return false;
 	}
@@ -121,15 +122,17 @@ void Body::calcScale(SDL_Surface *screen)
 
 	// Scale based on the longest distance
 	// A coordinate at the max appears 1/3 screens from the center of mass in that direction
-	if (xmax >= ymax) {
+	if (xmax >= ymax)
+	{
 		xscale = xmax * 3 / screen->w;
 		yscale = xmax * 3 / screen->h;
 	}
-	else {
+	else
+	{
 		xscale = ymax * 3 / screen->w;
 		yscale = ymax * 3 / screen->h;
 	}
 
-	// Debuggin message
+	// Debugging message
 	if (DEBUG) cerr << "xscale: " << xscale << " yscale: " << yscale << endl;
 }
