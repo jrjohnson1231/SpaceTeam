@@ -1,6 +1,10 @@
 ReadMe.md
 =========
 
+How to Use
+----------
+Please see the UserManual.md file for compilation and use instructions
+
 Description of Project
 ----------------------
 This project is a central force motion simulator. It uses the Verlet Integration method to approximate the motion and is highly accurate for reasonable timesteps. The program uses the SDL Framework to provide a graphical display of the simulation, and allows the user to set all initial conditions and other variables by providing an appropriately formatted textfile.
