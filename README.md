@@ -1,5 +1,4 @@
 SpaceTeam
-change
 =========
 
 How to Use
